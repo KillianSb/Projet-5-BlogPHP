@@ -1,0 +1,16 @@
+{% extends 'base.twig' %}
+{% block content %}
+
+    
+    <h1>INSCRIPTION</h1>
+
+   <body>
+      <form name="register" method="post" action="inscription">
+         <input type="text" name="name" placeholder="Nom" /><br />
+         <input type="text" name="firstname" placeholder="Prenom" /><br />
+         <input type="text" name="mail" placeholder="Email" /><br />
+         <input type="password" name="pass" placeholder="Mot de passe" /><br />
+         <input type="submit" name="valider" value="S'authentifier" />
+      </form>
+
+{% endblock %}

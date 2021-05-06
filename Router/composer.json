@@ -1,0 +1,20 @@
+{
+    "name": "killian/router",
+    "authors": [
+        {
+            "name": "Killian Sieniski",
+            "email": "killian.sieniski@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src",
+            "Twig\\": "vendor/twig",
+            "PhpMailer\\": "vendor/phpmailer"
+        }
+    },
+    "require": {
+        "twig/twig": "^2.0",
+        "phpmailer/phpmailer": "^6.4"
+    }
+}

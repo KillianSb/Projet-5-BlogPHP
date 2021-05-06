@@ -1,0 +1,413 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+p, h1, h2 {
+    font-family: 'Alfa Slab One', cursive;
+}
+
+h2 {
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+/* HEADER */
+
+header {
+    display: block;
+    margin: 0px 15px 15px 15px;
+}
+
+.header_title {
+    display: block;
+    height: 500px;
+    background-image: url('../img/fond1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.header_title h1 {
+    margin: 0;
+    font-size: 40px;
+    text-align: center;
+    padding: 175px 0;
+    text-transform: uppercase;
+    color: #0f667c;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    list-style-type : none;
+    text-decoration: none;
+}
+
+.logo {
+    justify-content: flex-start;
+    width: 90px;
+    height: 110px;
+    padding: 15px;
+    border-radius: 30px;
+}
+
+.links {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.box_header {
+    display: flex;
+}
+
+ul {
+    margin :auto;
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+
+li a {
+    margin: 25px;
+    list-style-type : none;
+    text-decoration: none;
+    color: #0f667c;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+/* FOOTER */
+
+.box_footer {
+    display: flex;
+}
+
+.footer_center {
+    display: flex;
+    font-family: 'Alfa Slab One', cursive;
+    justify-content: flex-start;
+    font-size: 14px;
+    margin: auto;
+    padding: 20px;
+    color: rgb(255, 255, 255);
+}
+
+.footer_right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu_bas a {
+    font-family: 'Alfa Slab One', cursive;
+    color: #0f667c;
+    font-size: 14px;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+/* INDEX */
+
+.index {
+    background-color: #28282b;
+}
+
+.links a {
+    font-family: 'Alfa Slab One', cursive;
+    color: #0f667c;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+.footer {
+    display: block;
+    height: 60px;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.mid_block, .mid_text_left {
+    display: block;
+    background-position: center;
+    background-size: cover;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.mid_title {
+    display: flex;
+    padding: 15px;
+    color: #0f667c;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+.mid_block h2, .mid_text_left h2 {
+    margin: 50px 0px 0px 20px;
+}
+
+.mid_text {
+    display: block;
+    padding: 15px;
+}
+
+
+.mid_p {
+    display: flex;
+    padding: 15px;
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+
+/* LEGAL */
+
+.block_legal {
+    display: block;
+    padding: 25px;
+    margin: 5px;
+}
+
+.legal_title {
+    display: flex;
+}
+
+.legal_text {
+    display: block;
+}
+
+.block_legal h2 {
+    margin: 50px 0px 0px 20px;
+    color: rgb(163, 3, 3);
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+.legal_text p {
+    display: flex;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.legal_text p {
+    color: white;
+}
+
+/* CONTACT */
+
+.contact{
+background-color: #28282b;
+}
+
+.blockInformation {
+    display: block;
+    padding: 25px;
+    margin: 3px;
+    text-align: center;
+}
+
+.containerBlockContact{
+    margin: 200px 10% 5% 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.containerBlockContact h2, .blockInformation h2{
+    color:rgb(206, 4, 4);
+    font-size: 33px;
+}
+
+.blockInformation p{
+    color: white;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.containerBlockContact .form{
+    width: 500px;
+}
+
+.containerBlockContact form{
+    display: flex;
+    flex-direction: column;
+}
+
+.containerBlockContact .form input{
+    height: 40px;
+}
+
+.containerBlockContact .containerFirstLine{
+    display: flex;
+    justify-content: space-between;
+}
+
+.containerBlockContact .containerFirstLine input{
+    width: 45%;
+}
+
+.containerBlockContact .form input, .containerBlockContact .form textarea{
+    color: white;
+    background-color: #686868;
+    border: none;
+    border-radius: 7px;
+    padding: 5px;
+    margin-bottom: 13px;
+    padding-left: 15px;
+}
+
+.containerBlockContact .form textarea{
+    padding-top: 10px;
+    resize: none;
+}
+
+.containerBlockContact .form input::placeholder, .containerBlockContact .form textarea::placeholder{
+    color: white;
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 14px;
+}
+
+.containerBlockContact .form input[type=submit]{
+    width: 120px;
+    height: 45px;
+    text-transform: uppercase;
+    background-color: rgb(206, 4, 4);
+    padding-left: 0px;
+    font-weight: bold;
+    font-family: 'Alfa Slab One', cursive;
+    color: black;
+}
+
+.blockCarte {
+padding-left: 80px;
+}
+
+.blockCarte iframe {
+width: 600px;
+height: 450px;
+}
+
+ /* Section Responsive */
+
+ @media screen and (max-width: 1479px) {
+    .blockCarte {
+        font-size: 20px;
+        padding: 0px;
+
+    }
+
+    .containerBlockContact{
+        margin: 200px 10% 5% 10%;
+        align-items: center !important;
+        flex-direction: column;
+
+    }
+
+    .blockCarte iframe {
+        width: 500px;
+        height: 400px;
+    }
+ }
+ 
+
+ @media screen and (max-width: 650px) {
+    .blockCarte {
+        font-size: 20px;
+        padding: 0px;
+    }
+
+    .containerBlockContact{
+        margin: 200px 10% 5% 10%;
+        align-items: center !important;
+        flex-direction: column;
+    }
+
+    .blockCarte iframe {
+        width: 400px;
+        height: 300px;
+    }
+ }
+
+ @media screen and (max-width: 632px) {
+    .blockCarte {
+        font-size: 10px;
+        padding: 0px;
+    }
+
+    .containerBlockContact{
+        margin: 200px 10% 5% 10%;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .containerBlockContact form {
+        padding-right: 80px;
+    }
+
+    .blockCarte iframe {
+        width: 300px;
+        height: 200px;
+    }
+
+    .containerBlockContact h2 {
+        font-size: 27px;
+        margin-right: 90px;
+    }
+ }
+
+ @media screen and (max-width: 500px) {
+
+    .containerBlockContact form {
+        padding-right: 130px;
+    }
+
+    .containerBlockContact h2 {
+        font-size: 27px;
+        margin-right: 130px;
+    }
+
+ }
+
+ @media screen and (max-width: 454px) {
+
+    .containerBlockContact form {
+        padding-right: 180px;
+    }
+
+    .containerBlockContact h2 {
+        font-size: 24px;
+        margin-right: 180px;
+    }
+
+ }
+
+ @media screen and (max-width: 400px) {
+
+    .containerBlockContact form {
+        padding-right: 220px;
+    }
+
+    .containerBlockContact h2 {
+        font-size: 22px;
+        margin-right: 220px;
+    }
+
+    .blockCarte iframe {
+        width: 250px;
+        height: 100px;
+    }
+
+ }
+
+ @media screen and (max-width: 346px) {
+
+    .containerBlockContact form {
+        padding-right: 240px;
+    }
+
+    .containerBlockContact h2 {
+        font-size: 19px;
+        margin-right: 240px;
+    }
+
+    .blockCarte iframe {
+        width: 250px;
+        height: 100px;
+    }
+
+ }
+
+  /* FIN Section Responsive */
