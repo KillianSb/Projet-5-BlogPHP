@@ -1,26 +1,55 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 /**
  * create a object of user
  */
+
+use App\Core\Database;
+
 class UserModel
 {
     public $id;
     public $name;
     public $firstname;
+    public $username;
     public $mail;
     public $pass;
     public $admin;
 
-    public function __construct($id, $firstname, $name, $mail, $pass, $admin)
+    public function __construct()
     {
-        $this->id = $id;
-        $this->firstname = $firstname;
-        $this->name = $name;
-        $this->mail = $mail;
-        $this->pass = $pass;
-        $this->admin = $admin;
+        $this->db = new Database();
+        
+        $this->id = null;
+        $this->name = null;
+        $this->firstname = null;
+        $this->username = null;
+        $this->mail = null;
+        $this->pass = null;
+        $this->admin = null;
+    }
+
+    public function connexion($usernameToVerify, $passwordToVerify) {
+
+        $request = $this->db->db->prepare("SELECT * from users WHERE username=:username");
+        $request->execute(["username" => $usernameToVerify]);
+        $user = $request->fetch();
+        $password = $user['password'];
+        if (password_verify($passwordToVerify, $password)) {
+            $userBdd = new UserModel($user['id'], $user['name'], $user['firstname'], $user['username'] ,$user['mail'], $user['pass'], $user['admin']);
+            return(['y', $userBdd]);
+        }
+        return(['n']);
+
+    }
+
+
+    public function inscription() {
+
+        $request = $this->db->db->prepare('INSERT INTO users (name, firstname, username, mail, pass) VALUES (:name, :firstname, :username, :mail, :pass);');
+        $params = [':name' => $this->name, ':firstname' => $this->firstname, ':username' => $this->username, ':mail' => $this->mail, ':pass' => $this->pass];
+        $request->execute($params);
     }
 }
