@@ -11,6 +11,7 @@ class HomeController
         $loader = new FilesystemLoader('Public\Views');
         $twig = new Environment($loader);
 
+        var_dump($_SESSION);
         echo $twig->render('homeView.twig');
     }
     

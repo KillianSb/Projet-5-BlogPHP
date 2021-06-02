@@ -33,12 +33,7 @@ class AuthController
         // echo $form->input('password','Mots de passe');
         // echo $form->submit();
 
-        // Recup les donnees du form
-
-        $pass = $_POST['password'];
-        $user = $_POST['username'];
-
-
+        var_dump($_SESSION);
         echo $twig->render('auth/connexionView.twig',);
     }
 
@@ -56,7 +51,7 @@ class AuthController
 
         $return = $this->usersModel->connexion($username, $passwordToVerify);
         if ($return[0] == "y") {
-            $_SESSION['user'] = $return[1];
+            $_SESSION['username'] = $return[1];
             header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/home');
             return("");
         } else {

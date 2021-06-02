@@ -36,7 +36,7 @@ class UserModel
         $request = $this->db->db->prepare("SELECT * from users WHERE username=:username");
         $request->execute(["username" => $usernameToVerify]);
         $user = $request->fetch();
-        $password = $user['password'];
+        $password = $user['pass'];
         if (password_verify($passwordToVerify, $password)) {
             $userBdd = new UserModel($user['id'], $user['name'], $user['firstname'], $user['username'] ,$user['mail'], $user['pass'], $user['admin']);
             return(['y', $userBdd]);
