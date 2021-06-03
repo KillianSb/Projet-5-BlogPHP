@@ -42,16 +42,20 @@ class AuthController
         $twig = new Environment($loader);
 
         
-        echo "</br>";
-        var_dump($_POST);
-        echo "</br>";
+        // echo "</br>";
+        // var_dump($_POST);
+        // echo "</br>";
+
+        if (isset($_SESSION['user'])) {
+            header('Location: /portfolio');
+        }
 
         $username = $_POST['username'];
         $passwordToVerify = $_POST['pass'];
 
         $return = $this->usersModel->connexion($username, $passwordToVerify);
         if ($return[0] == "y") {
-            $_SESSION['username'] = $return[1];
+            $_SESSION['user'] = $return[1];
             header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/home');
             return("");
         } else {
@@ -88,22 +92,26 @@ class AuthController
         $loader = new FilesystemLoader('Public\Views');
         $twig = new Environment($loader);
 
-        echo "</br>";
-        var_dump($_POST);
-        echo "</br>";
+        // echo "</br>";
+        // var_dump($_POST);
+        // echo "</br>";
+
+        $cryptPass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
         $user = new UserModel();
         $user->name = $_POST["name"];
         $user->firstname = $_POST["firstname"];
         $user->username = $_POST["username"];
         $user->mail = $_POST["mail"];
-        $user->pass = $_POST["pass"];
-        $user->inscription();    
+        $user->pass = $cryptPass;
+        $user->inscription();
+        
+        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/home');
 
 
-        echo "</br>";
-        var_dump($user);
-        echo "</br>";
+        // echo "</br>";
+        // var_dump($user);
+        // echo "</br>";
 
     }
 }

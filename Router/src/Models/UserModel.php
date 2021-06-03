@@ -36,10 +36,23 @@ class UserModel
         $request = $this->db->db->prepare("SELECT * from users WHERE username=:username");
         $request->execute(["username" => $usernameToVerify]);
         $user = $request->fetch();
+        if (empty($user)) {
+            return(['n']);
+        }
         $password = $user['pass'];
+
         if (password_verify($passwordToVerify, $password)) {
             $userBdd = new UserModel($user['id'], $user['name'], $user['firstname'], $user['username'] ,$user['mail'], $user['pass'], $user['admin']);
+            var_dump($userBdd);
+            die();
             return(['y', $userBdd]);
+            echo "</br>";
+            var_dump($passwordToVerify);
+            echo "</br>";
+            echo "</br>";
+            var_dump($userBdd);
+            echo "</br>";
+            die();
         }
         return(['n']);
 
