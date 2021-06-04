@@ -23,12 +23,12 @@ class UserModel
         $this->db = new Database();
         
         $this->id = null;
-        $this->name = null;
-        $this->firstname = null;
-        $this->username = null;
-        $this->mail = null;
-        $this->pass = null;
-        $this->admin = null;
+        $this->name = $name;
+        $this->firstname = $firstname;
+        $this->username = $username;
+        $this->mail = $mail;
+        $this->pass = $pass;
+        $this->admin = $admin;
     }
 
     public function connexion($usernameToVerify, $passwordToVerify) {
@@ -39,20 +39,26 @@ class UserModel
         if (empty($user)) {
             return(['n']);
         }
+        // echo "</br>";
+        // echo "user :";
+        // echo "</br>";
+        // var_dump($user);
+        // echo "</br>";
+        // die();
         $password = $user['pass'];
 
         if (password_verify($passwordToVerify, $password)) {
             $userBdd = new UserModel($user['id'], $user['name'], $user['firstname'], $user['username'] ,$user['mail'], $user['pass'], $user['admin']);
-            var_dump($userBdd);
-            die();
+            // var_dump($userBdd);
+            // die();
             return(['y', $userBdd]);
-            echo "</br>";
-            var_dump($passwordToVerify);
-            echo "</br>";
-            echo "</br>";
-            var_dump($userBdd);
-            echo "</br>";
-            die();
+            // echo "</br>";
+            // var_dump($passwordToVerify);
+            // echo "</br>";
+            // echo "</br>";
+            // var_dump($userBdd);
+            // echo "</br>";
+            // die();
         }
         return(['n']);
 

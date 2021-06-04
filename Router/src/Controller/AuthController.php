@@ -33,8 +33,20 @@ class AuthController
         // echo $form->input('password','Mots de passe');
         // echo $form->submit();
 
-        var_dump($_SESSION);
-        echo $twig->render('auth/connexionView.twig',);
+        if (isset($_SESSION['user'])) {
+            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/cv');
+        }
+        if (isset($_SESSION['successMessage'])) {
+            if ($_SESSION['successMessage'] == "n") {
+                unset($_SESSION['successMessage']);
+                echo("Identifiant ou Mots de passe est incorrect, veuillez réessayer");
+                echo $twig->render('auth/connexionView.twig');
+            } else {
+                unset($_SESSION['successMessage']);
+            }
+        } else {
+            echo $twig->render('auth/connexionView.twig');
+        }
     }
 
     public function traitementConnexion(){
@@ -47,7 +59,7 @@ class AuthController
         // echo "</br>";
 
         if (isset($_SESSION['user'])) {
-            header('Location: /portfolio');
+            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/cv');
         }
 
         $username = $_POST['username'];
@@ -55,7 +67,9 @@ class AuthController
 
         $return = $this->usersModel->connexion($username, $passwordToVerify);
         if ($return[0] == "y") {
-            $_SESSION['user'] = $return[1];
+            $_SESSION['user'] = $_POST['username'];
+            // var_dump($_SESSION);
+            // die();
             header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/home');
             return("");
         } else {
@@ -68,9 +82,17 @@ class AuthController
         // $user->pass = $_POST["pass"];
         // $user->connexion();
 
-
-
     }
+
+
+    public function deconnexion(){
+        $loader = new FilesystemLoader('Public\Views');
+        $twig = new Environment($loader);
+
+        unset($_SESSION['user']);
+        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/home');
+    }
+
 
     public function inscriptionView(){
         $loader = new FilesystemLoader('Public\Views');

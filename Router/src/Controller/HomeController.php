@@ -10,8 +10,10 @@ class HomeController
     public function homeView(){
         $loader = new FilesystemLoader('Public\Views');
         $twig = new Environment($loader);
+        session_start();
+        // var_dump($_SESSION['user']);
+        echo("Bonjour ". $_SESSION['user']);
 
-        var_dump($_SESSION);
         echo $twig->render('homeView.twig');
     }
     

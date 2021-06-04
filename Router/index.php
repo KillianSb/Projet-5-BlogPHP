@@ -18,6 +18,9 @@ $router->post('/traitementForm', 'Traitement#traitementForm');
 // Auth
 $router->get('/connexion', 'Auth#connexionView');
 $router->post('/connexion', 'Auth#traitementConnexion');
+
+$router->get('/deconnexion', 'Auth#deconnexion');
+
 $router->get('/inscription', 'Auth#inscriptionView');
 $router->post('/inscription', 'Auth#traitementInscription');
 
@@ -27,7 +30,7 @@ $router->post('/inscription', 'Auth#traitementInscription');
 
 // Admin
 
-
+$router->get('/admin', 'Admin#adminView');
 
 // ------------------------------------------------------------------ //
 
