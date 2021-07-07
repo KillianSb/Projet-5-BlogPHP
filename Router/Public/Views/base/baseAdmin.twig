@@ -3,34 +3,36 @@
 <head>
   <meta charset="utf-8">
   <title>header</title>
-  <link rel="stylesheet" href="Public/assets/css/main.css">
+  <link rel="stylesheet" href="Public/assets/css/adminView.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
 </head>
-<body class="index">
+<body class="admin">
 
     <!-- Header -->
     <section class="header_title">
     <header>
         <div class="box_header">
-            <img class="logo" src="Public/assets/img/moi.jpg" alt="">
             <ul class="links">
-                <li><a href="home">ACCUEIL</a></li>
-                <li><a href="blog">BLOG</a></li>
-                <li><a href="cv">CV</a></li>
-                <li><a href="contact">CONTACT</a></li>
-                <li><a href="admin">ADMIN</a></li>
+                {% block headLinks %} 
+
+                {% endblock headLinks %} 
             </ul>
             <div class="connect">
-                <li><a href="connexion">CONNEXION</a></li>
-                <li><a href="deconnexion">DECONNEXION</a></li>
+                {% block connection %} 
+
+                {% endblock connection %} 
             </div>
         </div>
     </header>
 
-    {% block content %} 
+    {% block content %}
 
-    {% endblock %} 
+        {% block links %} 
+
+        {% endblock links %} 
+
+    {% endblock content %} 
 
 
        <!-- Footer -->

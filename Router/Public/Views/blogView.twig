@@ -1,9 +1,17 @@
-{% extends 'base.twig' %}
+{% extends 'base/base.twig' %}
 
 {% block connection %} 
-<li><a href="connexion">CONNEXION</a></li>
+{% if user.username is defined %} 
+<p>Bonjours {{user.username}}</p> 
 <li><a href="deconnexion">DECONNEXION</a></li>
-{% endblock %} 
+{% else %}
+<li><a href="connexion">CONNEXION</a></li>
+{% endif %} 
+
+{% if IsAdmin == true %} 
+<li><a href="admin">ADMIN</a></li>
+{% endif %}
+{% endblock connection %}
 
 {% block content %}
     

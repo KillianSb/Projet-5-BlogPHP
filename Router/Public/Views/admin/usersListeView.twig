@@ -1,0 +1,51 @@
+{% extends 'base/baseAdmin.twig' %}
+
+{% block headLinks %}
+    <li><a href="admin">Retour</a></li>
+{% endblock headLinks %}
+
+
+{% block content %}
+
+<h1>Liste des Utilisateurs</h1>
+
+{# {{ dump(users) }} #}
+
+<div class="containerTablePosts">
+  <div class="containerTable">
+    <div class="containerHeaderTable">
+      <p class="id">ID</p>
+      <p class="date">Date</p>
+      <p class="name">Nom</p>
+      <p class="username">Username</p>
+      <p class="mail">Mail</p>
+      <p class="admin">Droits</p>
+      <p class="modif">Modifier les droits</p>
+      <p class="delete">Supprimer</p>
+    </div>
+    <div class="containerPosts">
+      {% for user in users %}
+        <div class="post">
+          <p class="id">{{user.id}}</p>
+          <p class="date">{{user.date}}</p>
+          <p class="name">{{user.firstname}} {{user.name}}</p>
+          <p class="username">{{user.username}}</p>
+          <p class="mail">{{user.mail}}</p>
+          {% if user.admin == true %}
+            <p class="admin">Administrateur</p>
+          {% else %}
+            <p class="admin">Utilisateur</p>
+          {% endif %}
+          <p class="modif"><a href="adminLawChange/{{user.id}}">Modifier</a></p>
+          <div class="containerContent">
+            <div class="button">
+              <a class="delete" href="usersDelete/{{user.id}}">Supprimer</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

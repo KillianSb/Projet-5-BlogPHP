@@ -31,6 +31,10 @@ $router->post('/inscription', 'Auth#traitementInscription');
 // Admin
 
 $router->get('/admin', 'Admin#adminView');
+$router->get('/usersListe', 'Admin#usersListeView');
+$router->get('/usersDelete/:id', 'Admin#deleteUser');
+$router->get('/adminLawChange/:id', 'Admin#adminLawChange');
+
 
 // ------------------------------------------------------------------ //
 

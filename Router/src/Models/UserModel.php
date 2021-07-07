@@ -71,4 +71,30 @@ class UserModel
         $params = [':name' => $this->name, ':firstname' => $this->firstname, ':username' => $this->username, ':mail' => $this->mail, ':pass' => $this->pass];
         $request->execute($params);
     }
+
+    // /**
+    // * return all users
+    // */
+    // public function getUsers()
+    // {
+    //     $request = $this->db->db->query('SELECT * FROM users')->fetchAll();
+    //     $usersArray = [];
+    //     foreach ($request as $user) {
+    //         $usersArray[] = new UserModel($user['id'], $user['firstname'], $user['name'], $user['mail'], $user['admin']);
+    //     }
+    //     return $usersArray;
+    // }
+  
+    /**
+    * return single user
+    */
+    public function getUser($username)
+    {
+        $request = $this->db->db->prepare("SELECT * from users WHERE username=:username");
+        $request->execute(["username" => $username]);
+        $user = $request->fetch();
+
+        return $user;
+    }
+
 }

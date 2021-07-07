@@ -5,15 +5,18 @@ namespace App\Controller;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use App\Models\UserModel;
+use App\Manager\UsersManager;
 // use App\Models\FormModel;
 
 class AuthController
 {
     private $usersModel;
+    private $usersManager;
 
     public function __construct()
     {
         $this->usersModel = new UserModel();
+        $this->usersManager = new UsersManager();
 
         if (!isset($_SESSION)) {
             session_start();
@@ -52,7 +55,6 @@ class AuthController
     public function traitementConnexion(){
         $loader = new FilesystemLoader('Public\Views');
         $twig = new Environment($loader);
-
         
         // echo "</br>";
         // var_dump($_POST);
@@ -67,9 +69,7 @@ class AuthController
 
         $return = $this->usersModel->connexion($username, $passwordToVerify);
         if ($return[0] == "y") {
-            $_SESSION['user'] = $_POST['username'];
-            // var_dump($_SESSION);
-            // die();
+            $_SESSION['user'] = $username;
             header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/home');
             return("");
         } else {
@@ -136,4 +136,31 @@ class AuthController
         // echo "</br>";
 
     }
+
+    public function adminView(){
+        $loader = new FilesystemLoader('Public\Views');
+        $twig = new Environment($loader);
+
+        echo $twig->render('admin/adminView.twig');
+    }
+
+    public function traitementIsAdmin(){
+        $loader = new FilesystemLoader('Public\Views');
+        $twig = new Environment($loader);
+
+        $username = $_SESSION['user'];
+
+
+        $user = $this->usersManager->getUser($username);
+
+        if ($user['admin'] == false) {
+            echo 'N est pas admin !';
+            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/home');
+        } 
+        else {
+            echo 'Est admin !';
+            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/admin');
+        }
+    }
+
 }
