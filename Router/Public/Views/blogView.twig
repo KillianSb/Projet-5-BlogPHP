@@ -17,4 +17,17 @@
     
     <h1>BLOG</h1>
 
-{% endblock %}
+    {% if IsAdmin == true %} 
+    {% block links %}
+
+    <h2><a href="admin">Gestion des Posts</a></h2>
+
+    {% endblock links %}
+    {% endif %}
+
+    <h2><a href="createPost">Création d'un Post</a></h2>
+
+    <h1>Liste des posts</h1>
+
+
+{% endblock content %}

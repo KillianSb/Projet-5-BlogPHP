@@ -26,6 +26,13 @@ $router->post('/inscription', 'Auth#traitementInscription');
 
 // ------------------------------------------------------------------ //
 
+// Blog
+
+$router->get('/createPost', 'Blog#createPostView');
+$router->post('/createPost', 'Blog#traitementCreatePost');
+
+
+
 // ------------------------------------------------------------------ //
 
 // Admin
@@ -35,6 +42,8 @@ $router->get('/usersListe', 'Admin#usersListeView');
 $router->get('/usersDelete/:id', 'Admin#deleteUser');
 $router->get('/adminLawChange/:id', 'Admin#adminLawChange');
 
+$router->get('/postsListe', 'Admin#postsListe');
+$router->get('/deletePost/:id', 'Admin#deletePost');
 
 // ------------------------------------------------------------------ //
 

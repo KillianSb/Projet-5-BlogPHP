@@ -1,0 +1,32 @@
+{% extends 'base/base.twig' %}
+
+{% block connection %} 
+{% if user.username is defined %} 
+<p>Bonjours {{user.username}}</p> 
+<li><a href="deconnexion">DECONNEXION</a></li>
+{% else %}
+<li><a href="connexion">CONNEXION</a></li>
+{% endif %} 
+
+{% if IsAdmin == true %} 
+<li><a href="admin">ADMIN</a></li>
+{% endif %}
+{% endblock connection %}
+
+{% block content %}
+    
+    <h1>Création de Blog</h1>
+
+    
+
+    <form name="register" method="post" action="createPost">
+    <input type="text" name="titre" placeholder="Titre" /><br />
+    <input type="text" name="chapo" placeholder="Chapô" /><br />
+    <textarea name="contenu" placeholder="Contenu" ></textarea><br />
+    <textarea name="commentaire" placeholder="Commentaire" ></textarea><br />
+    <input type="submit" name="valider" value="Crée le post" />
+    </form>
+    <button type="submit" class="btn btn-primary"><a href="blogView">Retour Connexion </a></button>
+
+
+{% endblock %}

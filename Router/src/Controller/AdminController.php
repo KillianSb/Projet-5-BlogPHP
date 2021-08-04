@@ -5,15 +5,18 @@ namespace App\Controller;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use App\Manager\UsersManager;
+use App\Manager\PostsManager;
 
 class AdminController
 {
 
     private $usersManager;
+    private $postsManager;
 
     public function __construct()
     {
         $this->usersManager = new UsersManager();
+        $this->postsManager = new PostsManager();
 
         if (!isset($_SESSION)) {
             session_start();
@@ -28,6 +31,9 @@ class AdminController
         echo $twig->render('admin/adminView.twig');
     }
 
+    /**
+    * list user
+    */
     public function usersListeView(){
         $loader = new FilesystemLoader('Public\Views');
         $twig = new Environment($loader);
@@ -75,4 +81,43 @@ class AdminController
 
         header("Location: ../usersListeView");
     }
+
+    /**
+    * list posts
+    */
+    public function postsListe(){
+        $loader = new FilesystemLoader('Public\Views');
+        $twig = new Environment($loader);
+
+        // // Ajout pour Dump
+        // $twig = new \Twig\Environment($loader, [
+        //     'debug' => true,
+        //     // ...
+        // ]);
+        // $twig->addExtension(new \Twig\Extension\DebugExtension());
+
+        $posts = $this->postsManager->getPosts();
+
+        echo $twig->render('admin/postsListe.twig', ['posts' => $posts]);
+    }
+
+    /**
+    * delete post by id
+    */
+    public function deletePost($idPost){
+        $loader = new FilesystemLoader('Public\Views');
+        $twig = new Environment($loader);
+
+        // // Ajout pour Dump
+        // $twig = new \Twig\Environment($loader, [
+        //     'debug' => true,
+        //     // ...
+        // ]);
+        // $twig->addExtension(new \Twig\Extension\DebugExtension());
+
+        $this->postsManager->deletePost($idPost);
+
+        header("Location: ../postsListe");
+    }
+
 }

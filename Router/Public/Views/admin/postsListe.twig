@@ -1,0 +1,43 @@
+{% extends 'base/baseAdmin.twig' %}
+
+{% block headLinks %}
+    <li><a href="admin">Retour</a></li>
+{% endblock headLinks %}
+
+{% block content %}
+
+<h1>Liste des posts</h1>
+
+    {# {{ dump(posts) }} #}
+
+    <div class="containerTablePosts">
+    <div class="containerTable">
+        <div class="containerHeaderTable">
+        <p class="id">ID</p>
+        <p class="titre">Titre</p>
+        <p class="chapô">Chapô</p>
+        <p class="contenu">Contenu</p>
+        <p class="date">Date</p>
+        <p class="commentaire">Commentaire</p>
+        <p class="delete">Supprimer</p>
+        </div>
+        <div class="containerPosts">
+        {% for post in posts %}
+            <div class="post">
+            <p class="id">{{post.id}}</p>
+            <p class="titre">{{post.titre}}</p>
+            <p class="chapô">{{post.chapô}}</p>
+            <p class="contenu">{{post.contenu}}</p>
+            <p class="date">{{post.date}}</p>
+            {# <p class="modif"><a href="adminLawChange/{{post.id}}">Modifier</a></p> #}
+            <div class="containerContent">
+                <div class="button">
+                <a class="delete" href="deletePost/{{post.id}}">Supprimer</a>
+                </div>
+            </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
