@@ -12,6 +12,7 @@ $router->get('/cv', 'Cv#cvView');
 $router->get('/blog', 'Blog#blogView');
 $router->get('/contact', 'Contact#contactView');
 $router->post('/traitementForm', 'Traitement#traitementForm');
+$router->get('/legal', 'Legal#legalView'); 
 
 // ------------------------------------------------------------------ //
 

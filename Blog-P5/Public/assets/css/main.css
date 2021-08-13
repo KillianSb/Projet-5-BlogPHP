@@ -297,7 +297,7 @@ width: 600px;
 height: 450px;
 }
 
- /* Section Responsive */
+/* Section Responsive */
 
  @media screen and (max-width: 1479px) {
     .blockCarte {
@@ -425,6 +425,35 @@ height: 450px;
         height: 100px;
     }
 
- }
+}
 
-  /* FIN Section Responsive */
+/* FIN Section Responsive Contact*/
+
+/* AJOUT Blog*/
+
+.containerTablePosts {
+    padding: 50px;
+}
+
+.postblog p.title {
+    text-align: center ;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.postblog p.chapo {
+    font-size: 20px;
+}
+
+.postblog p.content {
+    padding: 20px;
+}
+
+.postblog {
+    display: block;
+    border-color: #000000;
+    border-radius: 7px;
+    margin: 20px;
+    padding: 30px;
+    background-color: hsl(0, 0%, 50%);
+}

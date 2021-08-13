@@ -46,7 +46,7 @@ class PostsManager
         $postsArray = [];
 
         foreach ($request as $posts) {
-            $postsArray[] = new PostModel($post['id'], $post['titre'], $post['chapo'], $post['contenu'], $post['auteur'], $post['date'], $post['commentaire'], $post['listCommentaire']);
+            $postsArray[] = new PostModel($post['id'], $post['title'], $post['chapo'], $post['content'], $post['auteur'], $post['dateCreate'], $post['commentaire'], $post['listCommentaire']);
         }
 
         return $request;
@@ -58,7 +58,7 @@ class PostsManager
     public function getPost($idPost)
     {
         $post = $this->db->db->query("SELECT * FROM posts WHERE id = $idPost")->fetch();
-        // $post = new PostModel($post['id'], $post['titre'], $post['chapô'], $post['contenu'], $post['auteur'], $post['date'], $post['commentaire'], $post['listCommentaire']);
+        // $post = new PostModel($post['id'], $post['titre'], $post['chapô'], $post['content'], $post['auteur'], $post['date'], $post['commentaire'], $post['listCommentaire']);
         return $post;
     }
 

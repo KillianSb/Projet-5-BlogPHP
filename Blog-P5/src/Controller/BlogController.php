@@ -6,16 +6,27 @@ use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use App\Models\UserModel;
 use App\Models\PostModel;
+use App\Manager\UsersManager;
+use App\Manager\PostsManager;
 use App\Core\Database;
 
 
 class BlogController
 {
 
+    private $usersManager;
+    private $postsManager;
+
+    private $usersModel;
+    private $postsModel;
+
     public function __construct()
     {
         $this->usersModel = new UserModel();
         $this->postsModel = new PostModel();
+        $this->usersManager = new UsersManager();
+        $this->postsManager = new PostsManager();
+
         $this->db = new Database();
         
         if (!isset($_SESSION)) {
@@ -28,20 +39,15 @@ class BlogController
         $loader = new FilesystemLoader('Public\Views');
         $twig = new Environment($loader);
 
-
-        // if($_SESSION['user'] !== NULL){
-        //     echo("Bonjour ". $_SESSION['user']);
-        // } else {
-        //     echo("Pas connecter <a href=".connexion.">CONNEXION</a>");
-        // }
-
         $username = $_SESSION['user'];
 
         $user = $this->usersModel->getUser($username);
 
         $userIsAdmin = $user['admin'];
 
-        echo $twig->render('blogView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin]);
+        $posts = $this->postsManager->getPosts();
+
+        echo $twig->render('blogView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'posts' => $posts]);
     }
 
     public function createPostView(){
@@ -66,9 +72,9 @@ class BlogController
         // echo "</br>";
 
         $post = new PostModel();
-        $post->titre = $_POST["titre"];
+        $post->title = $_POST["title"];
         $post->chapo = $_POST["chapo"];
-        $post->contenu = $_POST["contenu"];
+        $post->content = $_POST["content"];
         $post->auteur = $_SESSION['user'];;
         $post->commentaire = $_POST["commentaire"];
         $post->createPost();

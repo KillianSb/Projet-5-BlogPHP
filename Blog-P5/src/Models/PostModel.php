@@ -11,11 +11,11 @@ use App\Core\Database;
 class PostModel
 {
     public $id;
-    public $titre;
+    public $title;
     public $chapo;
-    public $contenu;
+    public $content;
     public $auteur;
-    public $date;
+    public $dateCreate;
     public $commentaire;
     public $listCommentaire;
 
@@ -24,11 +24,11 @@ class PostModel
         $this->db = new Database();
         
         $this->id = null;
-        $this->titre = $titre;
+        $this->title = $title;
         $this->chapo = $chapo;
-        $this->contenu = $contenu;
+        $this->content = $content;
         $this->auteur = $auteur;
-        $this->date = $date;
+        $this->dateCreate = $dateCreate;
         $this->commentaire = $commentaire;
         $this->listCommentaire = $listCommentaire;
     }
@@ -36,7 +36,7 @@ class PostModel
     public function createPost() {
 
         $request = $this->db->db->prepare('INSERT INTO posts (titre, chapo, contenu, auteur) VALUES (:titre, :chapo, :contenu, :auteur);');
-        $params = [':titre' => $this->titre, ':chapo' => $this->chapo, ':contenu' => $this->contenu, ':auteur' => $this->auteur];
+        $params = [':titre' => $this->title, ':chapo' => $this->chapo, ':contenu' => $this->content, ':auteur' => $this->auteur];
         $request->execute($params);
         // var_dump($params);
         // echo "</br>";
@@ -61,8 +61,8 @@ class PostModel
     */
     public function getPost($post)
     {
-        $request = $this->db->db->prepare("SELECT * from posts WHERE titre=:titre");
-        $request->execute(["titre" => $titre]);
+        $request = $this->db->db->prepare("SELECT * from posts WHERE titre=:title");
+        $request->execute([":title" => $title]);
         $post = $request->fetch();
 
         return $post;

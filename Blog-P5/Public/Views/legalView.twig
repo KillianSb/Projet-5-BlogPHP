@@ -1,0 +1,63 @@
+{% extends 'base/base.twig' %}
+
+{% block connection %} 
+{% if user.username is defined %} 
+<p>Bonjours {{user.username}}</p> 
+<li><a href="deconnexion">DECONNEXION</a></li>
+{% else %}
+<li><a href="connexion">CONNEXION</a></li>
+{% endif %} 
+
+{% if IsAdmin == true %} 
+<li><a href="admin">ADMIN</a></li>
+{% endif %}
+{% endblock connection %}
+
+
+{% block content %}
+        
+    <h1>Mention Légals</h1>
+
+    </section>
+
+    <div class="block_legal">
+        <div class="legal_title">
+            <h2><u>Mentions légales et politique de confidentialité</u></h2>
+        </div>
+        <div class="legal_text">
+            <p>
+                Le site "Mon Portefolio" , soucieus des droits des individus, notamment au regard des traitements automatisés et dans une volonté de transparence avec ses clients, a mis en place une politique reprenant l’ensemble de ces traitements, des finalités poursuivies par ces derniers ainsi que des moyens d’actions à la disposition des individus afin qu’ils puissent au mieux exercer leurs droits.
+                <br>Pour toute information complémentaire sur la protection des données personnelles, nous vous invitons à consulter le site : https://www.cnil.fr/
+                <br>La poursuite de la navigation sur ce site vaut acceptation sans réserve des dispositions et conditions d'utilisation qui suivent.
+            </p>
+            <p>
+                La version actuellement en ligne de ces conditions d'utilisation est la seule opposable pendant toute la durée d'utilisation du site et jusqu'à ce qu'une nouvelle version la remplace.
+            </p>
+            <p>
+                Article 1 - Mentions légales
+            </p>
+            <p>
+                <u>1.1 Site (ci-après « le site ») : "Mon Portefolio"</u>
+            </p>
+            <p>
+                <u>1.2 Éditeur (ci-après « l'éditeur ») :</u>
+            </p>
+            <p>
+                Le site "Mon Portefolio", déclarée auprès de la préfecture de Paris sous le numéro 1212121212121212 
+                <br>dont le siège social est situé : 2 rue des bois 75000
+                <br>n° de téléphone : 0745856567
+                <br>adresse mail : killian.sieniski@gmail.com
+                <br>représentée par Jean Pierre
+            </p>
+            <p>
+                <u>1.3 Hébergeur (ci-après « l'hébergeur »)</u>
+            </p>
+            <p>
+                "Mon Portefolio" est hébergé par OVH, dont le siège social est situé 14 rue pierre 75000.
+            </p>
+        </div>
+    </div>
+
+    <hr>
+
+{% endblock %}

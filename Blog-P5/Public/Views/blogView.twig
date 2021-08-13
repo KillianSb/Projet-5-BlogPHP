@@ -1,0 +1,54 @@
+{% extends 'base/base.twig' %}
+
+{% block connection %} 
+{% if user.username is defined %} 
+<p>Bonjours {{user.username}}</p> 
+<li><a href="deconnexion">DECONNEXION</a></li>
+{% else %}
+<li><a href="connexion">CONNEXION</a></li>
+{% endif %} 
+
+{% if IsAdmin == true %} 
+<li><a href="admin">ADMIN</a></li>
+{% endif %}
+{% endblock connection %}
+
+{% block content %}
+    
+    <h1>BLOG</h1>
+
+    {% if IsAdmin == true %} 
+    {% block links %}
+
+    <h2><a href="admin">Gestion des Posts</a></h2>
+
+    {% endblock links %}
+    {% endif %}
+
+    <h2><a href="createPost">Création d'un Post</a></h2>
+
+    <h1>Liste des posts</h1>
+
+    <div class="containerTablePosts">
+        <div class="containerTablePostsBlog">
+            <div class="containerPostsBlog">
+            {% for post in posts %}
+            <div class="postblog">
+                <p class="title">{{post.titre}}</p>
+                <p class="author">{{post.auteur}}</p>
+                <p class="chapo">{{post.chapo}}</p>
+                <p class="content">{{post.contenu}}</p>
+                <p class="dateCreate">{{post.dateCreate}}</p>
+                <div class="containerContentBlog">
+                    <div class="button">
+                        <a class="comment" href="commentPost/{{post.id}}">Commenter</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
