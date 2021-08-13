@@ -42,19 +42,6 @@ class PostModel
         // echo "</br>";
         // die();
     }
-
-    // /**
-    // * return all users
-    // */
-    // public function getUsers()
-    // {
-    //     $request = $this->db->db->query('SELECT * FROM users')->fetchAll();
-    //     $usersArray = [];
-    //     foreach ($request as $user) {
-    //         $usersArray[] = new UserModel($user['id'], $user['firstname'], $user['name'], $user['mail'], $user['admin']);
-    //     }
-    //     return $usersArray;
-    // }
   
     /**
     * return single user
@@ -67,5 +54,17 @@ class PostModel
 
         return $post;
     }
+
+    public function createComment() {
+
+        $request = $this->db->db->prepare('INSERT INTO comments (post_id, comment, author) VALUES (:post_id, :comment, :author);');
+        $params = [':post_id' => $this->post_id, ':comment' => $this->comment, ':author' => $this->author];
+        $request->execute($params);
+        
+        var_dump($params);
+        echo "</br>";
+        die();
+    }
+    
 
 }

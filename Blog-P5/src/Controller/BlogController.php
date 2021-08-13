@@ -79,12 +79,44 @@ class BlogController
         $post->commentaire = $_POST["commentaire"];
         $post->createPost();
         
-        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/blog');
+        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/blog');
 
 
         // echo "</br>";
         // var_dump($user);
         // echo "</br>";
+
+    }
+
+    public function createCommentView(){
+        $loader = new FilesystemLoader('Public\Views');
+        $twig = new Environment($loader);
+
+        $username = $_SESSION['user'];
+
+        $user = $this->usersModel->getUser($username);
+
+        $userIsAdmin = $user['admin'];
+
+        echo $twig->render('createCommentView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin]);
+    }
+
+    public function traitementCreateComment(){
+        $loader = new FilesystemLoader('Public\Views');
+        $twig = new Environment($loader);
+
+        $post = new PostModel();
+        $post->post_id = $post_id;
+        $post->author = $_SESSION['user'];
+        $post->comment = $_POST["comment"];
+        $post->createComment();
+        
+        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/blog');
+
+        // echo "</br>";
+        // var_dump($_POST);
+        // echo "</br>";
+        // die();
 
     }
 

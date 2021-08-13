@@ -37,7 +37,7 @@ class AuthController
         // echo $form->submit();
 
         if (isset($_SESSION['user'])) {
-            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/cv');
+            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/cv');
         }
         if (isset($_SESSION['successMessage'])) {
             if ($_SESSION['successMessage'] == "n") {
@@ -61,7 +61,7 @@ class AuthController
         // echo "</br>";
 
         if (isset($_SESSION['user'])) {
-            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/cv');
+            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/cv');
         }
 
         $username = $_POST['username'];
@@ -70,12 +70,12 @@ class AuthController
         $return = $this->usersModel->connexion($username, $passwordToVerify);
         if ($return[0] == "y") {
             $_SESSION['user'] = $username;
-            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/home');
+            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/home');
             return("");
         } else {
             $_SESSION['successMessage'] = "n";
         }
-        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/connexion');
+        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/connexion');
 
         // $user = new UserModel();
         // $user->name = $_POST["username"];
@@ -90,7 +90,7 @@ class AuthController
         $twig = new Environment($loader);
 
         unset($_SESSION['user']);
-        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/home');
+        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/home');
     }
 
 
@@ -128,7 +128,7 @@ class AuthController
         $user->pass = $cryptPass;
         $user->inscription();
         
-        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/home');
+        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/home');
 
 
         // echo "</br>";
@@ -155,11 +155,11 @@ class AuthController
 
         if ($user['admin'] == false) {
             echo 'N est pas admin !';
-            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/home');
+            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/home');
         } 
         else {
             echo 'Est admin !';
-            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Router/admin');
+            header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/admin');
         }
     }
 
