@@ -18,11 +18,12 @@
     <h1>Création de Commentaire</h1>
 
     
-
     <form name="register" method="post" action="createPost">
+    <input type="hidden" name="post_id" value="{{post_id}}">
     <textarea name="comment" placeholder="Commentaire" ></textarea><br />
     <input type="submit" name="valider" value="Crée le commentaire" />
     </form>
+
     <button type="submit" class="btn btn-primary"><a href="blogView">Retour Connexion </a></button>
 
 

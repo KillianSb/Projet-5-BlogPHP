@@ -60,6 +60,23 @@ class PostsManager
         $post = $this->db->db->query("SELECT * FROM posts WHERE id = $idPost")->fetch();
         // $post = new PostModel($post['id'], $post['titre'], $post['chapô'], $post['content'], $post['auteur'], $post['date'], $post['commentaire'], $post['listCommentaire']);
         return $post;
+
+    }
+
+    /**
+    * return multiple comments
+    */
+    public function getComments($idPost)
+    {
+
+        $request = $this->db->db->query("SELECT * FROM comments WHERE post_id=$idPost")->fetchAll();
+        $commentsArray = [];
+
+        foreach ($request as $comment) {
+            $commentsArray[] = new PostModel($comment['id'], $comment['post_id'], $comment['author'], $comment['comment']);
+        }
+
+        return $request;
     }
 
 }

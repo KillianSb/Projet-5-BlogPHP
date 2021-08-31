@@ -77,11 +77,6 @@ class AuthController
         }
         header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/connexion');
 
-        // $user = new UserModel();
-        // $user->name = $_POST["username"];
-        // $user->pass = $_POST["pass"];
-        // $user->connexion();
-
     }
 
 
@@ -105,7 +100,7 @@ class AuthController
     //     $twig = new Environment($loader);
 
     //     if (!empty($_POST['name'] && !empty($_POST['firstname'] && !empty($_POST['username'] && !empty($_POST['mail'] && !empty($_POST['pass'])){
-    //     }
+    //     };
             
     //     traitementInscription();
     // }
@@ -117,6 +112,7 @@ class AuthController
         // echo "</br>";
         // var_dump($_POST);
         // echo "</br>";
+        
 
         $cryptPass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 

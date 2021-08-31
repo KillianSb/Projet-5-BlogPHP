@@ -57,13 +57,13 @@ class PostModel
 
     public function createComment() {
 
-        $request = $this->db->db->prepare('INSERT INTO comments (post_id, comment, author) VALUES (:post_id, :comment, :author);');
-        $params = [':post_id' => $this->post_id, ':comment' => $this->comment, ':author' => $this->author];
+        $request = $this->db->db->prepare('INSERT INTO comments (post_id, author, comment) VALUES (:post_id, :author, :comment);');
+        $params = [':post_id' => $this->post_id, ':author' => $this->author, ':comment' => $this->comment];
         $request->execute($params);
         
-        var_dump($params);
-        echo "</br>";
-        die();
+        // var_dump($params);
+        // echo "</br>";
+        // die();
     }
     
 

@@ -41,7 +41,13 @@
                 <p class="dateCreate">{{post.dateCreate}}</p>
                 <div class="containerContentBlog">
                     <div class="button">
-                        <a class="comment" href="commentPost/{{post.id}}">Commenter</a>
+                        {# <input type="hidden" name="post_id" value="{{post.id}}"></input>
+                        <a type="submit" class="comment" name="post_id" href="commentPost/{{post.id}}">Commenter</a></br> #}
+                        
+                        {# <a
+                        <input class="comment" href="commentPost/{{post.id}}" type="hidden" name="post_id" value="{{post.id}}">Commenter</input>
+                        </a> #}
+                        <a type="submit" class="postview" name="viewspost" href="viewPost/{{post.id}}">Voir</a>
                     </div>
                 </div>
             </div>

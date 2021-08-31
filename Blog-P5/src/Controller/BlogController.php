@@ -47,7 +47,9 @@ class BlogController
 
         $posts = $this->postsManager->getPosts();
 
-        echo $twig->render('blogView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'posts' => $posts]);
+        // $comments = $this->postsManager->getComments();
+
+        echo $twig->render('blogView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'posts' => $posts, 'comments' => $comments]);
     }
 
     public function createPostView(){
@@ -76,7 +78,6 @@ class BlogController
         $post->chapo = $_POST["chapo"];
         $post->content = $_POST["content"];
         $post->auteur = $_SESSION['user'];;
-        $post->commentaire = $_POST["commentaire"];
         $post->createPost();
         
         header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/blog');
@@ -98,7 +99,18 @@ class BlogController
 
         $userIsAdmin = $user['admin'];
 
-        echo $twig->render('createCommentView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin]);
+        $get_url = $_GET["url"];
+        if (@preg_match('#^([^0-9]+)([0-9]+)$#',$get_url,$post_id))
+        $post_id = $post_id[2]; 
+
+        // echo "</br>";
+        // echo "TEST";
+        // echo "</br>";
+        // var_dump($post_id);
+        // echo "</br>";
+        // die();
+
+        echo $twig->render('createCommentView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'post_id' => $post_id]);
     }
 
     public function traitementCreateComment(){
@@ -106,7 +118,7 @@ class BlogController
         $twig = new Environment($loader);
 
         $post = new PostModel();
-        $post->post_id = $post_id;
+        $post->post_id = $_POST["post_id"];
         $post->author = $_SESSION['user'];
         $post->comment = $_POST["comment"];
         $post->createComment();
@@ -117,6 +129,32 @@ class BlogController
         // var_dump($_POST);
         // echo "</br>";
         // die();
+
+    }
+
+    public function ViewPost(){
+        $loader = new FilesystemLoader('Public\Views');
+        $twig = new Environment($loader);
+
+        $username = $_SESSION['user'];
+
+        $user = $this->usersModel->getUser($username);
+
+        $userIsAdmin = $user['admin'];
+
+        $get_url = $_GET["url"];
+        if (@preg_match('#^([^0-9]+)([0-9]+)$#',$get_url,$post_id))
+        $idPost = $post_id[2]; 
+
+        $post = $this->postsManager->getPost($idPost);
+
+        // var_dump($posts);
+        // echo "</br>";
+        // die();
+
+        $comments = $this->postsManager->getComments($idPost);
+
+        echo $twig->render('viewPost.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'post' => $post, 'comments' => $comments, 'post_id' => $idPost]);
 
     }
 

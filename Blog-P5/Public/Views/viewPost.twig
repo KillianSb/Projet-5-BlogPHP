@@ -1,0 +1,64 @@
+{% extends 'base/base.twig' %}
+{% block css %}..\{% endblock %}
+{% block photo %}..\{% endblock %}
+{% block liens1 %}..\{% endblock %}
+{% block liens2 %}..\{% endblock %}
+{% block liens3 %}..\{% endblock %}
+{% block liens4 %}..\{% endblock %}
+
+{% block connection %} 
+{% if user.username is defined %} 
+<p>Bonjours {{user.username}}</p> 
+<li><a href="deconnexion">DECONNEXION</a></li>
+{% else %}
+<li><a href="connexion">CONNEXION</a></li>
+{% endif %} 
+
+{% if IsAdmin == true %} 
+<li><a href="admin">ADMIN</a></li>
+{% endif %}
+{% endblock connection %}
+
+{% block content %}
+
+    <h1>{{post.titre}}</h1>
+
+    <div class="containerTablePostsUnity">
+        <div class="containerTablePostsBlog">
+            <div class="containerPostsBlog">
+                <div class="postblog">
+                <p class="title">{{post.titre}}</p>
+                    <p class="author">Autheur : {{post.auteur}}</p>
+                    <p class="chapo">Chapo : {{post.chapo}}</p>
+                    <p class="content">{{post.contenu}}</p>
+                    <p class="dateCreate">{{post.dateCreate}}</p>
+                    <div class="containerContentBlog">
+                        <div class="button">
+                            <input type="hidden" name="post_id" value="{{post.id}}"></input>
+                            <a type="submit" class="comment" name="post_id" href="../commentPost/{{post.id}}">Commenter</a></br>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="containerPostsComment">
+            {% for comment in comments %}
+            <div class="postcomment">
+                <p class="author_comment">{{comment.author}}</p>
+                <p class="comment">{{comment.comment}}</p>
+                <p class="comment_date">{{comment.comment_date}}</p>
+            </div>
+            {% endfor %}
+            {% if comments is empty%}
+                <div class="containerPostsNotComment">
+                <p> pas de commentaires </p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="return">
+        <a href="../blog">Retour</a>
+    </div>
+
+
+{% endblock content %}

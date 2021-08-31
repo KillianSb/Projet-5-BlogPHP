@@ -39,6 +39,8 @@ header {
     display: block;
     height: 500px;
     background-image: url('../img/fond1.jpg');
+    /* filter: brightness(50%);
+    -webkit-filter: brightness(50%); */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -100,13 +102,15 @@ li a {
     justify-content: flex-start;
     font-size: 14px;
     margin: auto;
-    padding: 20px;
+    padding: 20px 250px 20px 60px;
     color: rgb(255, 255, 255);
 }
 
 .footer_right {
     display: flex;
     justify-content: flex-end;
+    margin: auto;
+    padding: 20px 60px 20px 250px;
 }
 
 .menu_bas a {
@@ -143,14 +147,15 @@ li a {
     background-position: center;
     background-size: cover;
     margin: 0 auto;
-    width: 1000px;
+    padding: 10px;
 }
 
 .mid_title {
-    display: flex;
+    display: block;
     padding: 15px;
     color: #0f667c;
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    text-align: center;
 }
 
 .mid_block h2, .mid_text_left h2 {
@@ -164,11 +169,12 @@ li a {
 
 
 .mid_p {
-    display: flex;
+    display: block;
     padding: 15px;
     font-family: 'Alfa Slab One', cursive;
     font-size: 14px;
     color: #ffffff;
+    text-align: center;
 }
 
 
@@ -435,6 +441,10 @@ height: 450px;
     padding: 50px;
 }
 
+.containerTablePostsUnity {
+    padding: 10px;
+}
+
 .postblog p.title {
     text-align: center ;
     margin-bottom: 20px;
@@ -453,7 +463,55 @@ height: 450px;
     display: block;
     border-color: #000000;
     border-radius: 7px;
+    margin: 15px;
+    padding: 20px;
+    background-color: hsl(0, 0%, 50%);
+}
+
+/* Comment */
+
+.containerPostsNotComment {
+    display: block;
+    border-color: #000000;
+    border-radius: 7px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center ;
+}
+
+.containerPostsComment {
+    padding: 50px;
+}
+
+.postcomment p.author_comment {
+    text-align: center ;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.postcomment p.comment {
+    font-size: 20px;
+}
+
+.postcomment p.comment_date {
+    padding: 20px;
+}
+
+.postcomment {
+    display: block;
+    border-color: #000000;
+    border-radius: 7px;
     margin: 20px;
     padding: 30px;
     background-color: hsl(0, 0%, 50%);
 }
+
+.return a{
+    text-decoration:none; 
+    color: #0f667c;
+    display: inline-block;
+    margin: 5px 5px 25px 30px;
+    padding: 3px;
+}
+
+/* FIN Section Blog */

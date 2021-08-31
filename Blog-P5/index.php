@@ -35,6 +35,7 @@ $router->post('/createPost', 'Blog#traitementCreatePost');
 $router->get('/commentPost/:id', 'Blog#createCommentView');
 $router->post('/commentPost/:id', 'Blog#traitementCreateComment');
 
+$router->get('/viewPost/:id', 'Blog#ViewPost');
 
 
 // ------------------------------------------------------------------ //
