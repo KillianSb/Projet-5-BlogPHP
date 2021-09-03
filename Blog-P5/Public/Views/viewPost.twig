@@ -47,6 +47,10 @@
                 <p class="author_comment">{{comment.author}}</p>
                 <p class="comment">{{comment.comment}}</p>
                 <p class="comment_date">{{comment.comment_date}}</p>
+                <div class="button">
+                    <input type="hidden" name="comment_id" value="{{comment.id}}"></input>
+                    <a class="delete" href="../deleteComment/{{comment.id}}">Supprimer</a>
+                </div>
             </div>
             {% endfor %}
             {% if comments is empty%}

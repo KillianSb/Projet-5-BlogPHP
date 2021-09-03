@@ -79,4 +79,14 @@ class PostsManager
         return $request;
     }
 
+    /**
+    * delete a post by id
+    */
+    public function deleteComment($idComment)
+    {
+        $request = $this->db->db->prepare("DELETE FROM comments WHERE id=:id");
+        $params = [':id' => $idComment];
+        $request->execute($params);
+    }
+
 }

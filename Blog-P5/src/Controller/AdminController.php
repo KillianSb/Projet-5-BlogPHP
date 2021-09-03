@@ -120,4 +120,24 @@ class AdminController
         header("Location: ../postsListe");
     }
 
+
+    /**
+    * delete comment by id
+    */
+    public function deleteComment($idComment){
+        $loader = new FilesystemLoader('Public\Views');
+        $twig = new Environment($loader);
+
+        // // Ajout pour Dump
+        // $twig = new \Twig\Environment($loader, [
+        //     'debug' => true,
+        //     // ...
+        // ]);
+        // $twig->addExtension(new \Twig\Extension\DebugExtension());
+
+        $this->postsManager->deleteComment($idComment);
+
+        header("Location: ../blog");
+    }
+
 }

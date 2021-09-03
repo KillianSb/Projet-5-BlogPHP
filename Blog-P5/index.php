@@ -50,6 +50,8 @@ $router->get('/adminLawChange/:id', 'Admin#adminLawChange');
 $router->get('/postsListe', 'Admin#postsListe');
 $router->get('/deletePost/:id', 'Admin#deletePost');
 
+$router->get('/deleteComment/:id', 'Admin#deleteComment');
+
 // ------------------------------------------------------------------ //
 
 $router->run();

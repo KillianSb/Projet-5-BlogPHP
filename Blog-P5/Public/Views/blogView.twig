@@ -25,7 +25,11 @@
     {% endblock links %}
     {% endif %}
 
+    {% if user.username is defined %} 
     <h2><a href="createPost">Création d'un Post</a></h2>
+    {% else %}
+    <p>Vous n'etes pas connectez pour crée un post !</p> 
+    {% endif %} 
 
     <h1>Liste des posts</h1>
 

@@ -93,6 +93,7 @@ class AuthController
         $loader = new FilesystemLoader('Public\Views');
         $twig = new Environment($loader);
         echo $twig->render('auth/inscriptionView.twig');
+        
     }
 
     // public function traitementValideInscription(){
