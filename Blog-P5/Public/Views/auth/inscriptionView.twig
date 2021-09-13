@@ -4,15 +4,26 @@
     <h1>INSCRIPTION</h1>
 
    <body>
-      <form name="register" method="post" action="inscription">
-         <input type="text" name="name" placeholder="Nom" /><br />
-         <input type="text" name="firstname" placeholder="Prenom" /><br />
-         <input type="text" name="username" placeholder="Nom Utilisateur" /><br />
-         <input type="text" name="mail" placeholder="Email" /><br />
-         <input type="password" name="pass" placeholder="Mot de passe" /><br />
-         <input type="submit" name="valider" value="S'authentifier" />
-      </form>
-      <button type="submit" class="btn btn-primary"><a href="connexion">Retour Connexion </a></button>
+   {% if successMessage is defined %}
+      <p class={{class}}>{{ successMessage }}</p>
+   {% endif %}
 
+      <p><u>Les champs requis sont marqués d'une (*)</u></p> 
+
+      <div class="containerBlockInscription">
+         <div class="form">
+            <form name="register" method="post" action="inscriptionRequest">
+               <div class="containerFirstLineInscription">
+                  <input type="text" required name="name" placeholder="* Nom" />
+                  <input type="text" required name="firstname" placeholder="* Prenom" />
+                  <input type="text" required name="username" placeholder="* Nom Utilisateur" />
+               </div>
+               <input type="text" required name="mail" placeholder="* Email" />
+               <input type="password" required name="pass" placeholder="* Mot de passe" />
+               <input type="submit" name="valider" value="S'authentifier" />
+            </form>
+            <button type="submit" name="valider"><a href="connexion">Retour Connexion </a></button>
+         </div>
+      </div>
 
 {% endblock %}

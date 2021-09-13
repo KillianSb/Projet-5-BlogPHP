@@ -92,19 +92,32 @@ class AuthController
     public function inscriptionView(){
         $loader = new FilesystemLoader('Public\Views');
         $twig = new Environment($loader);
-        echo $twig->render('auth/inscriptionView.twig');
         
+        if (isset($_SESSION['successMessage'])) {
+            if ($_SESSION['successMessage'] == "y") {
+                $successMessage = "Votre inscription à bien été prise en compte, bienvenue !";
+                unset($_SESSION['successMessage']);
+                echo $twig->render('auth/inscriptionView.twig', ["successMessage" => $successMessage, "class" => "successMessage"]);
+            } elseif (isset($_SESSION['successMessage'])) {
+                if ($_SESSION['successMessage'] == 'em') {
+                    $successMessage = "Cette addresse mail est déjà utilisé, désolé.";
+                    unset($_SESSION['successMessage']);
+                    echo $twig->render('auth/inscriptionView.twig', ["successMessage" => $successMessage, "class" => "errorMessage"]);
+                }
+                elseif ($_SESSION['successMessage'] == 'eu') {
+                    $successMessage = "Ce nom d'utilisateur est déjà utilisé, désolé.";
+                    unset($_SESSION['successMessage']);
+                    echo $twig->render('auth/inscriptionView.twig', ["successMessage" => $successMessage, "class" => "errorMessage"]);
+                }
+            } elseif ($_SESSION['successMessage'] == "n") {
+                $successMessage = 'Une erreur est survenu, veuillez réessayer.';
+                unset($_SESSION['successMessage']);
+                echo $twig->render('auth/inscriptionView.twig', ["successMessage" => $successMessage, "class" => "errorMessage"]);
+            }
+        } else {
+            echo $twig->render('auth/inscriptionView.twig');
+        }
     }
-
-    // public function traitementValideInscription(){
-    //     $loader = new FilesystemLoader('Public\Views');
-    //     $twig = new Environment($loader);
-
-    //     if (!empty($_POST['name'] && !empty($_POST['firstname'] && !empty($_POST['username'] && !empty($_POST['mail'] && !empty($_POST['pass'])){
-    //     };
-            
-    //     traitementInscription();
-    // }
 
     public function traitementInscription(){
         $loader = new FilesystemLoader('Public\Views');
@@ -113,20 +126,34 @@ class AuthController
         // echo "</br>";
         // var_dump($_POST);
         // echo "</br>";
+        // die();
+
+        if (isset($_POST['name']) || isset($_POST['firstname']) || isset($_POST['username']) || isset($_POST['mail']) || isset($_POST['pass'])) {
+            $name = $_POST['name'];
+            $firstname = $_POST['firstname'];
+            $username = $_POST['username'];
+            $mail = $_POST['mail'];
+            $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+        }
+       
+
+        $return = $this->usersModel->inscription($name, $firstname, $username, $mail, $pass);
         
+        // echo "</br>";
+        // var_dump($return);
+        // echo "</br>";
+        // die();
 
-        $cryptPass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-
-        $user = new UserModel();
-        $user->name = $_POST["name"];
-        $user->firstname = $_POST["firstname"];
-        $user->username = $_POST["username"];
-        $user->mail = $_POST["mail"];
-        $user->pass = $cryptPass;
-        $user->inscription();
-        
-        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/home');
-
+        if ($return == "y") {
+            $_SESSION['successMessage'] = "y";
+        } elseif ($return == 'em') {
+            $_SESSION['successMessage'] = "em";
+        } elseif ($return == 'eu') {
+            $_SESSION['successMessage'] = "eu";
+        } else {
+            $_SESSION['successMessage'] = "n";
+        }
+        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/inscription');
 
         // echo "</br>";
         // var_dump($user);

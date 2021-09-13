@@ -467,6 +467,15 @@ height: 450px;
     background-color: hsl(0, 0%, 50%);
 }
 
+.postblog .containerContentBlog  .button a{
+    color: #000000;
+}
+
+.postblog .containerContentBlog  .button p{
+    color: rgb(196, 14, 14);
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
 /* Comment */
 
 .containerPostsNotComment {
@@ -522,3 +531,102 @@ height: 450px;
 }
 
 /* FIN Section Blog */
+
+
+/* Section Form Inscription/Connexion */
+
+.containerBlockInscription, 
+.containerBlockConnexion{
+    padding: 200px;
+    display: flex;
+}
+
+.containerBlockInscription .form, 
+.containerBlockConnexion .form{
+    width: 500px;
+}
+
+.containerBlockInscription form, 
+.containerBlockConnexion form{
+    display: block;
+    flex-direction: column;
+}
+
+.containerBlockInscription .form input, 
+.containerBlockConnexion .form input{
+    height: 40px;
+}
+
+.containerBlockInscription .containerFirstLineInscription, 
+.containerBlockConnexion .containerFirstLineConnexion{
+    display: flex;
+}
+
+.containerBlockInscription .containerFirstLineInscription input, 
+.containerBlockConnexion .containerFirstLineConnexion input{
+    width: 45%;
+}
+
+.containerBlockInscription .form input{
+    color: white;
+    background-color: #686868;
+    border: none;
+    border-radius: 7px;
+    padding: 5px;
+    margin-bottom: 13px;
+    padding-left: 15px;
+    margin-left: 5px;
+}
+
+.containerBlockConnexion .form input{
+    color: white;
+    background-color: #686868;
+    border: none;
+    border-radius: 7px;
+    padding: 5px;
+    margin: 13px;
+}
+
+.containerBlockInscription .form input::placeholder,
+.containerBlockConnexion .form input::placeholder{
+    color: white;
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 14px;
+}
+
+.containerBlockInscription .form input[type=submit],
+.containerBlockConnexion .form input[type=submit]{
+    width: 140px;
+    height: 45px;
+    text-transform: uppercase;
+    background-color: rgb(139, 139, 139);
+    padding-left: 0px;
+    font-weight: bold;
+    font-family: 'Alfa Slab One', cursive;
+    color: black;
+}
+
+.containerBlockInscription .form button{
+    width: 110px;
+    height: 45px;
+    text-transform: uppercase;
+    background-color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: 'Alfa Slab One', cursive;
+    color: black;
+    border: none;
+    border-radius: 7px;
+}
+
+.containerBlockConnexion .form button{
+    margin: 5px;
+    text-transform: uppercase;
+    background-color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-family: 'Alfa Slab One', cursive;
+    color: black;
+    border: none;
+    border-radius: 7px;
+}
+
+/* Fin Section Inscription/Connexion */

@@ -4,11 +4,21 @@
     <h1>CONNEXION</h1>
 
    <body>
-      <h1>Authentification [ <a href="inscription">Créer un compte</a> ]</h1>
-      <form method="post" action="connexion">
-         <input type="text" name="username" placeholder="Login" /><br />
-         <input type="password" name="pass" placeholder="Mot de passe" /><br />
-         <button type="submit" class="btn btn-primary">S'authentifier </button>
-      </form>
+
+      <p><u>Les champs requis sont marqués d'une (*)</u></p> 
+   
+      <div class="containerBlockConnexion">
+         <div class="form">
+            <form name="connect" method="post" action="connexionRequest">
+               <div class="containerFirstLineConnexion">
+                  <input type="text" required name="username" placeholder="* Login" /><br />
+                  <input type="password" required name="pass" placeholder="* Mot de passe" /><br />
+                  <button type="submit" class="btn btn-primary">S'authentifier </button>
+               </div>
+            </form>
+            <button type="submit" name="valider"><a href="inscription">Créer un compte</a></button>
+         </div>
+      </div>
+
 
 {% endblock %}

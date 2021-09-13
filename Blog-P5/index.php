@@ -18,12 +18,12 @@ $router->get('/legal', 'Legal#legalView');
 
 // Auth
 $router->get('/connexion', 'Auth#connexionView');
-$router->post('/connexion', 'Auth#traitementConnexion');
+$router->post('/connexionRequest', 'Auth#traitementConnexion');
 
 $router->get('/deconnexion', 'Auth#deconnexion');
 
 $router->get('/inscription', 'Auth#inscriptionView');
-$router->post('/inscription', 'Auth#traitementInscription');
+$router->post('/inscriptionRequest', 'Auth#traitementInscription');
 
 // ------------------------------------------------------------------ //
 

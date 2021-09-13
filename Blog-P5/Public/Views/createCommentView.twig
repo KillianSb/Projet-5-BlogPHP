@@ -1,4 +1,10 @@
 {% extends 'base/base.twig' %}
+{% block css %}..\{% endblock %}
+{% block photo %}..\{% endblock %}
+{% block liens1 %}..\{% endblock %}
+{% block liens2 %}..\{% endblock %}
+{% block liens3 %}..\{% endblock %}
+{% block liens4 %}..\{% endblock %}
 
 {% block connection %} 
 {% if user.username is defined %} 
@@ -24,7 +30,7 @@
     <input type="submit" name="valider" value="Crée le commentaire" />
     </form>
 
-    <button type="submit" class="btn btn-primary"><a href="blogView">Retour Connexion </a></button>
+    <button type="submit" class="btn btn-primary"><a href="../blog">Retour Blog </a></button>
 
 
 {% endblock %}

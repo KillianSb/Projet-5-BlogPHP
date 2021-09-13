@@ -65,11 +65,28 @@ class UserModel
     }
 
 
-    public function inscription() {
+    public function inscription($name, $firstname, $username, $mail, $pass) {
+
+        $checkMail = $this->db->db->prepare("SELECT * FROM users WHERE mail=:mail");
+        $checkMail->execute(["mail" => $mail]);
+        $userMail = $checkMail->fetch();
+
+        $checkUsername = $this->db->db->prepare("SELECT * FROM users WHERE username=:username");
+        $checkUsername->execute(["username" => $username]);
+        $userUsername = $checkUsername->fetch();
+
+        if (!empty($userMail)) {
+            return('em');
+        } elseif (!empty($userUsername)) {
+            return('eu');
+        }
 
         $request = $this->db->db->prepare('INSERT INTO users (name, firstname, username, mail, pass) VALUES (:name, :firstname, :username, :mail, :pass);');
-        $params = [':name' => $this->name, ':firstname' => $this->firstname, ':username' => $this->username, ':mail' => $this->mail, ':pass' => $this->pass];
-        $request->execute($params);
+        $params = [':name' => $name, ':firstname' => $firstname, ':username' => $username, ':mail' => $mail, ':pass' => $pass];
+        if ($request->execute($params)) {
+            return("y");
+        }
+        return('n');
     }
 
     // /**
