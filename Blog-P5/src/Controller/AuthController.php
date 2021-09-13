@@ -41,9 +41,9 @@ class AuthController
         }
         if (isset($_SESSION['successMessage'])) {
             if ($_SESSION['successMessage'] == "n") {
+                $successMessage = "Identifiant ou Mots de passe est incorrect, veuillez réessayer";
                 unset($_SESSION['successMessage']);
-                echo("Identifiant ou Mots de passe est incorrect, veuillez réessayer");
-                echo $twig->render('auth/connexionView.twig');
+                echo $twig->render('auth/connexionView.twig', ["successMessage" => $successMessage, "class" => "errorMessage"]);
             } else {
                 unset($_SESSION['successMessage']);
             }

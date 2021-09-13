@@ -4,12 +4,16 @@
     <h1>CONNEXION</h1>
 
    <body>
-   {% if successMessage is defined %}
-      <p class={{class}}>{{ successMessage }}</p>
-   {% endif %}
 
       <p><u>Les champs requis sont marqués d'une (*)</u></p> 
    
+      <div class="containerBlockMessage">
+         <div class="BlockMessage">
+            {% if successMessage is defined %}
+               <p class={{class}}>{{ successMessage }}</p>
+            {% endif %}
+         </div>
+      </div>
       <div class="containerBlockConnexion">
          <div class="form">
             <form name="connect" method="post" action="connexionRequest">

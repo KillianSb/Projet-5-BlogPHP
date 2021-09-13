@@ -537,7 +537,7 @@ height: 450px;
 
 .containerBlockInscription, 
 .containerBlockConnexion{
-    padding: 200px;
+    padding: 25px 150px 150px 150px;
     display: flex;
 }
 
@@ -629,12 +629,21 @@ height: 450px;
     border-radius: 7px;
 }
 
-.containerFirstLineConnexion .successMessage {
+.containerBlockMessage{
+    padding: 80px 15px 15px 15px;
+    display: flex;
+}
+
+.BlockMessage{
+    width: 500px;
+}
+
+.containerBlockMessage .successMessage{
     color: #479860;
     margin-top: 5px;
 }
   
-.containerFirstLineConnexion .errorMessage {
+.containerBlockMessage .errorMessage{
     color: #fc4d3c;
     margin-top: 5px;
 }
