@@ -4,6 +4,9 @@
     <h1>CONNEXION</h1>
 
    <body>
+   {% if successMessage is defined %}
+      <p class={{class}}>{{ successMessage }}</p>
+   {% endif %}
 
       <p><u>Les champs requis sont marqués d'une (*)</u></p> 
    
