@@ -148,10 +148,6 @@ class BlogController
 
         $post = $this->postsManager->getPost($idPost);
 
-        // var_dump($posts);
-        // echo "</br>";
-        // die();
-
         $comments = $this->postsManager->getComments($idPost);
 
         echo $twig->render('viewPost.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'post' => $post, 'comments' => $comments, 'post_id' => $idPost]);
