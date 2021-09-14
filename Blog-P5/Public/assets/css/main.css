@@ -16,17 +16,31 @@ h2 {
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
 }
 
-h2 a {
-    text-decoration:none; 
+a {
+    list-style-type : none;
+    text-decoration: none;
+    color: #0f667c;
+}
+
+a:hover {
+    color:#ffffff; 
+    cursor:pointer;  
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+/* h2 a {
+    list-style-type : none;
+    text-decoration: none;
     color: #0f667c;
 }
 
 h2 a:hover 
 {
     color:#ffffff; 
-    text-decoration:none; 
+    list-style-type : none;
+    text-decoration: none;
     cursor:pointer;  
-}
+} */
 
 /* HEADER */
 
@@ -86,6 +100,12 @@ li a {
     list-style-type : none;
     text-decoration: none;
     color: #0f667c;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+li a:hover {
+    color:#ffffff; 
+    cursor:pointer;  
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
 }
 
@@ -209,6 +229,19 @@ li a {
     color: white;
 }
 
+/* CV */
+
+.header_title h1 a{
+    list-style-type : none;
+    text-decoration: none;
+    text-align: center;
+    color: #0f667c;
+
+}
+
+/* FIN CV */
+
+
 /* CONTACT */
 
 .contact{
@@ -229,7 +262,7 @@ background-color: #28282b;
 }
 
 .containerBlockContact h2, .blockInformation h2{
-    color:rgb(206, 4, 4);
+    color: #0f667c;
     font-size: 33px;
 }
 
@@ -286,7 +319,7 @@ background-color: #28282b;
     width: 120px;
     height: 45px;
     text-transform: uppercase;
-    background-color: rgb(206, 4, 4);
+    background-color: rgb(15, 99, 124);
     padding-left: 0px;
     font-weight: bold;
     font-family: 'Alfa Slab One', cursive;
@@ -544,6 +577,8 @@ height: 450px;
 .containerBlockInscription .form, 
 .containerBlockConnexion .form{
     width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .containerBlockInscription form, 
@@ -630,12 +665,16 @@ height: 450px;
 }
 
 .containerBlockMessage{
-    padding: 80px 15px 15px 15px;
-    display: flex;
+    margin: 80px 15px 15px 15px;
+    padding: 25px;
+    display: block;
 }
 
 .BlockMessage{
     width: 500px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .containerBlockMessage .successMessage{
@@ -645,7 +684,7 @@ height: 450px;
   
 .containerBlockMessage .errorMessage{
     color: #fc4d3c;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
 .successMessage {

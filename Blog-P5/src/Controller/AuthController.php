@@ -23,9 +23,7 @@ class AuthController
         }
     }
 
-    public function connexionView(){
-
-        
+    public function connexionView(){   
         // Les vérifier en bdd si existant ou non
         // Si existant connexion sinon envoi sur enregistrement
         $loader = new FilesystemLoader('Public\Views');
