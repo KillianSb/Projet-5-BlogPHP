@@ -52,8 +52,6 @@ header {
     display: block;
     height: 500px;
     background-image: url('../img/fond1.jpg');
-    /* filter: brightness(50%);
-    -webkit-filter: brightness(50%); */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -253,6 +251,27 @@ background-color: #28282b;
     padding: 25px;
     margin: 3px;
     text-align: center;
+}
+
+div.rs {
+	display: block;
+    margin: 25px;
+    text-align: center;
+}
+
+div.rs li {
+	display: inline-block;
+	margin: 0 10px;
+}
+
+div.rs li a,
+div.rs li a:visited {
+	font-size: 30px;
+}
+
+div.rs li a:hover,
+div.rs li a:focus {
+	color: #ffffff;
 }
 
 .containerBlockContact{
