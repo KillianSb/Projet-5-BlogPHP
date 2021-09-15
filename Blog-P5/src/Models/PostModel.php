@@ -37,7 +37,11 @@ class PostModel
 
         $request = $this->db->db->prepare('INSERT INTO posts (titre, chapo, contenu, auteur) VALUES (:titre, :chapo, :contenu, :auteur);');
         $params = [':titre' => $this->title, ':chapo' => $this->chapo, ':contenu' => $this->content, ':auteur' => $this->auteur];
-        $request->execute($params);
+        if ($request->execute($params)) {
+            return("y");
+        }
+        return('n');
+
         // var_dump($params);
         // echo "</br>";
         // die();
@@ -59,11 +63,10 @@ class PostModel
 
         $request = $this->db->db->prepare('INSERT INTO comments (post_id, author, comment) VALUES (:post_id, :author, :comment);');
         $params = [':post_id' => $this->post_id, ':author' => $this->author, ':comment' => $this->comment];
-        $request->execute($params);
-        
-        // var_dump($params);
-        // echo "</br>";
-        // die();
+        if ($request->execute($params)) {
+            return("y");
+        }
+        return('n');
     }
     
 

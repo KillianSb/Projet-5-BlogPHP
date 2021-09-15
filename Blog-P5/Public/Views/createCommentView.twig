@@ -23,14 +23,26 @@
     
     <h1>Création de Commentaire</h1>
 
-    
-    <form name="register" method="post" action="createPost">
-    <input type="hidden" name="post_id" value="{{post_id}}">
-    <textarea name="comment" placeholder="Commentaire" ></textarea><br />
-    <input type="submit" name="valider" value="Crée le commentaire" />
-    </form>
 
-    <button type="submit" class="btn btn-primary"><a href="../blog">Retour Blog </a></button>
+    <div class="containerBlockMessageModif">
+        <div class="BlockMessage">
+            {% if successMessage is defined %}
+                <p class={{class}}>{{ successMessage }}</p>
+            {% endif %}
+        </div>
+    </div>
 
+
+    <div class="container">
+        <form name="createComment" method="post" action="../commentPostRequest/{{ id }}">
+            <input type="hidden" name="post_id" value="{{ id }}">
+
+            <label for="comment">Commentaire</label>
+            <textarea name="comment" placeholder="Commentaire" ></textarea><br />
+
+            <input id="modif" type="submit" name="valider" value="Crée le commentaire" />
+        </form>
+        <button type="submit" class="btn btn-primary"><a href="../blog">Retour Blog </a></button>
+    </div>
 
 {% endblock %}

@@ -762,7 +762,7 @@ label {
     height:200px;
 }
 
-#modif {
+#modif, #create {
     background-color: #0f667c;
     color: white;
     padding: 12px 20px;
@@ -771,8 +771,8 @@ label {
     cursor: pointer;
 }
 
-#modif:hover {
-    background-color: #ffffff;
+#modif:hover, #create:hover {
+    background-color: #074150;
 }
 
 .container {

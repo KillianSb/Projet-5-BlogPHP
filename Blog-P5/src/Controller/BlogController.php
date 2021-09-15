@@ -57,36 +57,51 @@ class BlogController
         $twig = new Environment($loader);
 
         $username = $_SESSION['user'];
-
-        $user = $this->usersModel->getUser($username);
-
         $userIsAdmin = $user['admin'];
 
-        echo $twig->render('createPostView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin]);
+        if (isset($_SESSION['successMessage'])) {
+            if ($_SESSION['successMessage'] == "y") {
+                $successMessage = "Votre article à bien été Crée !";
+                unset($_SESSION['successMessage']);
+                $user = $this->usersModel->getUser($username);
+                echo $twig->render('createPostView.twig', ["successMessage" => $successMessage, "class" => "successMessage", 'user' => $user, 'IsAdmin' => $userIsAdmin]);
+            } elseif ($_SESSION['successMessage'] == "n") {
+                $successMessage = 'Une erreur est survenu, veuillez réessayer.';
+                unset($_SESSION['successMessage']);
+                $user = $this->usersModel->getUser($username);
+                echo $twig->render('createPostView.twig', ["successMessage" => $successMessage, "class" => "successMessage", 'user' => $user, 'IsAdmin' => $userIsAdmin]);
+            }
+        } else {
+            $user = $this->usersModel->getUser($username);
+
+            echo $twig->render('createPostView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin]);
+        }
     }
 
     public function traitementCreatePost(){
         $loader = new FilesystemLoader('Public\Views');
         $twig = new Environment($loader);
 
-        // echo "</br>";
-        // var_dump($_POST);
-        // echo "</br>";
-
         $post = new PostModel();
         $post->title = $_POST["title"];
         $post->chapo = $_POST["chapo"];
         $post->content = $_POST["content"];
         $post->auteur = $_SESSION['user'];;
-        $post->createPost();
+
+        $return = $post->createPost();
         
-        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/blog');
-
+        if ($return == "y") {
+            $_SESSION['successMessage'] = "y";
+        } else {
+            $_SESSION['successMessage'] = "n";
+        }
 
         // echo "</br>";
-        // var_dump($user);
+        // var_dump($return);
         // echo "</br>";
-
+        // die();
+        
+        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/createPost');
     }
 
     public function createCommentView(){
@@ -103,14 +118,23 @@ class BlogController
         if (@preg_match('#^([^0-9]+)([0-9]+)$#',$get_url,$post_id))
         $post_id = $post_id[2]; 
 
-        // echo "</br>";
-        // echo "TEST";
-        // echo "</br>";
-        // var_dump($post_id);
-        // echo "</br>";
-        // die();
+        if (isset($_SESSION['successMessage'])) {
+            if ($_SESSION['successMessage'] == "y") {
+                $successMessage = "Votre comentaire à bien été Crée !";
+                unset($_SESSION['successMessage']);
+                $user = $this->usersModel->getUser($username);
+                echo $twig->render('createCommentView.twig', ["successMessage" => $successMessage, "class" => "successMessage", 'user' => $user, 'IsAdmin' => $userIsAdmin, 'id' => $post_id]);
+            } elseif ($_SESSION['successMessage'] == "n") {
+                $successMessage = 'Une erreur est survenu, veuillez réessayer.';
+                unset($_SESSION['successMessage']);
+                $user = $this->usersModel->getUser($username);
+                echo $twig->render('createCommentView.twig', ["successMessage" => $successMessage, "class" => "successMessage", 'user' => $user, 'IsAdmin' => $userIsAdmin, 'id' => $post_id]);
+            }
+        } else {
+            $user = $this->usersModel->getUser($username);
 
-        echo $twig->render('createCommentView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'post_id' => $post_id]);
+            echo $twig->render('createCommentView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'id' => $post_id]);
+        }
     }
 
     public function traitementCreateComment(){
@@ -121,15 +145,18 @@ class BlogController
         $post->post_id = $_POST["post_id"];
         $post->author = $_SESSION['user'];
         $post->comment = $_POST["comment"];
-        $post->createComment();
+
+        $id = $_POST["post_id"];
+
+        $return = $post->createComment();
+
+        if ($return == "y") {
+            $_SESSION['successMessage'] = "y";
+        } else {
+            $_SESSION['successMessage'] = "n";
+        }
         
-        header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/blog');
-
-        // echo "</br>";
-        // var_dump($_POST);
-        // echo "</br>";
-        // die();
-
+        header("Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/commentPost/$id");
     }
 
     /**
