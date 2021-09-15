@@ -132,6 +132,63 @@ class BlogController
 
     }
 
+    /**
+     * render form to modify a post
+     */
+    public function modifPostView($idPost){
+        $loader = new FilesystemLoader('Public\Views');
+        $twig = new Environment($loader);
+
+        if (isset($_SESSION['successMessage'])) {
+            if ($_SESSION['successMessage'] == "y") {
+                $successMessage = "Votre article à bien été Modifié !";
+                unset($_SESSION['successMessage']);
+                $post = $this->postsManager->getPost($idPost);
+                echo $twig->render('modifPostView.twig', ["successMessage" => $successMessage, "class" => "successMessage", 'post' => $post, 'id' => $idPost]);
+            } elseif ($_SESSION['successMessage'] == "n") {
+                $successMessage = 'Une erreur est survenu, veuillez réessayer.';
+                unset($_SESSION['successMessage']);
+                $post = $this->postsManager->getPost($idPost);
+                echo $twig->render('modifPostView.twig', ["successMessage" => $successMessage, "class" => "errorMessage", 'post' => $post, 'id' => $idPost]);
+            }
+        } else {
+            $post = $this->postsManager->getPost($idPost);
+            // echo "</br>";
+            // var_dump($post);
+            // echo "</br>";
+            // die();
+            echo $twig->render('modifPostView.twig', ['post' => $post, 'id' => $idPost]);
+        }
+    }
+
+    /**
+     * change in databse the post
+     */
+    public function traitementModifPost($idPost){
+        $loader = new FilesystemLoader('Public\Views');
+        $twig = new Environment($loader);
+
+        $title = $_REQUEST['title'];
+        $chapo = $_REQUEST['chapo'];
+        $content = $_REQUEST['content'];
+
+        $return = $this->postsManager->modifPost($idPost, $title, $chapo, $content);
+
+        // echo "</br>";
+        // var_dump($return);
+        // echo "</br>";
+        // die();
+
+        if ($return == "y") {
+            $_SESSION['successMessage'] = "y";
+        } else {
+            $_SESSION['successMessage'] = "n";
+        }
+        header("Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/modifPost/$idPost");
+    }
+
+
+
     public function ViewPost(){
         $loader = new FilesystemLoader('Public\Views');
         $twig = new Environment($loader);

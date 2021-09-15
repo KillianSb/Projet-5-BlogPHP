@@ -13,20 +13,6 @@ class PostsManager
         $this->db = new Database();
     }
 
-
-    public function createPostView(){
-        $loader = new FilesystemLoader('Public\Views');
-        $twig = new Environment($loader);
-
-        $username = $_SESSION['user'];
-
-        $user = $this->usersModel->getUser($username);
-
-        $userIsAdmin = $user['admin'];
-
-        echo $twig->render('createPostView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin]);
-    }
-
     /**
     * delete a post by id
     */
@@ -88,5 +74,17 @@ class PostsManager
         $params = [':id' => $idComment];
         $request->execute($params);
     }
+
+    public function modifPost($idPost, $title, $chapo, $content)
+    {
+        $request = $this->db->db->prepare("UPDATE posts SET titre=:title, chapo=:chapo, contenu=:content WHERE id=:id");
+        $params = [':title' => $title, ':chapo' => $chapo, ':content' => $content, ':id' => $idPost];
+
+        if ($request->execute($params)) {
+            return("y");
+        }
+        return('n');
+    }
+
 
 }

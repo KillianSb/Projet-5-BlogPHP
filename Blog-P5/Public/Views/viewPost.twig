@@ -23,6 +23,7 @@
 
     <h1>{{post.titre}}</h1>
 
+
     <div class="containerTablePostsUnity">
         <div class="containerTablePostsBlog">
             <div class="containerPostsBlog">
@@ -42,6 +43,7 @@
                             <p>Vous n'etes pas connectez pour Commenter ce post !</p> 
                             {% endif %} 
                             {% endblock connecte_1 %} 
+                            <a type="submit" class="modif" name="post_modif_id" href="../modifPost/{{post.id}}">Modif</a></br>                        
                         </div>
                     </div>
                 </div>

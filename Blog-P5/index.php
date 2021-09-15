@@ -32,6 +32,9 @@ $router->post('/inscriptionRequest', 'Auth#traitementInscription');
 $router->get('/createPost', 'Blog#createPostView');
 $router->post('/createPost', 'Blog#traitementCreatePost');
 
+$router->get('/modifPost/:id', 'Blog#modifPostView');
+$router->post('/ModifPostRequest/:id', 'Blog#traitementModifPost');
+
 $router->get('/commentPost/:id', 'Blog#createCommentView');
 $router->post('/commentPost/:id', 'Blog#traitementCreateComment');
 
