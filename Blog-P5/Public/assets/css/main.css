@@ -547,7 +547,7 @@ height: 450px;
     background-color: hsl(240deg 4% 32%);
     border: outset;
     border-radius: 15px;
-    border-color: black;
+    border-color: #fbebb6;
 }
 
 .postblog .containerContentBlog  .button a{
