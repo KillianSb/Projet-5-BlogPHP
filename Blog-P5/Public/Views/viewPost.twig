@@ -9,13 +9,13 @@
 {% block connection %} 
 {% if user.username is defined %} 
 <p>Bonjours {{user.username}}</p> 
-<li><a href="deconnexion">DECONNEXION</a></li>
+<li><a id="disconnect" href="deconnexion">DECONNEXION</a></li>
 {% else %}
-<li><a href="connexion">CONNEXION</a></li>
+<li><a id="connect" href="connexion">CONNEXION</a></li>
 {% endif %} 
 
 {% if IsAdmin == true %} 
-<li><a href="admin">ADMIN</a></li>
+<li><a id="admin" href="admin">ADMIN</a></li>
 {% endif %}
 {% endblock connection %}
 
@@ -59,7 +59,7 @@
                     <input type="hidden" name="comment_id" value="{{comment.id}}"></input>
                     {% block connecte_2 %}
                     {% if IsAdmin == true %} 
-                    <a class="delete" href="../deleteComment/{{comment.id}}">Supprimer</a>
+                    <a id="del_com" class="delete" href="../deleteComment/{{comment.id}}">Supprimer</a>
                     {% endif %}
                     {% endblock connecte_2 %}
                 </div>
