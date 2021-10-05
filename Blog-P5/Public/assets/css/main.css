@@ -129,6 +129,8 @@ li a:hover {
 
 .box_footer {
     display: flex;
+    border: groove;
+    border-color: #fbebb6 #000000 #000000 #000000;
 }
 
 .footer_center {
@@ -158,7 +160,7 @@ li a:hover {
 /* INDEX */
 
 .index {
-    background-color: #28282b;
+    background-color: #000000;
 }
 
 .links a {
