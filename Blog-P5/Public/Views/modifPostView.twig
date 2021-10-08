@@ -38,6 +38,8 @@
             <label for="titre">Titre</label>
             <input type="text" required name="title" placeholder="Titre" value="{{post.titre}}"/><br />
 
+            <input type="hidden" name="dateCreate" value="{{ post.dateCreate }}">
+
             <label for="chapo">Chapô</label>
             <input type="text" name="chapo" placeholder="Chapô" value="{{post.chapo}}"/><br />
 

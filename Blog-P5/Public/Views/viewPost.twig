@@ -42,8 +42,10 @@
                             {% else %}
                             <p>Vous n'etes pas connectez pour Commenter ce post !</p> 
                             {% endif %} 
-                            {% endblock connecte_1 %} 
-                            <a type="submit" class="modif" name="post_modif_id" href="../modifPost/{{post.id}}">Modif</a></br>                        
+                            {% endblock connecte_1 %}
+                            {% if user.username == post.auteur or IsAdmin == true %} 
+                            <a type="submit" class="modif" name="post_modif_id" href="../modifPost/{{post.id}}">Modif</a></br>
+                            {% endif %}                      
                         </div>
                     </div>
                 </div>

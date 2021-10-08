@@ -198,9 +198,12 @@ class BlogController
         $title = $_REQUEST['title'];
         $chapo = $_REQUEST['chapo'];
         $content = $_REQUEST['content'];
-        $date = date('d-m-y h:i:s');
+        $date_create = $_REQUEST['dateCreate'];
 
-        $return = $this->postsManager->modifPost($idPost, $title, $chapo, $content, $date);
+        date_default_timezone_set('Europe/Paris');
+        $date = date('Y-m-d H:i:s');
+
+        $return = $this->postsManager->modifPost($idPost, $title, $chapo, $content, $date_create, $date);
 
         // echo "</br>";
         // var_dump($return);
@@ -214,7 +217,6 @@ class BlogController
         }
         header("Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/modifPost/$idPost");
     }
-
 
 
     public function ViewPost(){

@@ -43,16 +43,17 @@
                 <p class="author">{{post.auteur}}</p>
                 <p class="chapo">{{post.chapo}}</p>
                 <p class="content">{{post.contenu}}</p>
-                <p class="dateCreate">{{post.dateCreate}}</p>
+                <p class="dateCreate">Crée le {{post.dateCreate}}</p>
+                {% if post.lastModif != null %} 
+                    <p class="dateModif">Dernière modification le {{post.lastModif}}</p>
+                {% endif %} 
                 <div class="containerContentBlog">
                     <div class="button">
-                        {# <input type="hidden" name="post_id" value="{{post.id}}"></input>
-                        <a type="submit" class="comment" name="post_id" href="commentPost/{{post.id}}">Commenter</a></br> #}
-                        
-                        {# <a
-                        <input class="comment" href="commentPost/{{post.id}}" type="hidden" name="post_id" value="{{post.id}}">Commenter</input>
-                        </a> #}
                         <a type="submit" class="postview" name="viewspost" href="viewPost/{{post.id}}">Voir</a>
+
+                        {% if IsAdmin == true %} 
+                            <a class="delete" href="deletePost/{{post.id}}">Supprimer</a>
+                        {% endif %} 
                     </div>
                 </div>
             </div>
