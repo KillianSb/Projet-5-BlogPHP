@@ -198,8 +198,9 @@ class BlogController
         $title = $_REQUEST['title'];
         $chapo = $_REQUEST['chapo'];
         $content = $_REQUEST['content'];
+        $date = date('d-m-y h:i:s');
 
-        $return = $this->postsManager->modifPost($idPost, $title, $chapo, $content);
+        $return = $this->postsManager->modifPost($idPost, $title, $chapo, $content, $date);
 
         // echo "</br>";
         // var_dump($return);

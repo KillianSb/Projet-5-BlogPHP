@@ -75,10 +75,10 @@ class PostsManager
         $request->execute($params);
     }
 
-    public function modifPost($idPost, $title, $chapo, $content)
+    public function modifPost($idPost, $title, $chapo, $content, $date)
     {
-        $request = $this->db->db->prepare("UPDATE posts SET titre=:title, chapo=:chapo, contenu=:content WHERE id=:id");
-        $params = [':title' => $title, ':chapo' => $chapo, ':content' => $content, ':id' => $idPost];
+        $request = $this->db->db->prepare("UPDATE posts SET titre=:title, chapo=:chapo, contenu=:content, lastModif=:date WHERE id=:id");
+        $params = [':title' => $title, ':chapo' => $chapo, ':content' => $content, ':date' => $date, ':id' => $idPost];
 
         if ($request->execute($params)) {
             return("y");

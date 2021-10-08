@@ -542,8 +542,6 @@ height: 450px;
 
 .postblog {
     display: block;
-    border-color: #000000;
-    border-radius: 7px;
     margin: 15px;
     padding: 20px;
     background-color: hsl(240deg 4% 32%);
