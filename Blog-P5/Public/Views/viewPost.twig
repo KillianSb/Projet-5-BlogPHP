@@ -32,7 +32,10 @@
                     <p class="author">Autheur : {{post.auteur}}</p>
                     <p class="chapo">Chapo : {{post.chapo}}</p>
                     <p class="content">{{post.contenu}}</p>
-                    <p class="dateCreate">{{post.dateCreate}}</p>
+                    <p class="dateCreate">Crée le {{post.dateCreate}}</p>
+                    {% if post.lastModif != null %} 
+                        <p class="dateModif">Dernière modification le {{post.lastModif}}</p>
+                    {% endif %} 
                     <div class="containerContentBlog">
                         <div class="button">
                             <input type="hidden" name="post_id" value="{{post.id}}"></input>
@@ -56,7 +59,7 @@
             <div class="postcomment">
                 <p class="author_comment">{{comment.author}}</p>
                 <p class="comment">{{comment.comment}}</p>
-                <p class="comment_date">{{comment.comment_date}}</p>
+                <p class="comment_date">Crée le {{comment.comment_date}}</p>
                 <div class="button">
                     <input type="hidden" name="comment_id" value="{{comment.id}}"></input>
                     {% block connecte_2 %}
