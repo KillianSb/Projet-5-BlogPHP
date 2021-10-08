@@ -3,8 +3,8 @@ body {
     padding: 0;
 }
 
-p, h1, h2 {
-    font-family: 'Alfa Slab One', cursive;
+p, h1, h2{
+    font-family: 'Lobster', cursive;
 }
 
 h2 {
@@ -13,7 +13,7 @@ h2 {
 
 h2 a {
     text-decoration:none; 
-    color: #0f667c;
+    color: #bea01a;
 }
 
 h2 a:hover 
@@ -30,14 +30,34 @@ header {
     margin: 0px 15px 15px 15px;
 }
 
-.header_title {
-    display: block;
-    height: 500px;
-    background-color: gray;
+.header_title .opacity{
+    width: 100%;
+    height: 600px;
+    position: absolute;
+    background-color: #000;
+    z-index: -1;
+    opacity: 0.80;
+}
+
+.header_title:before{
+    content: "";
+    background-image: url('../img/fond1.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-attachment: fixed;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 15px;
+    top: 0;
+    filter: blur(8px);
+    z-index: -1;
+}
+
+.header_title {
+    display: block;
+    height: 600px;
+    position: relative;
 }
 
 .header_title h1 {
@@ -45,24 +65,19 @@ header {
     font-size: 40px;
     text-align: center;
     padding: 175px 0;
+    margin: 50px;
     text-transform: uppercase;
-    color: #0f667c;
+    color: #bea01a;
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
     list-style-type : none;
     text-decoration: none;
 }
 
-.logo {
-    justify-content: flex-start;
-    width: 90px;
-    height: 110px;
-    padding: 15px;
-    border-radius: 30px;
-}
-
 .links {
     display: flex;
     justify-content: flex-end;
+    padding: 50px;
+    margin: auto;
 }
 
 .box_header {
@@ -79,7 +94,7 @@ li a {
     margin: 25px;
     list-style-type : none;
     text-decoration: none;
-    color: #0f667c;
+    color: #bea01a;
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
 }
 
@@ -87,38 +102,43 @@ li a {
 
 .box_footer {
     display: flex;
+    border: groove;
+    border-color: #fbebb6 #000000 #000000 #000000;
 }
 
 .footer_center {
     display: flex;
-    font-family: 'Alfa Slab One', cursive;
+    font-family: 'Lobster', cursive;
     justify-content: flex-start;
-    font-size: 14px;
+    font-size: 19px;
     margin: auto;
-    padding: 20px;
+    padding: 20px 250px 20px 60px;
     color: rgb(255, 255, 255);
 }
 
 .footer_right {
     display: flex;
     justify-content: flex-end;
+    margin: auto;
+    padding: 20px 60px 20px 250px;
 }
 
 .menu_bas a {
-    font-family: 'Alfa Slab One', cursive;
-    color: #0f667c;
-    font-size: 14px;
-    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    font-family: 'Lobster', cursive;
+    color: #bea01a;
+    font-size: 19px;
+    text-shadow: 2px 2px 1px rgb(0, 0, 0);
 }
 
 .admin {
-    background-color: #a1a1a1;
+    background-color: #000000;
 }
 
 .links a {
-    font-family: 'Alfa Slab One', cursive;
-    color: #0f667c;
+    font-family: 'Lobster', cursive;
+    color: #bea01a;
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    font-size: 27px;
 }
 
 .footer {
@@ -136,14 +156,15 @@ li a {
     background-position: center;
     background-size: cover;
     margin: 0 auto;
-    width: 1000px;
+    padding: 10px;
 }
 
 .mid_title {
-    display: flex;
+    display: block;
     padding: 15px;
-    color: #0f667c;
-    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    color: #bea01a;
+    text-shadow: 2px 2px 1px rgb(0, 0, 0);
+    text-align: center;
 }
 
 .mid_block h2, .mid_text_left h2 {
@@ -157,11 +178,12 @@ li a {
 
 
 .mid_p {
-    display: flex;
+    display: block;
     padding: 15px;
-    font-family: 'Alfa Slab One', cursive;
-    font-size: 14px;
+    font-family: 'Lobster', cursive;
+    font-size: 17px;
     color: #ffffff;
+    text-align: center;
 }
 
 /* AJOUT */
