@@ -19,7 +19,7 @@
         <p class="chapo">Chapô</p>
         <p class="content">Contenu</p>
         <p class="dateCreate">Date de création</p>
-        <p class="delete">Supprimer</p>
+        <p class="delete">Modifier/Supprimer</p>
         </div>
         <div class="containerPosts">
         {% for post in posts %}
@@ -33,7 +33,7 @@
             {# <p class="modif"><a href="adminLawChange/{{post.id}}">Modifier</a></p> #}
             <div class="containerContent">
                 <div class="button">
-                <a class="delete" href="deletePost/{{post.id}}">Supprimer</a>
+                <a class="modif" href="../modifPost/{{post.id}}">Modif</a>/<a class="delete" href="deletePost/{{post.id}}">Supprimer</a>
                 </div>
             </div>
             </div>
