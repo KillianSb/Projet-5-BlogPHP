@@ -19,6 +19,7 @@
         <p class="chapô">Chapô</p>
         <p class="content">Contenu</p>
         <p class="dateCreate">Date de création</p>
+        <p class="lastModif">Date de Modification</p>
         <p class="delete">Modifier/Supprimer</p>
         </div>
         <div class="containerPosts">
@@ -30,7 +31,11 @@
             <p class="chapô">{{post.chapo}}</p>
             <p class="content">{{ post.contenu|length > 40 ? post.contenu|slice(0, 40) ~ '...' : post.contenu  }}</p>
             <p class="dateCreate">{{post.dateCreate}}</p>
-            {# <p class="modif"><a href="adminLawChange/{{post.id}}">Modifier</a></p> #}
+            {% if post.lastModif != null %} 
+                <p class="lastModif">{{post.lastModif}}</p>
+            {% else %} 
+                <p class="lastModif">X</p>
+            {% endif %} 
             <div class="containerContent">
                 <div class="button">
                 <a class="modif" href="../modifPost/{{post.id}}">Modif</a>/<a class="delete" href="deletePost/{{post.id}}">Supprimer</a>
