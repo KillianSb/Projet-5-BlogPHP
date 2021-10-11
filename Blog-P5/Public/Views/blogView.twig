@@ -17,11 +17,11 @@
     
     <h1>BLOG</h1>
 
+    <h1>Liste des posts</h1>
+
     {% if IsAdmin == true %} 
     {% block links %}
-
     <h2><a id="gestion_Admin" href="admin">Gestion des Posts</a></h2>
-
     {% endblock links %}
     {% endif %}
 
@@ -30,8 +30,6 @@
     {% else %}
     <p>Vous n'etes pas connectez pour crée un post !</p> 
     {% endif %} 
-
-    <h1>Liste des posts</h1>
 
 
     <div class="containerTablePosts">
