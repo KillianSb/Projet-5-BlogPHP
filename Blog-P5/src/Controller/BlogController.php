@@ -171,12 +171,12 @@ class BlogController
                 $successMessage = "Votre article à bien été Modifié !";
                 unset($_SESSION['successMessage']);
                 $post = $this->postsManager->getPost($idPost);
-                echo $twig->render('modifPostView.twig', ["successMessage" => $successMessage, "class" => "successMessage", 'post' => $post, 'id' => $idPost]);
+                echo $twig->render('viewPost.twig', ["successMessage" => $successMessage, "class" => "successMessage", 'post' => $post, 'id' => $idPost]);
             } elseif ($_SESSION['successMessage'] == "n") {
                 $successMessage = 'Une erreur est survenu, veuillez réessayer.';
                 unset($_SESSION['successMessage']);
                 $post = $this->postsManager->getPost($idPost);
-                echo $twig->render('modifPostView.twig', ["successMessage" => $successMessage, "class" => "errorMessage", 'post' => $post, 'id' => $idPost]);
+                echo $twig->render('viewPost.twig', ["successMessage" => $successMessage, "class" => "errorMessage", 'post' => $post, 'id' => $idPost]);
             }
         } else {
             $post = $this->postsManager->getPost($idPost);
@@ -204,18 +204,14 @@ class BlogController
         $date = date('Y-m-d H:i:s');
 
         $return = $this->postsManager->modifPost($idPost, $title, $chapo, $content, $date_create, $date);
-
-        // echo "</br>";
-        // var_dump($return);
-        // echo "</br>";
-        // die();
-
+        
         if ($return == "y") {
             $_SESSION['successMessage'] = "y";
         } else {
             $_SESSION['successMessage'] = "n";
         }
-        header("Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/modifPost/$idPost");
+
+        header("Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/viewPost/$idPost");
     }
 
 

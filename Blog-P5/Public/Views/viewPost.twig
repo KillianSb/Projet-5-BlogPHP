@@ -17,6 +17,14 @@
 
 {% block content %}
 
+    <div class="containerBlockMessageModif">
+        <div class="BlockMessage">
+            {% if successMessage is defined %}
+                <p class={{class}}>{{ successMessage }}</p>
+            {% endif %}
+        </div>
+    </div>
+
     <h1>{{post.titre}}</h1>
 
 

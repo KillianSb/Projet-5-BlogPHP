@@ -21,15 +21,6 @@
     <h1>Modification du post</h1>
 
 
-    <div class="containerBlockMessageModif">
-        <div class="BlockMessage">
-            {% if successMessage is defined %}
-                <p class={{class}}>{{ successMessage }}</p>
-            {% endif %}
-        </div>
-    </div>
-
-
     <div class="container">
         <form name="modifPost" method="post" action="../ModifPostRequest/{{ id }}">
             <label for="titre">Titre</label>

@@ -204,6 +204,8 @@ li a {
     min-width: 90%;
     overflow-x: scroll;
     align-items: flex-start;
+    border: groove;
+    border-color: #fbebb6 #fbebb6 #fbebb6 #fbebb6;
 }
 
 .containerTablePosts .containerTable .containerHeaderTable {
@@ -213,6 +215,9 @@ li a {
     justify-content: space-around;
     align-items: center;
     width: 100%;
+    background-color: #adadad;
+    border: groove;
+    border-color: #fbebb6 #fbebb6 #000000 #fbebb6;
 }
 
 .containerTablePosts .content {
@@ -226,6 +231,7 @@ li a {
     width: 20%;
     min-width: 250px;
     padding-right: 10px;
+
 }
 
 .containerTablePosts .mail,
@@ -279,6 +285,9 @@ li a {
     align-items: center;
     height: 40px;
     width: 100%;
+    border: groove;
+    background-color: #ececec;
+    border-color: #fbebb6 #fbebb6 #fbebb6 #fbebb6;
 }
 
 .containerTablePosts .containerPosts{
@@ -310,10 +319,16 @@ li a {
 .containerTablePosts .containerTable .containerHeaderTable{
     justify-content: flex-start;
     width: auto;
+    background-color: #adadad;
+    border: groove;
+    border-color: #fbebb6 #fbebb6 #000000 #fbebb6;
 }
 
 .containerTablePosts .containerPosts .post{
     justify-content: flex-start;
+    background-color: #ececec;
+    border: groove;
+    border-color: #fbebb6 #fbebb6 #fbebb6 #fbebb6;
 }
 
 .containerTablePosts .containerPosts{
