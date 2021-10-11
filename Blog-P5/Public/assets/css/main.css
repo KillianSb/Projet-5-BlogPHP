@@ -58,21 +58,8 @@ a:hover {
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
 }
 
-/* h2 a {
-    list-style-type : none;
-    text-decoration: none;
-    color: #bea01a;
-}
-
-h2 a:hover 
-{
-    color:#ffffff; 
-    list-style-type : none;
-    text-decoration: none;
-    cursor:pointer;  
-} */
-
 /* Login/disconnect */
+
 
 #disconnect, #connect, #admin {
     font-family: 'Lobster', cursive;
@@ -543,6 +530,19 @@ height: 450px;
 
 .containerTablePosts {
     padding: 50px;
+}
+
+#create_Post, #gestion_Admin {
+    background-color: #000000;
+    border: outset;
+    border-radius: 30px;
+    border-color: #fbebb6;
+    padding: 3px;
+}
+
+#create_Post:hover, #gestion_Admin:hover {
+    color: #ffffff;
+    padding: 6px;
 }
 
 .containerTablePostsUnity {

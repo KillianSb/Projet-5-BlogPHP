@@ -20,13 +20,13 @@
     {% if IsAdmin == true %} 
     {% block links %}
 
-    <h2><a href="admin">Gestion des Posts</a></h2>
+    <h2><a id="gestion_Admin" href="admin">Gestion des Posts</a></h2>
 
     {% endblock links %}
     {% endif %}
 
     {% if user.username is defined %} 
-    <h2><a href="createPost">Création d'un Post</a></h2>
+    <h2><a id="create_Post" href="createPost">Création d'un Post</a></h2>
     {% else %}
     <p>Vous n'etes pas connectez pour crée un post !</p> 
     {% endif %} 
