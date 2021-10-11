@@ -16,7 +16,7 @@
         <p class="id">ID</p>
         <p class="title">Titre</p>
         <p class="author">Auteur</p>
-        <p class="chapo">Chapô</p>
+        <p class="chapô">Chapô</p>
         <p class="content">Contenu</p>
         <p class="dateCreate">Date de création</p>
         <p class="delete">Modifier/Supprimer</p>
@@ -27,8 +27,8 @@
             <p class="id">{{post.id}}</p>
             <p class="title">{{post.titre}}</p>
             <p class="author">{{post.auteur}}</p>
-            <p class="chapo">{{post.chapo}}</p>
-            <p class="content">{{post.contenu}}</p>
+            <p class="chapô">{{post.chapo}}</p>
+            <p class="content">{{ post.contenu|length > 40 ? post.contenu|slice(0, 40) ~ '...' : post.contenu  }}</p>
             <p class="dateCreate">{{post.dateCreate}}</p>
             {# <p class="modif"><a href="adminLawChange/{{post.id}}">Modifier</a></p> #}
             <div class="containerContent">
@@ -40,5 +40,6 @@
         {% endfor %}
         </div>
     </div>
+    <button type="submit" class="btn btn-primary"><a href="/P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/admin">Retour Admin </a></button>
 </div>
 {% endblock content %}

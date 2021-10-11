@@ -239,6 +239,8 @@ li a {
     width: 15%;
     min-width: 200px;
     padding-right: 10px;
+    background-color: #adadad;
+    text-align: center;
 }
 
 .containerTablePosts .lastModif,
@@ -246,6 +248,7 @@ li a {
     width: 10%;
     min-width: 150px;
     padding-right: 10px;
+    text-align: center;
 }
 
 .containerTablePosts .author,
@@ -258,6 +261,7 @@ li a {
     width: 10%;
     min-width: 150px;
     padding-right: 10px;
+    text-align: center;
 }
 
 .containerTablePosts .id {
@@ -301,19 +305,6 @@ li a {
 .containerTablePosts .containerPosts .delete a {
     cursor: pointer;
 }
-
-.containerTablePosts .popup {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #3131317e;
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
 
 @media only screen and (max-width: 1400px) {
 .containerTablePosts .containerTable .containerHeaderTable{
