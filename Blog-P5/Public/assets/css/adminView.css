@@ -306,6 +306,18 @@ li a {
     cursor: pointer;
 }
 
+.return a {
+    text-decoration: underline;
+    color: #bea01a;
+    display: inline-block;
+    margin: 5px 5px 25px 30px;
+    padding: 3px;
+}
+
+.return a:hover {
+    color: #ffffff;
+}
+
 @media only screen and (max-width: 1400px) {
 .containerTablePosts .containerTable .containerHeaderTable{
     justify-content: flex-start;
