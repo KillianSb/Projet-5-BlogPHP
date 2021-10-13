@@ -84,9 +84,9 @@ class PostsManager
         $params = [':title' => $title, ':chapo' => $chapo, ':content' => $content, ':date_create' => $date_create, ':date' => $date, ':id' => $idPost];
 
         if ($request->execute($params)) {
-            return("y");
+            return("modifPostCreated");
         }
-        return('n');
+        return('modifPostError');
     }
 
 

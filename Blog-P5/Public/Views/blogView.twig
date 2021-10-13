@@ -31,6 +31,13 @@
     <p>Vous n'etes pas connectez pour crée un post !</p> 
     {% endif %} 
 
+    <div class="containerBlockMessageModif">
+        <div class="BlockMessage">
+            {% if successMessage is defined %}
+                <p class={{class}}>{{ successMessage }}</p>
+            {% endif %}
+        </div>
+    </div>
 
     <div class="containerTablePosts">
         <div class="containerTablePostsBlog">
