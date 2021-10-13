@@ -53,7 +53,7 @@ class BlogController
                 unset($_SESSION['successMessage']);
                 $posts = $this->postsManager->getPosts();
                 $user = $this->usersModel->getUser($username);
-                echo $twig->render('blogView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'post' => $post, 'comments' => $comments, "successMessage" => $successMessage, "class" => "successMessage"]);
+                echo $twig->render('blogView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'posts' => $posts, 'comments' => $comments, "successMessage" => $successMessage, "class" => "successMessage"]);
             } elseif ($_SESSION['successMessage'] == "postError") {
                 $successMessage = 'Une erreur est survenu, veuillez réessayer.';
                 unset($_SESSION['successMessage']);
@@ -61,7 +61,6 @@ class BlogController
                 echo $twig->render('createPostView.twig', ["successMessage" => $successMessage, "class" => "successMessage", 'user' => $user, 'IsAdmin' => $userIsAdmin]);
             }
         } else {
-            unset($_SESSION['successMessage']);
             $user = $this->usersModel->getUser($username);
 
             echo $twig->render('blogView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'posts' => $posts, 'comments' => $comments]);
@@ -124,7 +123,6 @@ class BlogController
                 echo $twig->render('modifPostView.twig', ["successMessage" => $successMessage, "class" => "errorMessage", 'post' => $post, 'id' => $idPost]);
             }
         } else {
-            unset($_SESSION['successMessage']);
             $user = $this->usersModel->getUser($username);
 
             echo $twig->render('createCommentView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'id' => $post_id]);
@@ -169,7 +167,6 @@ class BlogController
                 echo $twig->render('modifPostView.twig', ["successMessage" => $successMessage, "class" => "errorMessage", 'post' => $post, 'id' => $idPost]);
             }
         } else {
-            unset($_SESSION['successMessage']);
             $post = $this->postsManager->getPost($idPost);
 
             echo $twig->render('modifPostView.twig', ['post' => $post, 'id' => $idPost]);
@@ -251,7 +248,6 @@ class BlogController
                 echo $twig->render('modifPostView.twig', ["successMessage" => $successMessage, "class" => "errorMessage", 'post' => $post, 'id' => $idPost]);
             }
         } else {
-            unset($_SESSION['successMessage']);
             $post = $this->postsManager->getPost($idPost);
 
             echo $twig->render('viewPost.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'post' => $post, 'comments' => $comments, 'post_id' => $idPost]);
