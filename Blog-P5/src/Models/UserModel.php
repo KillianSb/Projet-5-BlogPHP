@@ -10,25 +10,14 @@ use App\Core\Database;
 
 class UserModel
 {
-    public $id;
     public $name;
     public $firstname;
     public $username;
     public $mail;
     public $pass;
-    public $admin;
 
-    public function __construct()
-    {
-        $this->db = new Database();
-        
-        $this->id = null;
-        $this->name = $name;
-        $this->firstname = $firstname;
-        $this->username = $username;
-        $this->mail = $mail;
-        $this->pass = $pass;
-        $this->admin = $admin;
+    public function __construct(){       
+        $this->db = new Database(); 
     }
 
     public function connexion($usernameToVerify, $passwordToVerify) {
@@ -107,6 +96,7 @@ class UserModel
     */
     public function getUser($username)
     {
+
         $request = $this->db->db->prepare("SELECT * from users WHERE username=:username");
         $request->execute(["username" => $username]);
         $user = $request->fetch();

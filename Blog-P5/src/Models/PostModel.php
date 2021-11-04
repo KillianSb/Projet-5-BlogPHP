@@ -19,18 +19,8 @@ class PostModel
     public $commentaire;
     public $listCommentaire;
 
-    public function __construct()
-    {
+    public function __construct(){   
         $this->db = new Database();
-        
-        $this->id = null;
-        $this->title = $title;
-        $this->chapo = $chapo;
-        $this->content = $content;
-        $this->auteur = $auteur;
-        $this->dateCreate = $dateCreate;
-        $this->commentaire = $commentaire;
-        $this->listCommentaire = $listCommentaire;
     }
 
     public function createPost() {
@@ -41,10 +31,6 @@ class PostModel
             return("postCreated");
         }
         return('postError');
-
-        // var_dump($params);
-        // echo "</br>";
-        // die();
     }
   
     /**

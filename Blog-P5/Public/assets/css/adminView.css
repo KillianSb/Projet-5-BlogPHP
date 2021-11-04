@@ -229,7 +229,7 @@ li a {
 .containerTablePosts .title,
 .containerTablePosts .chapô {
     width: 20%;
-    min-width: 250px;
+    min-width: 150px;
     padding-right: 10px;
 
 }
@@ -288,7 +288,6 @@ li a {
     justify-content: space-around;
     align-items: center;
     height: 40px;
-    width: 100%;
     border: groove;
     background-color: #ececec;
     border-color: #fbebb6 #fbebb6 #fbebb6 #fbebb6;

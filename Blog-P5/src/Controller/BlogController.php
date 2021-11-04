@@ -5,29 +5,21 @@ namespace App\Controller;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use App\Models\UserModel;
-use App\Models\PostModel;
-use App\Manager\UsersManager;
 use App\Manager\PostsManager;
-use App\Core\Database;
+use App\Models\PostModel;
 
 
 class BlogController
 {
 
-    private $usersManager;
     private $postsManager;
-
     private $usersModel;
-    private $postsModel;
 
     public function __construct()
     {
         $this->usersModel = new UserModel();
-        $this->postsModel = new PostModel();
-        $this->usersManager = new UsersManager();
         $this->postsManager = new PostsManager();
-
-        $this->db = new Database();
+        $this->postModel = new PostModel();
         
         if (!isset($_SESSION)) {
             session_start();

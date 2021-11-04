@@ -19,14 +19,15 @@ class UsersManager
     */
     public function getUsers()
     {
+        
         $request = $this->db->db->query('SELECT * FROM users')->fetchAll();
         $usersArray = [];
 
         foreach ($request as $users) {
-            $usersArray[] = new UserModel($user['id'], $user['date'], $user['name'], $user['firstname'], $user['username'], $user['mail'], $user['admin']);
+
+            return $request;
         }
 
-        return $request;
     }
 
     /**
@@ -35,7 +36,7 @@ class UsersManager
     public function getUser($idUser)
     {
         $user = $this->db->db->query("SELECT * FROM users WHERE id = $idUser")->fetch();
-        // $user = new UserModel($user['id'], $user['name'], $user['firstname'], $user['username'] ,$user['mail'], $user['pass'], $user['admin']);
+        
         return $user;
     }
 
