@@ -80,7 +80,7 @@ header {
     opacity: 0.80;
 }
 
-.header_title:before{
+.header_title::before{
     content: "";
     background-image: url('../img/fond1.jpg');
     background-repeat: no-repeat;
@@ -308,46 +308,46 @@ div.rs li a:focus {
 	color: #ffffff;
 }
 
-.containerBlockContact{
+.containerBlockContact {
     margin: 200px 10% 5% 10%;
     display: flex;
     justify-content: space-between;
 }
 
-.containerBlockContact h2, .blockInformation h2{
+.containerBlockContact h2, .blockInformation h2 {
     color: #bea01a;
     font-size: 33px;
 }
 
-.blockInformation p{
+.blockInformation p {
     color: white;
     font-weight: normal;
     font-size: 20px;
 }
 
-.containerBlockContact .form{
+.containerBlockContact .form {
     width: 500px;
 }
 
-.containerBlockContact form{
+.containerBlockContact form {
     display: flex;
     flex-direction: column;
 }
 
-.containerBlockContact .form input{
+.containerBlockContact .form input {
     height: 40px;
 }
 
-.containerBlockContact .containerFirstLine{
+.containerBlockContact .containerFirstLine {
     display: flex;
     justify-content: space-between;
 }
 
-.containerBlockContact .containerFirstLine input{
+.containerBlockContact .containerFirstLine input {
     width: 45%;
 }
 
-.containerBlockContact .form input, .containerBlockContact .form textarea{
+.containerBlockContact .form input, .containerBlockContact .form textarea {
     color: white;
     background-color: #686868;
     border: none;
@@ -357,18 +357,18 @@ div.rs li a:focus {
     padding-left: 15px;
 }
 
-.containerBlockContact .form textarea{
+.containerBlockContact .form textarea {
     padding-top: 10px;
     resize: none;
 }
 
-.containerBlockContact .form input::placeholder, .containerBlockContact .form textarea::placeholder{
+.containerBlockContact .form input::placeholder, .containerBlockContact .form textarea::placeholder {
     color: white;
     font-family: 'Lobster', cursive;
     font-size: 14px;
 }
 
-.containerBlockContact .form input[type=submit]{
+.containerBlockContact .form input[type=submit] {
     width: 120px;
     height: 45px;
     text-transform: uppercase;
@@ -400,14 +400,12 @@ height: 450px;
     .blockCarte {
         font-size: 20px;
         padding: 0px;
-
     }
 
-    .containerBlockContact{
+    .containerBlockContact {
         margin: 200px 10% 5% 10%;
         align-items: center !important;
         flex-direction: column;
-
     }
 
     .blockCarte iframe {
@@ -423,7 +421,7 @@ height: 450px;
         padding: 0px;
     }
 
-    .containerBlockContact{
+    .containerBlockContact {
         margin: 200px 10% 5% 10%;
         align-items: center !important;
         flex-direction: column;
@@ -441,7 +439,7 @@ height: 450px;
         padding: 0px;
     }
 
-    .containerBlockContact{
+    .containerBlockContact {
         margin: 200px 10% 5% 10%;
         justify-content: space-between;
         flex-direction: column;
@@ -647,7 +645,7 @@ height: 450px;
     text-decoration: underline;
 }
 
-.return a{
+.return a {
     text-decoration: underline;
     color: #bea01a;
     display: inline-block;
@@ -657,8 +655,7 @@ height: 450px;
 
 #del_com:hover,
 .button a:hover,
-.return a:hover
-{
+.return a:hover {
     color: #ffffff;
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
 }
@@ -670,40 +667,40 @@ height: 450px;
 /* Section Form Inscription/Connexion */
 
 .containerBlockInscription, 
-.containerBlockConnexion{
+.containerBlockConnexion {
     padding: 25px 150px 150px 150px;
     display: flex;
 }
 
 .containerBlockInscription .form, 
-.containerBlockConnexion .form{
+.containerBlockConnexion .form {
     width: 500px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .containerBlockInscription form, 
-.containerBlockConnexion form{
+.containerBlockConnexion form {
     display: block;
     flex-direction: column;
 }
 
 .containerBlockInscription .form input, 
-.containerBlockConnexion .form input{
+.containerBlockConnexion .form input {
     height: 40px;
 }
 
 .containerBlockInscription .containerFirstLineInscription, 
-.containerBlockConnexion .containerFirstLineConnexion{
+.containerBlockConnexion .containerFirstLineConnexion {
     display: flex;
 }
 
 .containerBlockInscription .containerFirstLineInscription input, 
-.containerBlockConnexion .containerFirstLineConnexion input{
+.containerBlockConnexion .containerFirstLineConnexion input {
     width: 45%;
 }
 
-.containerBlockInscription .form input{
+.containerBlockInscription .form input {
     color: white;
     background-color: #686868;
     border: none;
@@ -714,7 +711,7 @@ height: 450px;
     margin-left: 5px;
 }
 
-.containerBlockConnexion .form input{
+.containerBlockConnexion .form input {
     color: white;
     background-color: #686868;
     border: none;
@@ -724,14 +721,14 @@ height: 450px;
 }
 
 .containerBlockInscription .form input::placeholder,
-.containerBlockConnexion .form input::placeholder{
+.containerBlockConnexion .form input::placeholder {
     color: white;
     font-family: 'Lobster', cursive;
     font-size: 14px;
 }
 
 .containerBlockInscription .form input[type=submit],
-.containerBlockConnexion .form input[type=submit]{
+.containerBlockConnexion .form input[type=submit] {
     width: 140px;
     height: 45px;
     text-transform: uppercase;
@@ -742,7 +739,7 @@ height: 450px;
     color: black;
 }
 
-.containerBlockInscription .form button{
+.containerBlockInscription .form button {
     width: 110px;
     height: 45px;
     text-transform: uppercase;
@@ -754,7 +751,7 @@ height: 450px;
     border-radius: 7px;
 }
 
-.containerBlockConnexion .form button{
+.containerBlockConnexion .form button {
     margin: 5px;
     text-transform: uppercase;
     background-color: rgb(134, 134, 134);
@@ -773,25 +770,25 @@ height: 450px;
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
 }
 
-.containerBlockMessage{
+.containerBlockMessage {
     margin: 80px 15px 15px 15px;
     padding: 25px;
     display: block;
 }
 
-.BlockMessage{
+.BlockMessage {
     width: 500px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
 
-.containerBlockMessage .successMessage{
+.containerBlockMessage .successMessage {
     color: #479860;
     margin-top: 5px;
 }
   
-.containerBlockMessage .errorMessage{
+.containerBlockMessage .errorMessage {
     color: #fc4d3c;
     margin-top: 15px;
 }
@@ -863,7 +860,7 @@ label {
     margin-bottom: 50px;
 }
 
-.containerBlockMessageModif{
+.containerBlockMessageModif {
     margin: 15px 15px 15px 15px;
     padding: 25px;
     display: block;
