@@ -71,7 +71,7 @@ header {
     display: block;
 }
 
-.header_title .opacity{
+.header_title .opacity {
     width: 100%;
     height: 600px;
     position: absolute;
@@ -80,7 +80,7 @@ header {
     opacity: 0.80;
 }
 
-.header_title::before{
+.header_title::before {
     content: "";
     background-image: url('../img/fond1.jpg');
     background-repeat: no-repeat;
@@ -263,7 +263,7 @@ header {
 
 /* CV */
 
-.header_title h1 a{
+.header_title h1 a {
     list-style-type : none;
     text-decoration: none;
     text-align: center;
@@ -276,7 +276,7 @@ header {
 
 /* CONTACT */
 
-.contact{
+.contact {
 background-color: #28282b;
 }
 

@@ -3,7 +3,7 @@ body {
     padding: 0;
 }
 
-p, h1, h2{
+p, h1, h2 {
     font-family: 'Lobster', cursive;
 }
 
@@ -16,8 +16,7 @@ h2 a {
     color: #bea01a;
 }
 
-h2 a:hover 
-{
+h2 a:hover {
     color:#ffffff; 
     text-decoration:none; 
     cursor:pointer;  
@@ -39,7 +38,7 @@ header {
     opacity: 0.80;
 }
 
-.header_title:before{
+.header_title::before {
     content: "";
     background-image: url('../img/fond1.jpg');
     background-repeat: no-repeat;
@@ -231,7 +230,6 @@ li a {
     width: 20%;
     min-width: 150px;
     padding-right: 10px;
-
 }
 
 .containerTablePosts .mail,
@@ -293,7 +291,7 @@ li a {
     border-color: #fbebb6 #fbebb6 #fbebb6 #fbebb6;
 }
 
-.containerTablePosts .containerPosts{
+.containerTablePosts .containerPosts {
     width: 100%;
 }
 
@@ -318,22 +316,22 @@ li a {
 }
 
 @media only screen and (max-width: 1400px) {
-.containerTablePosts .containerTable .containerHeaderTable{
-    justify-content: flex-start;
-    width: auto;
-    background-color: #adadad;
-    border: groove;
-    border-color: #fbebb6 #fbebb6 #000000 #fbebb6;
-}
+    .containerTablePosts .containerTable .containerHeaderTable{
+        justify-content: flex-start;
+        width: auto;
+        background-color: #adadad;
+        border: groove;
+        border-color: #fbebb6 #fbebb6 #000000 #fbebb6;
+    }
 
-.containerTablePosts .containerPosts .post{
-    justify-content: flex-start;
-    background-color: #ececec;
-    border: groove;
-    border-color: #fbebb6 #fbebb6 #fbebb6 #fbebb6;
-}
+    .containerTablePosts .containerPosts .post{
+        justify-content: flex-start;
+        background-color: #ececec;
+        border: groove;
+        border-color: #fbebb6 #fbebb6 #fbebb6 #fbebb6;
+    }
 
-.containerTablePosts .containerPosts{
-    width: auto;
-}
+    .containerTablePosts .containerPosts{
+        width: auto;
+    }
 }
