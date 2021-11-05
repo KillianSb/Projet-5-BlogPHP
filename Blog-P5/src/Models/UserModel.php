@@ -28,26 +28,12 @@ class UserModel
         if (empty($user)) {
             return(['n']);
         }
-        // echo "</br>";
-        // echo "user :";
-        // echo "</br>";
-        // var_dump($user);
-        // echo "</br>";
-        // die();
+
         $password = $user['pass'];
 
         if (password_verify($passwordToVerify, $password)) {
             $userBdd = new UserModel($user['id'], $user['name'], $user['firstname'], $user['username'] ,$user['mail'], $user['pass'], $user['admin']);
-            // var_dump($userBdd);
-            // die();
             return(['y', $userBdd]);
-            // echo "</br>";
-            // var_dump($passwordToVerify);
-            // echo "</br>";
-            // echo "</br>";
-            // var_dump($userBdd);
-            // echo "</br>";
-            // die();
         }
         return(['n']);
 
@@ -77,19 +63,6 @@ class UserModel
         }
         return('n');
     }
-
-    // /**
-    // * return all users
-    // */
-    // public function getUsers()
-    // {
-    //     $request = $this->db->db->query('SELECT * FROM users')->fetchAll();
-    //     $usersArray = [];
-    //     foreach ($request as $user) {
-    //         $usersArray[] = new UserModel($user['id'], $user['firstname'], $user['name'], $user['mail'], $user['admin']);
-    //     }
-    //     return $usersArray;
-    // }
   
     /**
     * return single user

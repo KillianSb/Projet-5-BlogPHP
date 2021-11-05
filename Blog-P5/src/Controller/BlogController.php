@@ -75,11 +75,16 @@ class BlogController
         $loader = new FilesystemLoader('Public\Views');
         $twig = new Environment($loader);
 
+        $titre = $_POST["title"];
+        $chapo = $_POST["chapo"];
+        $content = $_POST["content"];
+        $auteur = $_SESSION['user'];
+
         $post = new PostModel();
-        $post->title = $_POST["title"];
-        $post->chapo = $_POST["chapo"];
-        $post->content = $_POST["content"];
-        $post->auteur = $_SESSION['user'];;
+        $post->title = $titre;
+        $post->chapo = $chapo;
+        $post->content = $content;
+        $post->auteur = $auteur;
 
         $return = $post->createPost();
         
@@ -122,15 +127,14 @@ class BlogController
     }
 
     public function traitementCreateComment(){
-        $loader = new FilesystemLoader('Public\Views');
-        $twig = new Environment($loader);
+        $idPost = $_POST["post_id"];
+        $author = $_SESSION['user'];
+        $comment = $_POST["comment"];
 
         $post = new PostModel();
-        $post->post_id = $_POST["post_id"];
-        $post->author = $_SESSION['user'];
-        $post->comment = $_POST["comment"];
-
-        $idPost = $_POST["post_id"];
+        $post->post_id = $idPost;
+        $post->author = $author;
+        $post->comment = $comment;
 
         $return = $post->createComment();
 
@@ -169,9 +173,6 @@ class BlogController
      * change in databse the post
      */
     public function traitementModifPost($idPost){
-        $loader = new FilesystemLoader('Public\Views');
-        $twig = new Environment($loader);
-
         $title = $_REQUEST['title'];
         $chapo = $_REQUEST['chapo'];
         $content = $_REQUEST['content'];

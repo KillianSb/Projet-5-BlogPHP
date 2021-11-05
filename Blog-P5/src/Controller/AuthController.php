@@ -6,7 +6,6 @@ use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use App\Models\UserModel;
 use App\Manager\UsersManager;
-// use App\Models\FormModel;
 
 class AuthController
 {
@@ -29,11 +28,6 @@ class AuthController
         $loader = new FilesystemLoader('Public\Views');
         $twig = new Environment($loader);
 
-        // $form = new FormModel($_POST);
-        // echo $form->input('username','Login');
-        // echo $form->input('password','Mots de passe');
-        // echo $form->submit();
-
         if (isset($_SESSION['user'])) {
             header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/cv');
         }
@@ -51,13 +45,6 @@ class AuthController
     }
 
     public function traitementConnexion(){
-        $loader = new FilesystemLoader('Public\Views');
-        $twig = new Environment($loader);
-        
-        // echo "</br>";
-        // var_dump($_POST);
-        // echo "</br>";
-
         if (isset($_SESSION['user'])) {
             header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/cv');
         }
@@ -74,14 +61,10 @@ class AuthController
             $_SESSION['successMessage'] = "n";
         }
         header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/connexion');
-
     }
 
 
     public function deconnexion(){
-        $loader = new FilesystemLoader('Public\Views');
-        $twig = new Environment($loader);
-
         unset($_SESSION['user']);
         header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/home');
     }
@@ -118,14 +101,6 @@ class AuthController
     }
 
     public function traitementInscription(){
-        $loader = new FilesystemLoader('Public\Views');
-        $twig = new Environment($loader);
-
-        // echo "</br>";
-        // var_dump($_POST);
-        // echo "</br>";
-        // die();
-
         if (isset($_POST['name']) || isset($_POST['firstname']) || isset($_POST['username']) || isset($_POST['mail']) || isset($_POST['pass'])) {
             $name = $_POST['name'];
             $firstname = $_POST['firstname'];
@@ -134,13 +109,7 @@ class AuthController
             $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         }
        
-
         $return = $this->usersModel->inscription($name, $firstname, $username, $mail, $pass);
-        
-        // echo "</br>";
-        // var_dump($return);
-        // echo "</br>";
-        // die();
 
         if ($return == "y") {
             $_SESSION['successMessage'] = "y";
@@ -152,11 +121,6 @@ class AuthController
             $_SESSION['successMessage'] = "n";
         }
         header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/inscription');
-
-        // echo "</br>";
-        // var_dump($user);
-        // echo "</br>";
-
     }
 
     public function adminView(){
@@ -167,12 +131,7 @@ class AuthController
     }
 
     public function traitementIsAdmin(){
-        $loader = new FilesystemLoader('Public\Views');
-        $twig = new Environment($loader);
-
         $username = $_SESSION['user'];
-
-
         $user = $this->usersManager->getUser($username);
 
         if ($user['admin'] == false) {
@@ -184,5 +143,4 @@ class AuthController
             header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/admin');
         }
     }
-
 }

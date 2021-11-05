@@ -23,8 +23,7 @@ class UsersManager
         $request = $this->db->db->query('SELECT * FROM users')->fetchAll();
         $usersArray = [];
 
-        foreach ($request as $users) {
-
+        foreach ($request as $usersArray) {
             return $request;
         }
 

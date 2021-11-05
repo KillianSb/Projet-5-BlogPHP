@@ -30,10 +30,9 @@ class PostsManager
         $request = $this->db->db->query('SELECT * FROM posts')->fetchAll();
         $postsArray = [];
 
-        foreach ($request as $posts) {
+        foreach ($request as $postsArray) {
 
-            return $request;
-        }
+        }  return $request;
 
     }
 
@@ -55,11 +54,9 @@ class PostsManager
         $request = $this->db->db->query("SELECT * FROM comments WHERE post_id=$idPost")->fetchAll();
         $commentsArray = [];
 
-        foreach ($request as $comment) {
-            $commentsArray[] = new PostModel($comment['id'], $comment['post_id'], $comment['author'], $comment['comment']);
+        foreach ($request as $commentsArray) {
+            return $request;
         }
-
-        return $request;
     }
 
     /**

@@ -25,12 +25,6 @@ class CvController
         $loader = new FilesystemLoader('Public\Views');
         $twig = new Environment($loader);
 
-        // if($_SESSION['user'] !== NULL){
-        //     echo("Bonjour ". $_SESSION['user']);
-        // } else {
-        //     echo("Pas connecter <a href=".connexion.">CONNEXION</a>");
-        // }
-
         $username = $_SESSION['user'];
 
         $user = $this->usersModel->getUser($username);

@@ -38,6 +38,7 @@ class PostModel
     */
     public function getPost($post)
     {
+        $title = null;
         $request = $this->db->db->prepare("SELECT * from posts WHERE titre=:title");
         $request->execute([":title" => $title]);
         $post = $request->fetch();

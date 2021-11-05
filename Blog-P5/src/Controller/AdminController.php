@@ -54,9 +54,6 @@ class AdminController
     * change admin right of a user
     */
     public function adminLawChange($idUser){
-        $loader = new FilesystemLoader('Public\Views');
-        $twig = new Environment($loader);
-
         $this->usersManager->lawChange($idUser);
 
         header("Location: ../usersListe");
@@ -67,16 +64,6 @@ class AdminController
     * delete user by id
     */
     public function deleteUser($idUser){
-        $loader = new FilesystemLoader('Public\Views');
-        $twig = new Environment($loader);
-
-        // // Ajout pour Dump
-        // $twig = new \Twig\Environment($loader, [
-        //     'debug' => true,
-        //     // ...
-        // ]);
-        // $twig->addExtension(new \Twig\Extension\DebugExtension());
-
         $this->usersManager->deleteUser($idUser);
 
         header("Location: ../usersListeView");
@@ -105,16 +92,6 @@ class AdminController
     * delete post by id
     */
     public function deletePost($idPost){
-        $loader = new FilesystemLoader('Public\Views');
-        $twig = new Environment($loader);
-
-        // // Ajout pour Dump
-        // $twig = new \Twig\Environment($loader, [
-        //     'debug' => true,
-        //     // ...
-        // ]);
-        // $twig->addExtension(new \Twig\Extension\DebugExtension());
-
         $this->postsManager->deletePost($idPost);
 
         header("Location: ../postsListe");
@@ -125,16 +102,6 @@ class AdminController
     * delete comment by id
     */
     public function deleteComment($idComment){
-        $loader = new FilesystemLoader('Public\Views');
-        $twig = new Environment($loader);
-
-        // // Ajout pour Dump
-        // $twig = new \Twig\Environment($loader, [
-        //     'debug' => true,
-        //     // ...
-        // ]);
-        // $twig->addExtension(new \Twig\Extension\DebugExtension());
-
         $this->postsManager->deleteComment($idComment);
 
         header("Location: ../blog");
