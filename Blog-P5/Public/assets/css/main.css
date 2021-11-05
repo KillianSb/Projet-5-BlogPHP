@@ -20,27 +20,27 @@ h2 {
 }
 
 li {
-    list-style-type : none;
+    list-style-type: none;
     text-decoration: none;
 }
 
 ul {
-    margin :auto;
+    margin: auto;
     list-style-type: none;
     padding-inline-start: 0px;
 }
 
 li a {
     margin: 25px;
-    list-style-type : none;
+    list-style-type: none;
     text-decoration: none;
     color: #bea01a;
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
 }
 
 li a:hover {
-    color:#ffffff; 
-    cursor:pointer;  
+    color: #ffffff; 
+    cursor: pointer;  
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
 }
 
@@ -53,8 +53,8 @@ a {
 }
 
 a:hover {
-    color:#ffffff; 
-    cursor:pointer;  
+    color: #ffffff; 
+    cursor: pointer;  
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
 }
 
@@ -585,8 +585,8 @@ height: 450px;
 
 .postblog .containerContentBlog  .button p:hover,
 .postblog .containerContentBlog  .button a:hover {
-    color:#ffffff; 
-    cursor:pointer;  
+    color: #ffffff; 
+    cursor: pointer;  
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
 }
 
@@ -843,17 +843,17 @@ label {
 
 #modif:hover, #create:hover {
     background-color: #ffffff;
-    color:black
+    color: black
 }
 
 .container {
     box-sizing : border-box;
     border-radius:5px;
-    background-color:#848486;
-    padding:20px;
+    background-color: #848486;
+    padding: 20px;
     width: 100%;
     max-width: 640px;
-    margin:0 auto;
+    margin: 0 auto;
     margin-bottom: 50px;
 }
 

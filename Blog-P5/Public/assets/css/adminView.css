@@ -12,14 +12,14 @@ h2 {
 }
 
 h2 a {
-    text-decoration:none; 
+    text-decoration: none; 
     color: #bea01a;
 }
 
 h2 a:hover {
-    color:#ffffff; 
-    text-decoration:none; 
-    cursor:pointer;  
+    color: #ffffff; 
+    text-decoration: none; 
+    cursor: pointer;  
 }
 
 /* HEADER */
@@ -84,7 +84,7 @@ header {
 }
 
 ul {
-    margin :auto;
+    margin: auto;
     list-style-type: none;
     padding-inline-start: 0px;
 }
@@ -174,7 +174,6 @@ li a {
     display: block;
     padding: 15px;
 }
-
 
 .mid_p {
     display: block;
@@ -297,22 +296,6 @@ li a {
 
 .containerTablePosts .containerPosts .post:nth-child(odd) {
     background-color: #ececec;
-}
-
-.containerTablePosts .containerPosts .delete a {
-    cursor: pointer;
-}
-
-.return a {
-    text-decoration: underline;
-    color: #bea01a;
-    display: inline-block;
-    margin: 5px 5px 25px 30px;
-    padding: 3px;
-}
-
-.return a:hover {
-    color: #ffffff;
 }
 
 @media only screen and (max-width: 1400px) {

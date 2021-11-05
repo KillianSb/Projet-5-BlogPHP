@@ -1,15 +1,5 @@
 {% extends 'base/base.twig' %}
 
-{% block connection %} 
-{% if user.username is defined %} 
-<p>Bonjours {{user.username}}</p> 
-<li><a id="disconnect" href="deconnexion">DECONNEXION</a></li>
-{% else %}
-<li><a id="connect" href="connexion">CONNEXION</a></li>
-{% endif %} 
-
-{% endblock connection %}
-
 {% block content %}
     
     <h1>Création de Blog</h1>

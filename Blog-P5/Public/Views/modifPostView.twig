@@ -6,16 +6,6 @@
 {% block liens3 %}..\{% endblock %}
 {% block liens4 %}..\{% endblock %}
 
-{% block connection %} 
-{% if user.username is defined %} 
-<p>Bonjours {{user.username}}</p> 
-<li><a id="disconnect" href="deconnexion">DECONNEXION</a></li>
-{% else %}
-<li><a id="connect" href="connexion">CONNEXION</a></li>
-{% endif %} 
-
-{% endblock connection %}
-
 {% block content %}
     
     <h1>Modification du post</h1>
