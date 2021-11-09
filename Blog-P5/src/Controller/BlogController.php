@@ -65,9 +65,8 @@ class BlogController
 		$twig = new Environment($loader);
 
 		$username = $_SESSION['user'];
-		$userIsAdmin = $user['admin'];
-
 		$user = $this->usersModel->getUser($username);
+		$userIsAdmin = $user['admin'];
 
 		echo $twig->render('createPostView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin]);
 	}
@@ -110,7 +109,7 @@ class BlogController
 
 		$get_url = $_GET["url"];
 		if (@preg_match('#^([^0-9]+)([0-9]+)$#', $get_url, $post_id))
-			$post_id = $post_id[2];
+			$idPost = $post_id[2];
 
 		if (isset($_SESSION['successMessage'])) {
 			if ($_SESSION['successMessage'] == "CommentError") {

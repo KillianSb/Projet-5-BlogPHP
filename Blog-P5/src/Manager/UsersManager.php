@@ -3,7 +3,6 @@
 namespace App\Manager;
 
 use App\Core\Database;
-use App\Models\UserModel;
 
 class UsersManager
 {
@@ -20,7 +19,7 @@ class UsersManager
 	public function getUsers()
 	{
 
-		$request = $this->db->db->query('SELECT * FROM users')->fetchAll();
+		$request = $this->db->db->query('SELECT * FROM users ORDER BY id DESC')->fetchAll();
 		$usersArray = [];
 
 		foreach ($request as $usersArray) {
