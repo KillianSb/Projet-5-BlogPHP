@@ -45,7 +45,7 @@ class BlogController
                 unset($_SESSION['successMessage']);
                 $posts = $this->postsManager->getPosts();
                 $user = $this->usersModel->getUser($username);
-                echo $twig->render('blogView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'posts' => $posts, 'comments' => $comments, "successMessage" => $successMessage, "class" => "successMessage"]);
+                echo $twig->render('blogView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'posts' => $posts, "successMessage" => $successMessage, "class" => "successMessage"]);
             } elseif ($_SESSION['successMessage'] == "postError") {
                 $successMessage = 'Une erreur est survenu, veuillez réessayer.';
                 unset($_SESSION['successMessage']);
@@ -72,9 +72,6 @@ class BlogController
     }
 
     public function traitementCreatePost(){
-        $loader = new FilesystemLoader('Public\Views');
-        $twig = new Environment($loader);
-
         $titre = $_POST["title"];
         $chapo = $_POST["chapo"];
         $content = $_POST["content"];

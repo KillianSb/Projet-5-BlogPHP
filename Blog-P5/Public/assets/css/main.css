@@ -160,7 +160,7 @@ header {
     display: flex;
     justify-content: flex-end;
     margin: auto;
-    padding: 20px 60px 20px 250px;
+    padding: 20px 20px 20px 250px;
 }
 
 .menu_bas a {
@@ -404,7 +404,7 @@ height: 450px;
 
     .containerBlockContact {
         margin: 200px 10% 5% 10%;
-        align-items: center !important;
+        align-items: center;
         flex-direction: column;
     }
 
