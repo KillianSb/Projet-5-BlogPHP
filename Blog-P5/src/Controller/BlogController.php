@@ -55,7 +55,7 @@ class BlogController
         } else {
             $user = $this->usersModel->getUser($username);
 
-            echo $twig->render('blogView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'posts' => $posts, 'comments' => $comments]);
+            echo $twig->render('blogView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'posts' => $posts]);
         }
     }
 

@@ -4,14 +4,14 @@ body {
 }
 
 h1, h2 {
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
     font-size: 21px;
 }
 
 p {
     color: #bea01a;
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
     font-size: 20px;
 }
 
@@ -45,10 +45,10 @@ li a:hover {
 }
 
 a {
-    list-style-type : none;
+    list-style-type: none;
     text-decoration: none;
     color: #bea01a;
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
 }
 
@@ -62,7 +62,7 @@ a:hover {
 
 
 #disconnect, #connect, #admin {
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
 }
 
 /* HEADER */
@@ -110,7 +110,7 @@ header {
     text-transform: uppercase;
     color: #bea01a;
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
-    list-style-type : none;
+    list-style-type: none;
     text-decoration: none;
 }
 
@@ -177,7 +177,7 @@ header {
 }
 
 .links a {
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
     color: #bea01a;
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
     font-size: 27px;
@@ -222,7 +222,7 @@ header {
 .mid_p {
     display: block;
     padding: 15px;
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
     font-size: 17px;
     color: #ffffff;
     text-align: center;
@@ -264,7 +264,7 @@ header {
 /* CV */
 
 .header_title h1 a {
-    list-style-type : none;
+    list-style-type: none;
     text-decoration: none;
     text-align: center;
     color: #bea01a;
@@ -364,7 +364,7 @@ div.rs li a:focus {
 
 .containerBlockContact .form input::placeholder, .containerBlockContact .form textarea::placeholder {
     color: white;
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
     font-size: 14px;
 }
 
@@ -375,13 +375,13 @@ div.rs li a:focus {
     background-color: #bea01a;
     padding-left: 0px;
     font-weight: bold;
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
     color: black;
 }
 
 .containerBlockContact .form input[type=submit]:hover {
-    color:#ffffff; 
-    cursor:pointer;  
+    color: #ffffff; 
+    cursor: pointer;  
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
 }
 
@@ -639,7 +639,7 @@ height: 450px;
 
 .button a {
     margin: 25px;
-    list-style-type : none;
+    list-style-type: none;
     text-decoration: none;
     color: #000000;
     text-decoration: underline;
@@ -723,7 +723,7 @@ height: 450px;
 .containerBlockInscription .form input::placeholder,
 .containerBlockConnexion .form input::placeholder {
     color: white;
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
     font-size: 14px;
 }
 
@@ -735,7 +735,7 @@ height: 450px;
     background-color: rgb(139, 139, 139);
     padding-left: 0px;
     font-weight: bold;
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
     color: black;
 }
 
@@ -745,7 +745,7 @@ height: 450px;
     text-transform: uppercase;
     background-color: rgb(255, 255, 255);
     font-weight: bold;
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
     color: black;
     border: none;
     border-radius: 7px;
@@ -765,8 +765,8 @@ height: 450px;
 .containerBlockConnexion .form button:hover,
 .containerBlockInscription .form input[type=submit]:hover,
 .containerBlockConnexion .form input[type=submit]:hover {
-    color:#ffffff; 
-    cursor:pointer;  
+    color: #ffffff; 
+    cursor: pointer;  
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
 }
 
@@ -822,7 +822,7 @@ label {
     margin-left: 0px;
     width: 100%;
     color: #bea01a;
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
     font-size: 20px;
     text-shadow: 2px 2px 1px rgb(0, 0, 0);
 }
@@ -838,7 +838,7 @@ label {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
 }
 
 #modif:hover, #create:hover {
@@ -847,8 +847,8 @@ label {
 }
 
 .container {
-    box-sizing : border-box;
-    border-radius:5px;
+    box-sizing: border-box;
+    border-radius: 5px;
     background-color: #848486;
     padding: 20px;
     width: 100%;

@@ -29,7 +29,7 @@
             <p class="title">{{post.titre}}</p>
             <p class="author">{{post.auteur}}</p>
             <p class="chapô">{{post.chapo}}</p>
-            <p class="content">{{ post.contenu|length > 40 ? post.contenu|slice(0, 40) ~ '...' : post.contenu  }}</p>
+            <p class="content">{{ post.contenu|length > 30 ? post.contenu|slice(0, 30) ~ '...' : post.contenu  }}</p>
             <p class="dateCreate">{{post.dateCreate}}</p>
             {% if post.lastModif != null %} 
                 <p class="lastModif">{{post.lastModif}}</p>

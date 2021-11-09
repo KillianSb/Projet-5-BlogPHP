@@ -4,7 +4,7 @@ body {
 }
 
 p, h1, h2 {
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
 }
 
 h2 {
@@ -17,7 +17,7 @@ h2 a {
 }
 
 h2 a:hover {
-    color: #ffffff; 
+    color:#ffffff; 
     text-decoration: none; 
     cursor: pointer;  
 }
@@ -134,7 +134,7 @@ li a {
 }
 
 .links a {
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
     color: #bea01a;
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
     font-size: 27px;
@@ -178,7 +178,7 @@ li a {
 .mid_p {
     display: block;
     padding: 15px;
-    font-family: 'Lobster', cursive;
+    font-family: cursive;
     font-size: 17px;
     color: #ffffff;
     text-align: center;
