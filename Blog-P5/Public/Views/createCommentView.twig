@@ -1,35 +1,41 @@
 {% extends 'base/base.twig' %}
-{% block css %}..\{% endblock %}
-{% block photo %}..\{% endblock %}
-{% block liens1 %}..\{% endblock %}
-{% block liens2 %}..\{% endblock %}
-{% block liens3 %}..\{% endblock %}
-{% block liens4 %}..\{% endblock %}
+{% block css %}..\
+{% endblock %}
+{% block photo %}..\
+{% endblock %}
+{% block liens1 %}..\
+{% endblock %}
+{% block liens2 %}..\
+{% endblock %}
+{% block liens3 %}..\
+{% endblock %}
+{% block liens4 %}..\
+{% endblock %}
 
 {% block content %}
-    
-    <h1>Création de Commentaire</h1>
+
+	<h1>Création de Commentaire</h1>
 
 
-    <div class="containerBlockMessageModif">
-        <div class="BlockMessage">
-            {% if successMessage is defined %}
-                <p class={{class}}>{{ successMessage }}</p>
-            {% endif %}
-        </div>
-    </div>
+	<div class="containerBlockMessageModif">
+		<div class="BlockMessage">
+			{% if successMessage is defined %}
+				<p class={{class}}>{{ successMessage }}</p>
+			{% endif %}
+		</div>
+	</div>
 
 
-    <div class="container">
-        <form name="createComment" method="post" action="../commentPostRequest/{{ id }}">
-            <input type="hidden" name="post_id" value="{{ id }}">
+	<div class="container">
+		<form name="createComment" method="post" action="../commentPostRequest/{{ id }}">
+			<input type="hidden" name="post_id" value="{{ id }}">
 
-            <label for="comment">Commentaire</label>
-            <textarea name="comment" placeholder="Commentaire" ></textarea><br />
+			<label for="comment">Commentaire</label>
+			<textarea name="comment" placeholder="Commentaire"></textarea><br/>
 
-            <input id="modif" type="submit" name="valider" value="Crée le commentaire" />
-        </form>
-       <a href="/P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/viewPost/{{ id }}">Retour</a>
-    </div>
+			<input id="modif" type="submit" name="valider" value="Crée le commentaire"/>
+		</form>
+		<a href="/P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/viewPost/{{ id }}">Retour</a>
+	</div>
 
 {% endblock %}

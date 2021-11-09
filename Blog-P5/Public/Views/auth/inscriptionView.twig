@@ -1,33 +1,39 @@
 {% extends 'base/base.twig' %}
 {% block content %}
-  
-    <h1>INSCRIPTION</h1>
 
-   <body>
+	<h1>INSCRIPTION</h1>
 
-      <p><u>Les champs requis sont marqués d'une (*)</u></p> 
+	<body>
 
-      <div class="containerBlockMessage">
-         <div class="BlockMessage">
-            {% if successMessage is defined %}
-               <p class={{class}}>{{ successMessage }}</p>
-            {% endif %}
-         </div>
-      </div>
-      <div class="containerBlockInscription">
-         <div class="form">
-            <form name="register" method="post" action="inscriptionRequest">
-               <div class="containerFirstLineInscription">
-                  <input type="text" required name="name" placeholder="* Nom" />
-                  <input type="text" required name="firstname" placeholder="* Prenom" />
-                  <input type="text" required name="username" placeholder="* Nom Utilisateur" />
-               </div>
-               <input type="text" required name="mail" placeholder="* Email" />
-               <input type="password" required name="pass" placeholder="* Mot de passe" />
-               <input type="submit" name="valider" value="S'authentifier" />
-            </form>
-            <button type="submit" name="valider"><a href="connexion">Retour Connexion </a></button>
-         </div>
-      </div>
+		<p>
+			<u>Les champs requis sont marqués d'une (*)</u>
+		</p>
 
-{% endblock %}
+		<div class="containerBlockMessage">
+			<div class="BlockMessage">
+				{% if successMessage is defined %}
+					<p class={{class}}>{{ successMessage }}</p>
+				{% endif %}
+			</div>
+		</div>
+		<div class="containerBlockInscription">
+			<div class="form">
+				<form name="register" method="post" action="inscriptionRequest">
+					<div class="containerFirstLineInscription">
+						<input type="text" required name="name" placeholder="* Nom"/>
+						<input type="text" required name="firstname" placeholder="* Prenom"/>
+						<input type="text" required name="username" placeholder="* Nom Utilisateur"/>
+					</div>
+					<input type="text" required name="mail" placeholder="* Email"/>
+					<input type="password" required name="pass" placeholder="* Mot de passe"/>
+					<input type="submit" name="valider" value="S'authentifier"/>
+				</form>
+				<button type="submit" name="valider">
+					<a href="connexion">Retour Connexion
+					</a>
+				</button>
+			</div>
+		</div>
+
+	{% endblock %}
+</body>

@@ -1,60 +1,53 @@
 <!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>header</title>
-  <link rel="stylesheet" href="Public/assets/css/adminView.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
-</head>
-<body class="admin">
+	<head>
+		<meta charset="utf-8">
+		<title>header</title>
+		<link rel="stylesheet" href="Public/assets/css/adminView.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+	</head>
+	<body
+		class="admin">
 
-    <!-- Header -->
-    <section class="header_title">
-    <header>
-        <div class="box_header">
-            <ul class="links">
-                {% block headLinks %} 
+		<!-- Header -->
+		<section class="header_title">
+			<header>
+				<div class="box_header">
+					<ul class="links"> {% block headLinks %}{% endblock headLinks %}
+						</ul>
+						<div class="connect"> {% block connection %}{% endblock connection %}
+							</div>
+						</div>
+					</header>
 
-                {% endblock headLinks %} 
-            </ul>
-            <div class="connect">
-                {% block connection %} 
+					{% block content %}
 
-                {% endblock connection %} 
-            </div>
-        </div>
-    </header>
+						{% block links %}{% endblock links %}
 
-    {% block content %}
-
-        {% block links %} 
-
-        {% endblock links %} 
-
-    {% endblock content %} 
+					{% endblock content %}
 
 
-       <!-- Footer -->
-   <section class="footer">
-        <div class="box_footer">
-            <!-- centre -->
-            <div class="footer_center">
-                &copy; 2021 - Killian Sieniski
-            </div>
-            <!-- droite -->
-            <div class="footer_right">
-                <ul class="footer_links">
-                    <ul class="menu_bas">
-                        <li>
-                            <a href="legal" title="Mentions légal">Mentions légal</a>
-                        </li>
-                    </ul>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-
-</body>
-</html>
+					<!-- Footer -->
+					<section class="footer">
+						<div
+							class="box_footer">
+							<!-- centre -->
+							<div class="footer_center">
+								&copy; 2021 - Killian Sieniski
+							</div>
+							<!-- droite -->
+							<div class="footer_right">
+								<ul class="footer_links">
+									<ul class="menu_bas">
+										<li>
+											<a href="legal" title="Mentions légal">Mentions légal</a>
+										</li>
+									</ul>
+								</ul>
+							</div>
+						</div>
+					</section>
+				</body>
+			</body>
+		</html>

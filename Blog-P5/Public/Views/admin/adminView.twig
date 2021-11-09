@@ -1,22 +1,33 @@
 {% extends 'base/baseAdmin.twig' %}
 
 {% block headLinks %}
-    <li><a href="home">ACCUEIL</a></li>
-    <li><a href="blog">BLOG</a></li>
-    <li><a href="cv">CV</a></li>
-    <li><a href="contact">CONTACT</a></li>
+	<li>
+		<a href="home">ACCUEIL</a>
+	</li>
+	<li>
+		<a href="blog">BLOG</a>
+	</li>
+	<li>
+		<a href="cv">CV</a>
+	</li>
+	<li>
+		<a href="contact">CONTACT</a>
+	</li>
 {% endblock headLinks %}
 
 {% block content %}
 
-<h1>ADMIN</h1>
+	<h1>ADMIN</h1>
 
-    {% block links %}
+	{% block links %}
 
-    <h2><a href="usersListe">Utilisateurs</a></h2></br>
+		<h2>
+			<a href="usersListe">Utilisateurs</a>
+		</h2>
+	</br>
 
-    <h2><a href="postsListe">Modifier un blog</a></h2>
+	<h2>
+		<a href="postsListe">Modifier un blog</a>
+	</h2>
 
-    {% endblock links %}
-
-{% endblock content %}
+{% endblock links %}{% endblock content %}

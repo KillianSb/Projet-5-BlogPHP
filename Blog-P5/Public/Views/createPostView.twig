@@ -1,33 +1,33 @@
 {% extends 'base/base.twig' %}
 
 {% block content %}
-    
-    <h1>Création de Blog</h1>
 
-    <div class="containerBlockMessageModif">
-        <div class="BlockMessage">
-            {% if successMessage is defined %}
-                <p class={{class}}>{{ successMessage }}</p>
-            {% endif %}
-        </div>
-    </div>
+	<h1>Création de Blog</h1>
 
-    <div class="container">
-        <form name="createPost" method="post" action="createPost">
-            <label for="titre">Titre</label>
-            <input type="text" required name="title" placeholder="Titre" value="{{post.titre}}"/><br />
+	<div class="containerBlockMessageModif">
+		<div class="BlockMessage">
+			{% if successMessage is defined %}
+				<p class={{class}}>{{ successMessage }}</p>
+			{% endif %}
+		</div>
+	</div>
 
-            <label for="chapo">Chapô</label>
-            <input type="text" name="chapo" placeholder="Chapô" value="{{post.chapo}}"/><br />
+	<div class="container">
+		<form name="createPost" method="post" action="createPost">
+			<label for="titre">Titre</label>
+			<input type="text" required name="title" placeholder="Titre" value="{{post.titre}}"/><br/>
 
-            <label for="content">Contenu</label>
-            <textarea id="content" name="content" placeholder="Contenu" >{{post.contenu}}</textarea><br />
+			<label for="chapo">Chapô</label>
+			<input type="text" name="chapo" placeholder="Chapô" value="{{post.chapo}}"/><br/>
 
-            <input id="create" type="submit" name="valider" value="Crée le post" />
-        </form>
-        <a href="blog">Retour Blog </a>
-    </div>
+			<label for="content">Contenu</label>
+			<textarea id="content" name="content" placeholder="Contenu">{{post.contenu}}</textarea><br/>
 
+			<input id="create" type="submit" name="valider" value="Crée le post"/>
+		</form>
+		<a href="blog">Retour Blog
+		</a>
+	</div>
 
 
 {% endblock %}

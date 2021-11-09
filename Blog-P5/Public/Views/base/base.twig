@@ -1,59 +1,63 @@
 <!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>header</title>
-  <link rel="stylesheet" href="{% block css %} {% endblock %}Public/assets/css/main.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body class="index">
+	<head>
+		<meta charset="utf-8">
+		<title>header</title>
+		<link rel="stylesheet" href="{% block css %} {% endblock %}Public/assets/css/main.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body
+		class="index">
 
-    <!-- Header -->
-    <section class="header_title">
-    <header>
-        <div class="box_header">
-            <img class="logo" src="{% block photo %} {% endblock %}Public/assets/img/moi.jpg" alt="">
-            <ul class="links">
-                <li><a href="{% block liens1 %} {% endblock %}home">ACCUEIL</a></li>
-                <li><a href="{% block liens2 %} {% endblock %}blog">BLOG</a></li>
-                <li><a href="{% block liens3 %} {% endblock %}cv">CV</a></li>
-                <li><a href="{% block liens4 %} {% endblock %}contact">CONTACT</a></li>
-            </ul>
-            <div class="connect">
-                {% block connection %} 
+		<!-- Header -->
+		<section class="header_title">
+			<header>
+				<div class="box_header">
+					<img class="logo" src="{% block photo %} {% endblock %}Public/assets/img/moi.jpg" alt="">
+					<ul class="links">
+						<li>
+							<a href="{% block liens1 %} {% endblock %}home">ACCUEIL</a>
+						</li>
+						<li>
+							<a href="{% block liens2 %} {% endblock %}blog">BLOG</a>
+						</li>
+						<li>
+							<a href="{% block liens3 %} {% endblock %}cv">CV</a>
+						</li>
+						<li>
+							<a href="{% block liens4 %} {% endblock %}contact">CONTACT</a>
+						</li>
+					</ul>
+					<div class="connect"> {% block connection %}{% endblock connection %}
+						</div>
+					</div>
+				</header>
 
-                {% endblock connection %} 
-            </div>
-        </div>
-    </header>
-
-    {% block content %} 
-
-    {% endblock content %} 
-
-
-       <!-- Footer -->
-   <section class="footer">
-        <div class="box_footer">
-            <!-- centre -->
-            <div class="footer_center">
-                &copy; 2021 - Killian Sieniski
-            </div>
-            <!-- droite -->
-            <div class="footer_right">
-                <ul class="footer_links">
-                    <ul class="menu_bas">
-                        <li>
-                            <a href="legal" title="Mentions légal">Mentions légal</a>
-                        </li>
-                    </ul>
-                </ul>
-            </div>
-        </div>
-    </section>
+				{% block content %}{% endblock content %}
 
 
-</body>
-</html>
+				<!-- Footer -->
+				<section class="footer">
+					<div
+						class="box_footer">
+						<!-- centre -->
+						<div class="footer_center">
+							&copy; 2021 - Killian Sieniski
+						</div>
+						<!-- droite -->
+						<div class="footer_right">
+							<ul class="footer_links">
+								<ul class="menu_bas">
+									<li>
+										<a href="legal" title="Mentions légal">Mentions légal</a>
+									</li>
+								</ul>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</body>
+		</body>
+	</html>

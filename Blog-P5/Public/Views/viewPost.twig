@@ -1,89 +1,96 @@
 {% extends 'base/base.twig' %}
-{% block css %}..\{% endblock %}
-{% block photo %}..\{% endblock %}
-{% block liens1 %}..\{% endblock %}
-{% block liens2 %}..\{% endblock %}
-{% block liens3 %}..\{% endblock %}
-{% block liens4 %}..\{% endblock %}
+{% block css %}..\
+{% endblock %}
+{% block photo %}..\
+{% endblock %}
+{% block liens1 %}..\
+{% endblock %}
+{% block liens2 %}..\
+{% endblock %}
+{% block liens3 %}..\
+{% endblock %}
+{% block liens4 %}..\
+{% endblock %}
 
-{% block connection %} 
-{% if user.username is defined %} 
-<p>Bonjours {{user.username}}</p> 
-<li><a id="disconnect" href="deconnexion">DECONNEXION</a></li>
-{% else %}
-<li><a id="connect" href="connexion">CONNEXION</a></li>
-{% endif %} 
+{% block connection %}
+	{% if user.username is defined %}
+		<p>Bonjours
+			{{user.username}}</p>
+		<li>
+			<a id="disconnect" href="deconnexion">DECONNEXION</a>
+		</li>
+	{% else %}
+		<li>
+			<a id="connect" href="connexion">CONNEXION</a>
+		</li>
+	{% endif %}
 {% endblock connection %}
 
 {% block content %}
 
-    <h1>{{post.titre}}</h1>
+	<h1>{{post.titre}}</h1>
 
-    <div class="containerBlockMessageModif">
-        <div class="BlockMessage">
-            {% if successMessage is defined %}
-                <p class={{class}}>{{ successMessage }}</p>
-            {% endif %}
-        </div>
-    </div>
-
-
-    <div class="containerTablePostsUnity">
-        <div class="containerTablePostsBlog">
-            <div class="containerPostsBlog">
-                <div class="postblog">
-                <p class="title">{{post.titre}}</p>
-                    <p class="author">Autheur : {{post.auteur}}</p>
-                    <p class="chapo">Chapo : {{post.chapo}}</p>
-                    <p class="content">{{post.contenu}}</p>
-                    <p class="dateCreate">Crée le {{post.dateCreate}}</p>
-                    {% if post.lastModif != null %} 
-                        <p class="dateModif">Dernière modification le {{post.lastModif}}</p>
-                    {% endif %} 
-                    <div class="containerContentBlog">
-                        <div class="button">
-                            <input type="hidden" name="post_id" value="{{post.id}}"></input>
-                            {% block connecte_1 %} 
-                            {% if user.username is defined %} 
-                            <a type="submit" class="comment" name="post_id" href="../commentPost/{{post.id}}">Commenter</a></br>                        
-                            {% else %}
-                            <p>Vous n'etes pas connectez pour Commenter ce post !</p> 
-                            {% endif %} 
-                            {% endblock connecte_1 %}
-                            {% if user.username == post.auteur or IsAdmin == true %} 
-                            <a type="submit" class="modif" name="post_modif_id" href="../modifPost/{{post.id}}">Modif</a></br>
-                            {% endif %}                      
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="containerPostsComment">
-            {% for comment in comments %}
-            <div class="postcomment">
-                <p class="author_comment">{{comment.author}}</p>
-                <p class="comment">{{comment.comment}}</p>
-                <p class="comment_date">Crée le {{comment.comment_date}}</p>
-                <div class="button">
-                    <input type="hidden" name="comment_id" value="{{comment.id}}"></input>
-                    {% block connecte_2 %}
-                    {% if IsAdmin == true %} 
-                    <a id="del_com" class="delete" href="../deleteComment/{{comment.id}}">Supprimer</a>
-                    {% endif %}
-                    {% endblock connecte_2 %}
-                </div>
-            </div>
-            {% endfor %}
-            {% if comments is empty%}
-                <div class="containerPostsNotComment">
-                <p> pas de commentaires </p>
-                </div>
-            {% endif %}
-        </div>
-    </div>
-    <div class="return">
-        <a href="../blog">Retour</a>
-    </div>
+	<div class="containerBlockMessageModif">
+		<div class="BlockMessage">
+			{% if successMessage is defined %}
+				<p class={{class}}>{{ successMessage }}</p>
+			{% endif %}
+		</div>
+	</div>
 
 
-{% endblock content %}
+	<div class="containerTablePostsUnity">
+		<div class="containerTablePostsBlog">
+			<div class="containerPostsBlog">
+				<div class="postblog">
+					<p class="title">{{post.titre}}</p>
+					<p class="author">Autheur :
+						{{post.auteur}}</p>
+					<p class="chapo">Chapo :
+						{{post.chapo}}</p>
+					<p class="content">{{post.contenu}}</p>
+					<p class="dateCreate">Crée le
+						{{post.dateCreate}}</p>
+					{% if post.lastModif != null %}
+						<p class="dateModif">Dernière modification le
+							{{post.lastModif}}</p>
+					{% endif %}
+					<div class="containerContentBlog">
+						<div class="button">
+							<input type="hidden" name="post_id" value="{{post.id}}"></input>
+						{% block connecte_1 %}
+							{% if user.username is defined %}
+								<a type="submit" class="comment" name="post_id" href="../commentPost/{{post.id}}">Commenter</a>
+							</br>
+						{% else %}
+							<p>Vous n'etes pas connectez pour Commenter ce post !</p>
+						{% endif %}
+					{% endblock connecte_1 %}
+					{% if user.username == post.auteur or IsAdmin == true %}
+						<a type="submit" class="modif" name="post_modif_id" href="../modifPost/{{post.id}}">Modif</a>
+					</br>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div></div><div class="containerPostsComment">
+{% for comment in comments %}
+	<div class="postcomment">
+		<p class="author_comment">{{comment.author}}</p>
+		<p class="comment">{{comment.comment}}</p>
+		<p class="comment_date">Crée le
+			{{comment.comment_date}}</p>
+		<div class="button">
+			<input type="hidden" name="comment_id" value="{{comment.id}}"></input>
+		{% block connecte_2 %}
+			{% if IsAdmin == true %}
+				<a id="del_com" class="delete" href="../deleteComment/{{comment.id}}">Supprimer</a>
+			{% endif %}
+		{% endblock connecte_2 %}
+	</div>
+</div>{% endfor %}{% if comments is empty%}
+<div class="containerPostsNotComment">
+	<p>
+		pas de commentaires
+	</p>
+</div>{% endif %}</div></div><div class="return"><a href="../blog">Retour</a></div>{% endblock content %}

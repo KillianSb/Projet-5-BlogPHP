@@ -7,12 +7,12 @@ $router = new App\Router\Router($_GET['url']);
 // ------------------------------------------------------------------ //
 
 // Views
-$router->get('/home', 'Home#homeView'); 
+$router->get('/home', 'Home#homeView');
 $router->get('/cv', 'Cv#cvView');
 $router->get('/blog', 'Blog#blogView');
 $router->get('/contact', 'Contact#contactView');
 $router->post('/traitementForm', 'Traitement#traitementForm');
-$router->get('/legal', 'Legal#legalView'); 
+$router->get('/legal', 'Legal#legalView');
 
 // ------------------------------------------------------------------ //
 

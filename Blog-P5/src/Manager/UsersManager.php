@@ -8,64 +8,61 @@ use App\Models\UserModel;
 class UsersManager
 {
 
-    public function __construct()
-    {
-        $this->db = new Database();
-    }
+	public function __construct()
+	{
+		$this->db = new Database();
+	}
 
 
-    /**
-    * return multiple users
-    */
-    public function getUsers()
-    {
-        
-        $request = $this->db->db->query('SELECT * FROM users')->fetchAll();
-        $usersArray = [];
+	/**
+	 * return multiple users
+	 */
+	public function getUsers()
+	{
 
-        foreach ($request as $usersArray) {
-            return $request;
-        }
+		$request = $this->db->db->query('SELECT * FROM users')->fetchAll();
+		$usersArray = [];
 
-    }
+		foreach ($request as $usersArray) {
+			return $request;
+		}
+	}
 
-    /**
-    * return single user
-    */
-    public function getUser($idUser)
-    {
-        $user = $this->db->db->query("SELECT * FROM users WHERE id = $idUser")->fetch();
-        
-        return $user;
-    }
+	/**
+	 * return single user
+	 */
+	public function getUser($idUser)
+	{
+		$user = $this->db->db->query("SELECT * FROM users WHERE id = $idUser")->fetch();
 
-    /**
-    * change law admin of user
-    */
-    public function lawChange($idUser)
-    {
-        $user = $this->getUser($idUser);
+		return $user;
+	}
 
-        if ($user['admin'] == '0') {
-            $request = $this->db->db->prepare('UPDATE users SET admin = :admin WHERE id = :id ');
-            $params = [':admin' => '1', ':id' => $idUser];
-            $request->execute($params);
-        } 
-        else {
-            $request = $this->db->db->prepare('UPDATE users SET admin = :admin WHERE id = :id ');
-            $params = [':admin' => '0', ':id' => $idUser];
-            $request->execute($params);
-        }
-    }
+	/**
+	 * change law admin of user
+	 */
+	public function lawChange($idUser)
+	{
+		$user = $this->getUser($idUser);
 
-    /**
-    * delete a user by id
-    */
-    public function deleteUser($idUser)
-    {
-        $request = $this->db->db->prepare("DELETE FROM users WHERE id=:id");
-        $params = [':id' => $idUser];
-        $request->execute($params);
-    }
+		if ($user['admin'] == '0') {
+			$request = $this->db->db->prepare('UPDATE users SET admin = :admin WHERE id = :id ');
+			$params = [':admin' => '1', ':id' => $idUser];
+			$request->execute($params);
+		} else {
+			$request = $this->db->db->prepare('UPDATE users SET admin = :admin WHERE id = :id ');
+			$params = [':admin' => '0', ':id' => $idUser];
+			$request->execute($params);
+		}
+	}
 
+	/**
+	 * delete a user by id
+	 */
+	public function deleteUser($idUser)
+	{
+		$request = $this->db->db->prepare("DELETE FROM users WHERE id=:id");
+		$params = [':id' => $idUser];
+		$request->execute($params);
+	}
 }

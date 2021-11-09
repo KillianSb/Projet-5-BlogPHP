@@ -1,36 +1,40 @@
 {% extends 'base/base.twig' %}
 
-{% block connection %} 
-{% if user.username is defined %} 
-<p>Bonjours {{user.username}}</p> 
-<li><a id="disconnect" href="deconnexion">DECONNEXION</a></li>
-{% else %}
-<li><a id="connect" href="connexion">CONNEXION</a></li>
-{% endif %} 
+{% block connection %}
+	{% if user.username is defined %}
+		<p>Bonjours
+			{{user.username}}</p>
+		<li>
+			<a id="disconnect" href="deconnexion">DECONNEXION</a>
+		</li>
+	{% else %}
+		<li>
+			<a id="connect" href="connexion">CONNEXION</a>
+		</li>
+	{% endif %}
 
-{% if IsAdmin == true %} 
-<li><a id="admin" href="admin">ADMIN</a></li>
-{% endif %}
+	{% if IsAdmin == true %}
+		<li>
+			<a id="admin" href="admin">ADMIN</a>
+		</li>
+	{% endif %}
 {% endblock connection %}
 
 
 {% block content %}
-    
-    <h1>Killian Sieniski</h1>
 
-    <div class="mid_block">
-        <div class="mid_title">
-            <h2><u>Jeune développeur avec une soiffe de connaisance</u></h2>
-        </div>
-        <div class="mid_text">
-            <p class="mid_p">
-                Je suis en Formation "Concepteur Développeur d'application" Bac+ 3/4.</br>
-                J'ai 21 ans, je vie a Fontaine Milon.</br>
-                J'étudie en Télétravail sur NK Informatique cette année.</br>
-                .</br>
-                .</br>
-            </p>
-        </div>
-    </div>
-    
-{% endblock %}
+	<h1>Killian Sieniski</h1>
+
+	<div class="mid_block">
+		<div class="mid_title">
+			<h2>
+				<u>Jeune développeur avec une soiffe de connaisance</u>
+			</h2>
+		</div>
+		<div class="mid_text">
+			<p class="mid_p">Je suis en Formation "Concepteur Développeur d'application" Bac+ 3/4.
+			</p>
+		</br>
+		J'ai 21 ans, je vie a Fontaine Milon.</br>
+	J'étudie en Télétravail sur NK Informatique cette année.</br>
+.</br>.</br></p></div></div>{% endblock %}

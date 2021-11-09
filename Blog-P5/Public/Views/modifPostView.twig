@@ -1,42 +1,49 @@
 {% extends 'base/base.twig' %}
-{% block css %}..\{% endblock %}
-{% block photo %}..\{% endblock %}
-{% block liens1 %}..\{% endblock %}
-{% block liens2 %}..\{% endblock %}
-{% block liens3 %}..\{% endblock %}
-{% block liens4 %}..\{% endblock %}
+{% block css %}..\
+{% endblock %}
+{% block photo %}..\
+{% endblock %}
+{% block liens1 %}..\
+{% endblock %}
+{% block liens2 %}..\
+{% endblock %}
+{% block liens3 %}..\
+{% endblock %}
+{% block liens4 %}..\
+{% endblock %}
 
 {% block content %}
-    
-    <h1>Modification du post</h1>
 
-    <div class="containerBlockMessageModif">
-        <div class="BlockMessage">
-            {% if successMessage is defined %}
-                <p class={{class}}>{{ successMessage }}</p>
-            {% endif %}
-        </div>
-    </div>
+	<h1>Modification du post</h1>
+
+	<div class="containerBlockMessageModif">
+		<div class="BlockMessage">
+			{% if successMessage is defined %}
+				<p class={{class}}>{{ successMessage }}</p>
+			{% endif %}
+		</div>
+	</div>
 
 
-    <div class="container">
-        <form name="modifPost" method="post" action="../ModifPostRequest/{{ id }}">
-            <label for="titre">Titre</label>
-            <input type="text" required name="title" placeholder="Titre" value="{{post.titre}}"/><br />
+	<div class="container">
+		<form name="modifPost" method="post" action="../ModifPostRequest/{{ id }}">
+			<label for="titre">Titre</label>
+			<input type="text" required name="title" placeholder="Titre" value="{{post.titre}}"/><br/>
 
-            <input type="hidden" name="dateCreate" value="{{ post.dateCreate }}">
+			<input type="hidden" name="dateCreate" value="{{ post.dateCreate }}">
 
-            <label for="chapo">Chapô</label>
-            <input type="text" name="chapo" placeholder="Chapô" value="{{post.chapo}}"/><br />
+			<label for="chapo">Chapô</label>
+			<input type="text" name="chapo" placeholder="Chapô" value="{{post.chapo}}"/><br/>
 
-            <label for="content">Contenu</label>
-            <textarea id="content" name="content" placeholder="Contenu" >{{post.contenu}}</textarea><br />
+			<label for="content">Contenu</label>
+			<textarea id="content" name="content" placeholder="Contenu">{{post.contenu}}</textarea><br/>
 
-            <input id="modif" type="submit" name="valider" value="Modifier le post" />
-        </form>
-        <button type="submit" class="btn btn-primary"><a href="/P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/viewPost/{{ id }}">Retour</a></button>
-    </div>
-
+			<input id="modif" type="submit" name="valider" value="Modifier le post"/>
+		</form>
+		<button type="submit" class="btn btn-primary">
+			<a href="/P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/viewPost/{{ id }}">Retour</a>
+		</button>
+	</div>
 
 
 {% endblock %}

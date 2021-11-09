@@ -1,31 +1,37 @@
 {% extends 'base/base.twig' %}
 {% block content %}
 
-    <h1>CONNEXION</h1>
+	<h1>CONNEXION</h1>
 
-   <body>
+	<body>
 
-      <p><u>Les champs requis sont marqués d'une (*)</u></p> 
-   
-      <div class="containerBlockMessage">
-         <div class="BlockMessage">
-            {% if successMessage is defined %}
-               <p class={{class}}>{{ successMessage }}</p>
-            {% endif %}
-         </div>
-      </div>
-      <div class="containerBlockConnexion">
-         <div class="form">
-            <form name="connect" method="post" action="connexionRequest">
-               <div class="containerFirstLineConnexion">
-                  <input type="text" required name="username" placeholder="* Login" /><br />
-                  <input type="password" required name="pass" placeholder="* Mot de passe" /><br />
-                  <button type="submit" class="btn btn-primary">S'authentifier </button>
-               </div>
-            </form>
-            <button type="submit" name="valider"><a href="inscription">Créer un compte</a></button>
-         </div>
-      </div>
+		<p>
+			<u>Les champs requis sont marqués d'une (*)</u>
+		</p>
+
+		<div class="containerBlockMessage">
+			<div class="BlockMessage">
+				{% if successMessage is defined %}
+					<p class={{class}}>{{ successMessage }}</p>
+				{% endif %}
+			</div>
+		</div>
+		<div class="containerBlockConnexion">
+			<div class="form">
+				<form name="connect" method="post" action="connexionRequest">
+					<div class="containerFirstLineConnexion">
+						<input type="text" required name="username" placeholder="* Login"/><br/>
+						<input type="password" required name="pass" placeholder="* Mot de passe"/><br/>
+						<button type="submit" class="btn btn-primary">S'authentifier
+						</button>
+					</div>
+				</form>
+				<button type="submit" name="valider">
+					<a href="inscription">Créer un compte</a>
+				</button>
+			</div>
+		</div>
 
 
-{% endblock %}
+	{% endblock %}
+</body>

@@ -1,49 +1,51 @@
 {% extends 'base/baseAdmin.twig' %}
 
 {% block headLinks %}
-    <li><a href="admin">Retour</a></li>
+	<li>
+		<a href="admin">Retour</a>
+	</li>
 {% endblock headLinks %}
 
 {% block content %}
 
-<h1>Liste des posts</h1>
+	<h1>Liste des posts</h1>
 
-    {# {{ dump(posts) }} #}
+	{# {{ dump(posts) }} #}
 
-<div class="containerTablePosts">
-    <div class="containerTable">
-        <div class="containerHeaderTable">
-        <p class="id">ID</p>
-        <p class="title">Titre</p>
-        <p class="author">Auteur</p>
-        <p class="chapô">Chapô</p>
-        <p class="content">Contenu</p>
-        <p class="dateCreate">Date de création</p>
-        <p class="lastModif">Date de Modification</p>
-        <p class="delete">Modifier/Supprimer</p>
-        </div>
-        <div class="containerPosts">
-        {% for post in posts %}
-            <div class="post">
-            <p class="id">{{post.id}}</p>
-            <p class="title">{{post.titre}}</p>
-            <p class="author">{{post.auteur}}</p>
-            <p class="chapô">{{post.chapo}}</p>
-            <p class="content">{{ post.contenu|length > 30 ? post.contenu|slice(0, 30) ~ '...' : post.contenu  }}</p>
-            <p class="dateCreate">{{post.dateCreate}}</p>
-            {% if post.lastModif != null %} 
-                <p class="lastModif">{{post.lastModif}}</p>
-            {% else %} 
-                <p class="lastModif">X</p>
-            {% endif %} 
-            <div class="containerContent">
-                <div class="button">
-                <a class="modif" href="modifPost/{{post.id}}">Modif</a>/<a class="delete" href="deletePost/{{post.id}}">Supprimer</a>
-                </div>
-            </div>
-            </div>
-        {% endfor %}
-        </div>
-    </div>
-</div>
+	<div class="containerTablePosts">
+		<div class="containerTable">
+			<div class="containerHeaderTable">
+				<p class="id">ID</p>
+				<p class="title">Titre</p>
+				<p class="author">Auteur</p>
+				<p class="chapô">Chapô</p>
+				<p class="content">Contenu</p>
+				<p class="dateCreate">Date de création</p>
+				<p class="lastModif">Date de Modification</p>
+				<p class="delete">Modifier/Supprimer</p>
+			</div>
+			<div class="containerPosts">
+				{% for post in posts %}
+					<div class="post">
+						<p class="id">{{post.id}}</p>
+						<p class="title">{{post.titre}}</p>
+						<p class="author">{{post.auteur}}</p>
+						<p class="chapô">{{post.chapo}}</p>
+						<p class="content">{{ post.contenu|length > 30 ? post.contenu|slice(0, 30) ~ '...' : post.contenu  }}</p>
+						<p class="dateCreate">{{post.dateCreate}}</p>
+						{% if post.lastModif != null %}
+							<p class="lastModif">{{post.lastModif}}</p>
+						{% else %}
+							<p class="lastModif">X</p>
+						{% endif %}
+						<div class="containerContent">
+							<div class="button">
+								<a class="modif" href="modifPost/{{post.id}}">Modif</a>/<a class="delete" href="deletePost/{{post.id}}">Supprimer</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
 {% endblock content %}
