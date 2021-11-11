@@ -5,6 +5,7 @@ namespace App\Controller;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use App\Manager\UsersManager;
+use App\Manager\Session;
 
 class AuthController
 {
@@ -30,12 +31,12 @@ class AuthController
 			header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/cv');
 		}
 		if (isset($_SESSION['successMessage'])) {
-			if ($_SESSION['successMessage'] == "n") {
+			if (Session::get('successMessage') == "n") {
 				$successMessage = "Identifiant ou Mots de passe est incorrect, veuillez réessayer";
-				unset($_SESSION['successMessage']);
+				Session::forget('successMessage');
 				echo $twig->render('auth/connexionView.twig', ["successMessage" => $successMessage, "class" => "errorMessage"]);
 			} else {
-				unset($_SESSION['successMessage']);
+				Session::forget('successMessage');
 			}
 		} else {
 			echo $twig->render('auth/connexionView.twig');
@@ -53,11 +54,11 @@ class AuthController
 
 		$return = $this->usersManager->connexion($username, $passwordToVerify);
 		if ($return[0] == "y") {
-			$_SESSION['user'] = $username;
+			Session::put('user', $username);
 			header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/home');
 			return ("");
 		} else {
-			$_SESSION['successMessage'] = "n";
+			Session::put('successMessage', 'n');
 		}
 		header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/connexion');
 	}
@@ -65,7 +66,7 @@ class AuthController
 
 	public function deconnexion()
 	{
-		unset($_SESSION['user']);
+		Session::forget('user');
 		header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/home');
 	}
 
@@ -76,23 +77,23 @@ class AuthController
 		$twig = new Environment($loader);
 
 		if (isset($_SESSION['successMessage'])) {
-			if ($_SESSION['successMessage'] == "y") {
+			if (Session::get('successMessage') == "y") {
 				$successMessage = "Votre inscription à bien été prise en compte, bienvenue !";
-				unset($_SESSION['successMessage']);
+				Session::forget('successMessage');
 				echo $twig->render('auth/inscriptionView.twig', ["successMessage" => $successMessage, "class" => "successMessage"]);
 			} elseif (isset($_SESSION['successMessage'])) {
-				if ($_SESSION['successMessage'] == 'em') {
+				if (Session::get('successMessage') == 'em') {
 					$successMessage = "Cette addresse mail est déjà utilisé, désolé.";
-					unset($_SESSION['successMessage']);
+					Session::forget('successMessage');
 					echo $twig->render('auth/inscriptionView.twig', ["successMessage" => $successMessage, "class" => "errorMessage"]);
-				} elseif ($_SESSION['successMessage'] == 'eu') {
+				} elseif (Session::get('successMessage') == 'eu') {
 					$successMessage = "Ce nom d'utilisateur est déjà utilisé, désolé.";
-					unset($_SESSION['successMessage']);
+					Session::forget('successMessage');
 					echo $twig->render('auth/inscriptionView.twig', ["successMessage" => $successMessage, "class" => "errorMessage"]);
 				}
-			} elseif ($_SESSION['successMessage'] == "n") {
+			} elseif (Session::get('successMessage') == "n") {
 				$successMessage = 'Une erreur est survenu, veuillez réessayer.';
-				unset($_SESSION['successMessage']);
+				Session::forget('successMessage');
 				echo $twig->render('auth/inscriptionView.twig', ["successMessage" => $successMessage, "class" => "errorMessage"]);
 			}
 		} else {
@@ -113,13 +114,13 @@ class AuthController
 		$return = $this->usersManager->inscription($name, $firstname, $username, $mail, $pass);
 
 		if ($return == "y") {
-			$_SESSION['successMessage'] = "y";
+			Session::put('successMessage', 'y');
 		} elseif ($return == 'em') {
-			$_SESSION['successMessage'] = "em";
+			Session::put('successMessage', 'em');
 		} elseif ($return == 'eu') {
-			$_SESSION['successMessage'] = "eu";
+			Session::put('successMessage', 'eu');
 		} else {
-			$_SESSION['successMessage'] = "n";
+			Session::put('successMessage', 'n');
 		}
 		header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/inscription');
 	}
@@ -134,7 +135,7 @@ class AuthController
 
 	public function traitementIsAdmin()
 	{
-		$username = $_SESSION['user'];
+		$username = Session::get('user');
 		$user = $this->usersManager->getUser($username);
 
 		if ($user['admin'] == false) {
