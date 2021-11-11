@@ -15,4 +15,8 @@ class Session{
     public static function forget($key){
         unset($_SESSION[$key]);
     }
+
+	public static function start(){
+		return !!session_id(); 
+    }
 }

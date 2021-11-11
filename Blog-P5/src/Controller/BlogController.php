@@ -20,7 +20,8 @@ class BlogController
 		$this->usersManager = new UsersManager();
 		$this->postsManager = new PostsManager();
 
-		if (!isset($_SESSION)) {
+		$session = session_id();
+		if(empty($session)){ 
 			session_start();
 		}
 	}

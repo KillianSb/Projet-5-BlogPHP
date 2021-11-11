@@ -15,7 +15,8 @@ class AuthController
 	{
 		$this->usersManager = new UsersManager();
 
-		if (!isset($_SESSION)) {
+		$session = session_id();
+		if(empty($session)){ 
 			session_start();
 		}
 	}

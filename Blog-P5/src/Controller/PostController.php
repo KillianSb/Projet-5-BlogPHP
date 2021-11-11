@@ -12,7 +12,8 @@ class PostController
 	public function __construct()
 	{
 
-		if (!isset($_SESSION)) {
+		$session = session_id();
+		if(empty($session)){ 
 			session_start();
 		}
 	}
