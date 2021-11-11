@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-use App\Models\UserModel;
+use App\Manager\Session;
 
 
 class PostController
@@ -22,9 +22,9 @@ class PostController
 		$loader = new FilesystemLoader('Public\Views');
 		$twig = new Environment($loader);
 
-		$username = $_SESSION['user'];
+		$username = Session::get('user');
 
-		$user = $this->usersModel->getUser($username);
+		$user = $this->usersModel->getUserByUsername($username);
 
 		$userIsAdmin = $user['admin'];
 

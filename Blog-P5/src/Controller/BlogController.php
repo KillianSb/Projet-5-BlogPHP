@@ -4,22 +4,21 @@ namespace App\Controller;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-use App\Models\UserModel;
+use App\Manager\UsersManager;
 use App\Manager\PostsManager;
-use App\Models\PostModel;
+use App\Manager\Session;
 
 
 class BlogController
 {
 
 	private $postsManager;
-	private $usersModel;
+	private $usersManager;
 
 	public function __construct()
 	{
-		$this->usersModel = new UserModel();
+		$this->usersManager = new UsersManager();
 		$this->postsManager = new PostsManager();
-		$this->postModel = new PostModel();
 
 		if (!isset($_SESSION)) {
 			session_start();
@@ -30,10 +29,10 @@ class BlogController
 	{
 		$loader = new FilesystemLoader('Public\Views');
 		$twig = new Environment($loader);
+		
+		$username = Session::get('user');
 
-		$username = $_SESSION['user'];
-
-		$user = $this->usersModel->getUser($username);
+		$user = $this->usersManager->getUserByUsername($username);
 
 		$userIsAdmin = $user['admin'];
 
@@ -42,18 +41,18 @@ class BlogController
 		if (isset($_SESSION['successMessage'])) {
 			if ($_SESSION['successMessage'] == "postCreated") {
 				$successMessage = "Votre article à bien été Crée !";
-				unset($_SESSION['successMessage']);
+				Session::forget('successMessage');
 				$posts = $this->postsManager->getPosts();
-				$user = $this->usersModel->getUser($username);
+				$user = $this->usersManager->getUserByUsername($username);
 				echo $twig->render('blogView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'posts' => $posts, "successMessage" => $successMessage, "class" => "successMessage"]);
 			} elseif ($_SESSION['successMessage'] == "postError") {
 				$successMessage = 'Une erreur est survenu, veuillez réessayer.';
-				unset($_SESSION['successMessage']);
-				$user = $this->usersModel->getUser($username);
-				echo $twig->render('createPostView.twig', ["successMessage" => $successMessage, "class" => "successMessage", 'user' => $user, 'IsAdmin' => $userIsAdmin]);
+				Session::forget('successMessage');
+				$user = $this->usersManager->getUserByUsername($username);
+				echo $twig->render('blogView.twig', ["successMessage" => $successMessage, "class" => "successMessage", 'user' => $user, 'posts' => $posts, 'IsAdmin' => $userIsAdmin]);
 			}
 		} else {
-			$user = $this->usersModel->getUser($username);
+			$user = $this->usersManager->getUserByUsername($username);
 
 			echo $twig->render('blogView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'posts' => $posts]);
 		}
@@ -64,8 +63,8 @@ class BlogController
 		$loader = new FilesystemLoader('Public\Views');
 		$twig = new Environment($loader);
 
-		$username = $_SESSION['user'];
-		$user = $this->usersModel->getUser($username);
+		$username = Session::get('user');
+		$user = $this->usersManager->getUserByUsername($username);
 		$userIsAdmin = $user['admin'];
 
 		echo $twig->render('createPostView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin]);
@@ -76,20 +75,13 @@ class BlogController
 		$titre = $_POST["title"];
 		$chapo = $_POST["chapo"];
 		$content = $_POST["content"];
-		$auteur = $_SESSION['user'];
-
-		$post = new PostModel();
-		$post->title = $titre;
-		$post->chapo = $chapo;
-		$post->content = $content;
-		$post->auteur = $auteur;
-
-		$return = $post->createPost();
+		$auteur = Session::get('user');
+		$return = $this->postsManager->createPost($titre, $chapo, $content, $auteur);
 
 		if ($return == "postCreated") {
-			$_SESSION['successMessage'] = "postCreated";
+			Session::put('successMessage', 'postCreated');
 		} else {
-			$_SESSION['successMessage'] = "postError";
+			Session::put('successMessage', 'postError');
 			header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/createPostView');
 		}
 
@@ -101,9 +93,9 @@ class BlogController
 		$loader = new FilesystemLoader('Public\Views');
 		$twig = new Environment($loader);
 
-		$username = $_SESSION['user'];
+		$username = Session::get('user');
 
-		$user = $this->usersModel->getUser($username);
+		$user = $this->usersManager->getUserByUsername($username);
 
 		$userIsAdmin = $user['admin'];
 
@@ -112,14 +104,14 @@ class BlogController
 			$idPost = $post_id[2];
 
 		if (isset($_SESSION['successMessage'])) {
-			if ($_SESSION['successMessage'] == "CommentError") {
+			if (Session::get('successMessage') == "commentError") {
 				$successMessage = 'Une erreur est survenu, veuillez réessayer.';
-				unset($_SESSION['successMessage']);
+				Session::forget('successMessage');
 				$post = $this->postsManager->getPost($idPost);
 				echo $twig->render('modifPostView.twig', ["successMessage" => $successMessage, "class" => "errorMessage", 'post' => $post, 'id' => $idPost]);
 			}
 		} else {
-			$user = $this->usersModel->getUser($username);
+			$user = $this->usersManager->getUserByUsername($username);
 
 			echo $twig->render('createCommentView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'id' => $post_id]);
 		}
@@ -128,21 +120,16 @@ class BlogController
 	public function traitementCreateComment()
 	{
 		$idPost = $_POST["post_id"];
-		$author = $_SESSION['user'];
+		$author = Session::get('user');
 		$comment = $_POST["comment"];
 
-		$post = new PostModel();
-		$post->post_id = $idPost;
-		$post->author = $author;
-		$post->comment = $comment;
+		$return = $this->postsManager->createComment($idPost, $author, $comment);
 
-		$return = $post->createComment();
-
-		if ($return == "CommentCreated") {
-			$_SESSION['successMessage'] = "CommentCreated";
+		if ($return == "commentCreated") {
+			Session::put('successMessage', 'commentCreated');
 		} else {
-			$_SESSION['successMessage'] = "CommentError";
-			header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/createCommentView');
+			Session::put('successMessage', 'commentError');
+			header("Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/createCommentView/$idPost");
 		}
 
 		header("Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/viewPost/$idPost");
@@ -157,9 +144,9 @@ class BlogController
 		$twig = new Environment($loader);
 
 		if (isset($_SESSION['successMessage'])) {
-			if ($_SESSION['successMessage'] == "modifPostError") {
+			if (Session::get('successMessage') == "modifPostError") {
 				$successMessage = 'Une erreur est survenu, veuillez réessayer.';
-				unset($_SESSION['successMessage']);
+				Session::forget('successMessage');
 				$post = $this->postsManager->getPost($idPost);
 				echo $twig->render('modifPostView.twig', ["successMessage" => $successMessage, "class" => "errorMessage", 'post' => $post, 'id' => $idPost]);
 			}
@@ -186,10 +173,10 @@ class BlogController
 		$return = $this->postsManager->modifPost($idPost, $title, $chapo, $content, $date_create, $date);
 
 		if ($return == "modifPostCreated") {
-			$_SESSION['successMessage'] = "modifPostCreated";
+			Session::put('successMessage', 'modifPostCreated');
 		} else {
-			$_SESSION['successMessage'] = "modifPostError";
-			header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/modifPostView');
+			Session::put('successMessage', 'modifPostError');
+			header("Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/modifPostView/$idPost");
 		}
 
 		header("Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/viewPost/$idPost");
@@ -201,9 +188,9 @@ class BlogController
 		$loader = new FilesystemLoader('Public\Views');
 		$twig = new Environment($loader);
 
-		$username = $_SESSION['user'];
+		$username = Session::get('user');
 
-		$user = $this->usersModel->getUser($username);
+		$user = $this->usersManager->getUserByUsername($username);
 
 		$userIsAdmin = $user['admin'];
 
@@ -221,25 +208,25 @@ class BlogController
 		// die();
 
 		if (isset($_SESSION['successMessage'])) {
-			if ($_SESSION['successMessage'] == "CommentCreated") {
+			if (Session::get('successMessage') == "commentCreated") {
 				$successMessage = "Votre comentaire à bien été Crée !";
-				unset($_SESSION['successMessage']);
-				$user = $this->usersModel->getUser($username);
+				Session::forget('successMessage');
+				$user = $this->usersManager->getUserByUsername($username);
 				echo $twig->render('viewPost.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'post' => $post, 'comments' => $comments, "successMessage" => $successMessage, "class" => "successMessage", 'user' => $user, 'IsAdmin' => $userIsAdmin, 'id' => $post_id]);
-			} elseif ($_SESSION['successMessage'] == "commentError") {
+			} elseif (Session::get('successMessage') == "commentError") {
 				$successMessage = 'Une erreur est survenu, veuillez réessayer.';
-				unset($_SESSION['successMessage']);
-				$user = $this->usersModel->getUser($username);
+				Session::forget('successMessage');
+				$user = $this->usersManager->getUserByUsername($username);
 				echo $twig->render('createCommentView.twig', ["successMessage" => $successMessage, "class" => "successMessage", 'user' => $user, 'IsAdmin' => $userIsAdmin, 'id' => $post_id]);
 			}
-			if ($_SESSION['successMessage'] == "modifPostCreated") {
+			if (Session::get('successMessage') == "modifPostCreated") {
 				$successMessage = "Votre article à bien été Modifié !";
-				unset($_SESSION['successMessage']);
+				Session::forget('successMessage');
 				$post = $this->postsManager->getPost($idPost);
 				echo $twig->render('viewPost.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin, 'post' => $post, 'comments' => $comments, "successMessage" => $successMessage, "class" => "successMessage", 'post' => $post, 'id' => $idPost]);
-			} elseif ($_SESSION['successMessage'] == "modifPostError") {
+			} elseif (Session::get('successMessage') == "modifPostError") {
 				$successMessage = 'Une erreur est survenu, veuillez réessayer.';
-				unset($_SESSION['successMessage']);
+				Session::forget('successMessage');
 				$post = $this->postsManager->getPost($idPost);
 				echo $twig->render('modifPostView.twig', ["successMessage" => $successMessage, "class" => "errorMessage", 'post' => $post, 'id' => $idPost]);
 			}

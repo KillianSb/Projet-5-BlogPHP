@@ -36,7 +36,7 @@ $router->get('/modifPost/:id', 'Blog#modifPostView');
 $router->post('/ModifPostRequest/:id', 'Blog#traitementModifPost');
 
 $router->get('/commentPost/:id', 'Blog#createCommentView');
-$router->post('/commentPostRequest/:id', 'Blog#traitementCreateComment');
+$router->post('/CommentPostRequest/:id', 'Blog#traitementCreateComment');
 
 $router->get('/viewPost/:id', 'Blog#ViewPost');
 

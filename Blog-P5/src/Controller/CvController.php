@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-use App\Models\UserModel;
+use App\Manager\UsersManager;
+use App\Manager\Session;
+
 
 
 class CvController
@@ -12,7 +14,7 @@ class CvController
 
 	public function __construct()
 	{
-		$this->usersModel = new UserModel();
+		$this->usersManager = new UsersManager();
 
 
 		if (!isset($_SESSION)) {
@@ -25,9 +27,9 @@ class CvController
 		$loader = new FilesystemLoader('Public\Views');
 		$twig = new Environment($loader);
 
-		$username = $_SESSION['user'];
+		$username = Session::get('user');
 
-		$user = $this->usersModel->getUser($username);
+		$user = $this->usersManager->getUserByUsername($username);
 
 		$userIsAdmin = $user['admin'];
 

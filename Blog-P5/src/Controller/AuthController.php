@@ -4,17 +4,14 @@ namespace App\Controller;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-use App\Models\UserModel;
 use App\Manager\UsersManager;
 
 class AuthController
 {
-	private $usersModel;
 	private $usersManager;
 
 	public function __construct()
 	{
-		$this->usersModel = new UserModel();
 		$this->usersManager = new UsersManager();
 
 		if (!isset($_SESSION)) {
@@ -54,7 +51,7 @@ class AuthController
 		$username = $_POST['username'];
 		$passwordToVerify = $_POST['pass'];
 
-		$return = $this->usersModel->connexion($username, $passwordToVerify);
+		$return = $this->usersManager->connexion($username, $passwordToVerify);
 		if ($return[0] == "y") {
 			$_SESSION['user'] = $username;
 			header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/home');
@@ -113,7 +110,7 @@ class AuthController
 			$pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 		}
 
-		$return = $this->usersModel->inscription($name, $firstname, $username, $mail, $pass);
+		$return = $this->usersManager->inscription($name, $firstname, $username, $mail, $pass);
 
 		if ($return == "y") {
 			$_SESSION['successMessage'] = "y";

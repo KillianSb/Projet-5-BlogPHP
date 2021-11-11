@@ -21,15 +21,16 @@
 
 
     <div class="container">
-        <form name="createComment" method="post" action="../commentPostRequest/{{ id }}">
+        <form name="createComment" method="post" action="../CommentPostRequest/{{ id }}">
             <input type="hidden" name="post_id" value="{{ id }}">
 
             <label for="comment">Commentaire</label>
             <textarea name="comment" placeholder="Commentaire"></textarea><br/>
 
-            <input id="modif" type="submit" name="valider" value="Crée le commentaire" />
+			<input id="create" type="submit" name="valider" value="Crée le commentaire"/>
         </form>
        <a href="/P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/viewPost/{{ id }}">Retour</a>
+
     </div>
 
 {% endblock %}

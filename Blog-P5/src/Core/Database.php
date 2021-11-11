@@ -15,7 +15,7 @@ class Database
     protected function dbConnect()
     {
         try{
-            return new PDO('mysql:host=localhost;dbname=p5_ks;charset=utf8', 'root', '');
+            return new PDO('mysql:host=localhost;dbname=p5_ks;charset=utf8','root','');
         }
         catch(PDOException $e){
             echo $e->getMessage();
@@ -23,9 +23,9 @@ class Database
     }
     
 
-    // public function query($query){
-    //     $result = $this->db->prepare($query);
-    //     $result->execute();
-    //     return $result;
-    // }
+    //public function query($query){
+    //    $result = $this->db->prepare($query);
+    //    $result->execute();
+    //    return $result;
+    //}
 }

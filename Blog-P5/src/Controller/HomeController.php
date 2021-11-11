@@ -4,14 +4,15 @@ namespace App\Controller;
 
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-use App\Models\UserModel;
+use App\Manager\UsersManager;
+use App\Manager\Session;
 
 class HomeController
 {
 
 	public function __construct()
 	{
-		$this->usersModel = new UserModel();
+		$this->usersManager = new UsersManager();
 
 		if (!isset($_SESSION)) {
 			session_start();
@@ -23,11 +24,16 @@ class HomeController
 		$loader = new FilesystemLoader('Public\Views');
 		$twig = new Environment($loader);
 
-		$username = $_SESSION['user'];
+		$username = Session::get('user');
 
-		$user = $this->usersModel->getUser($username);
+		$user = $this->usersManager->getUserByUsername($username);
 
 		$userIsAdmin = $user['admin'];
+
+		//echo "</br>";
+		//var_dump($username);
+		//echo "</br>";
+		//die();
 
 		echo $twig->render('homeView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin]);
 	}

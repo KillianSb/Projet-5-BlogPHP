@@ -38,16 +38,12 @@
 			<div class="containerPostsBlog">
 				<div class="postblog">
 					<p class="title">{{post.titre}}</p>
-					<p class="author">Autheur :
-						{{post.auteur}}</p>
-					<p class="chapo">Chapo :
-						{{post.chapo}}</p>
+					<p class="author">Autheur : {{post.auteur}}</p>
+					<p class="chapo">Chapo : {{post.chapo}}</p>
 					<p class="content">{{post.contenu}}</p>
-					<p class="dateCreate">Crée le
-						{{post.dateCreate}}</p>
+					<p class="dateCreate">Crée le {{post.dateCreate}}</p>
 					{% if post.lastModif != null %}
-						<p class="dateModif">Dernière modification le
-							{{post.lastModif}}</p>
+						<p class="dateModif">Dernière modification le {{post.lastModif}}</p>
 					{% endif %}
 					<div class="containerContentBlog">
 						<div class="button">
@@ -59,32 +55,34 @@
 						{% else %}
 							<p>Vous n'etes pas connectez pour Commenter ce post !</p>
 						{% endif %}
-					{% endblock connecte_1 %}
-					{% if user.username == post.auteur or IsAdmin == true %}
-						<a type="submit" class="modif" name="post_modif_id" href="../modifPost/{{post.id}}">Modif</a>
-					</br>
-				{% endif %}
+						{% endblock connecte_1 %}
+						{% if user.username == post.auteur or IsAdmin == true %}
+							<a type="submit" class="modif" name="post_modif_id" href="../modifPost/{{post.id}}">Modif</a>
+						</br>
+						{% endif %}
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+	<div class="containerPostsComment">
+	{% for comment in comments %}
+		<div class="postcomment">
+			<p class="author_comment">{{comment.author}}</p>
+			<p class="comment">{{comment.comment}}</p>
+			<p class="comment_date">Crée le {{comment.comment_date}}</p>
+			<div class="button">
+				<input type="hidden" name="comment_id" value="{{comment.id}}"></input>
+			{% block connecte_2 %}
+				{% if IsAdmin == true %}
+					<a id="del_com" class="delete" href="../deleteComment/{{comment.id}}">Supprimer</a>
+				{% endif %}
+			{% endblock connecte_2 %}
+		</div>
+	</div>{% endfor %}{% if comments is empty%}
+	<div class="containerPostsNotComment">
+		<p>
+			pas de commentaires
+		</p>
 	</div>
-</div></div><div class="containerPostsComment">
-{% for comment in comments %}
-	<div class="postcomment">
-		<p class="author_comment">{{comment.author}}</p>
-		<p class="comment">{{comment.comment}}</p>
-		<p class="comment_date">Crée le
-			{{comment.comment_date}}</p>
-		<div class="button">
-			<input type="hidden" name="comment_id" value="{{comment.id}}"></input>
-		{% block connecte_2 %}
-			{% if IsAdmin == true %}
-				<a id="del_com" class="delete" href="../deleteComment/{{comment.id}}">Supprimer</a>
-			{% endif %}
-		{% endblock connecte_2 %}
-	</div>
-</div>{% endfor %}{% if comments is empty%}
-<div class="containerPostsNotComment">
-	<p>
-		pas de commentaires
-	</p>
-</div>{% endif %}</div></div><div class="return"><a href="../blog">Retour</a></div>{% endblock content %}
+	{% endif %}</div></div><div class="return"><a href="../blog">Retour</a></div>{% endblock content %}
