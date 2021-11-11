@@ -72,10 +72,11 @@ class BlogController
 
 	public function traitementCreatePost()
 	{
-		$titre = $_POST["title"];
-		$chapo = $_POST["chapo"];
-		$content = $_POST["content"];
+		$titre = filter_input(INPUT_POST, 'title');
+		$chapo = filter_input(INPUT_POST, 'chapo');
+		$content = filter_input(INPUT_POST, 'content');
 		$auteur = Session::get('user');
+
 		$return = $this->postsManager->createPost($titre, $chapo, $content, $auteur);
 
 		if ($return == "postCreated") {
@@ -119,9 +120,9 @@ class BlogController
 
 	public function traitementCreateComment()
 	{
-		$idPost = $_POST["post_id"];
+		$idPost = filter_input(INPUT_POST, 'post_id');
 		$author = Session::get('user');
-		$comment = $_POST["comment"];
+		$comment = filter_input(INPUT_POST, 'comment');
 
 		$return = $this->postsManager->createComment($idPost, $author, $comment);
 
