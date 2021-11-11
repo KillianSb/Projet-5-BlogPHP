@@ -19,4 +19,8 @@ class Session{
 	public static function start(){
 		return !!session_id(); 
     }
+
+	public static function sessionStart(){
+		session_start();
+    }
 }

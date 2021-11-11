@@ -22,7 +22,7 @@ class BlogController
 
 		$session = session_id();
 		if(empty($session)){ 
-			session_start();
+			Session::sessionStart();
 		}
 	}
 

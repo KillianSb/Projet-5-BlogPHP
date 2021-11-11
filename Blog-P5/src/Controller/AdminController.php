@@ -6,6 +6,7 @@ use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use App\Manager\UsersManager;
 use App\Manager\PostsManager;
+use App\Manager\Session;
 
 class AdminController
 {
@@ -20,7 +21,7 @@ class AdminController
 
 		$session = session_id();
 		if(empty($session)){ 
-			session_start();
+			Session::sessionStart();
 		}
 	}
 

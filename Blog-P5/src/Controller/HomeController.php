@@ -16,7 +16,7 @@ class HomeController
 
 		$session = session_id();
 		if(empty($session)){ 
-			session_start();
+			Session::sessionStart();
 		}
 	}
 
@@ -30,11 +30,6 @@ class HomeController
 		$user = $this->usersManager->getUserByUsername($username);
 
 		$userIsAdmin = $user['admin'];
-
-		//echo "</br>";
-		//var_dump($username);
-		//echo "</br>";
-		//die();
 
 		echo $twig->render('homeView.twig', ['user' => $user, 'IsAdmin' => $userIsAdmin]);
 	}
