@@ -28,10 +28,10 @@ class AuthController
 		$loader = new FilesystemLoader('Public\Views');
 		$twig = new Environment($loader);
 
-		if (isset($_SESSION['user'])) {
+		if (Session::get('user') !== null) {
 			header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/cv');
 		}
-		if (isset($_SESSION['successMessage'])) {
+		if (Session::get('successMessage') !== null) {
 			if (Session::get('successMessage') == "n") {
 				$successMessage = "Identifiant ou Mots de passe est incorrect, veuillez réessayer";
 				Session::forget('successMessage');
@@ -46,12 +46,12 @@ class AuthController
 
 	public function traitementConnexion()
 	{
-		if (isset($_SESSION['user'])) {
+		if (Session::get('user') !== null) {
 			header('Location: /P5-BlogPHP/Projet-5-BlogPHP/Blog-P5/cv');
 		}
 
-		$username = $_POST['username'];
-		$passwordToVerify = $_POST['pass'];
+		$username = filter_input(INPUT_POST, 'username');
+		$passwordToVerify = filter_input(INPUT_POST, 'pass');
 
 		$return = $this->usersManager->connexion($username, $passwordToVerify);
 		if ($return[0] == "y") {
@@ -77,12 +77,12 @@ class AuthController
 		$loader = new FilesystemLoader('Public\Views');
 		$twig = new Environment($loader);
 
-		if (isset($_SESSION['successMessage'])) {
+		if (Session::get('successMessage') !== null) {
 			if (Session::get('successMessage') == "y") {
 				$successMessage = "Votre inscription à bien été prise en compte, bienvenue !";
 				Session::forget('successMessage');
 				echo $twig->render('auth/inscriptionView.twig', ["successMessage" => $successMessage, "class" => "successMessage"]);
-			} elseif (isset($_SESSION['successMessage'])) {
+			} elseif (Session::get('successMessage') !== null) {
 				if (Session::get('successMessage') == 'em') {
 					$successMessage = "Cette addresse mail est déjà utilisé, désolé.";
 					Session::forget('successMessage');
@@ -104,12 +104,17 @@ class AuthController
 
 	public function traitementInscription()
 	{
-		if (isset($_POST['name']) || isset($_POST['firstname']) || isset($_POST['username']) || isset($_POST['mail']) || isset($_POST['pass'])) {
-			$name = $_POST['name'];
-			$firstname = $_POST['firstname'];
-			$username = $_POST['username'];
-			$mail = $_POST['mail'];
-			$pass = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+		$name = filter_input(INPUT_POST, 'name');
+		$firstname = filter_input(INPUT_POST, 'firstname');
+		$username = filter_input(INPUT_POST, 'username');
+		$mail = filter_input(INPUT_POST, 'mail');
+		$pass = filter_input(INPUT_POST, 'pass');
+		if (isset($name) || isset($firstname) || isset($username) || isset($mail) || isset($pass)) {
+			$name = $name;
+			$firstname = $firstname;
+			$username = $username;
+			$mail = $mail;
+			$pass = password_hash($pass, PASSWORD_DEFAULT);
 		}
 
 		$return = $this->usersManager->inscription($name, $firstname, $username, $mail, $pass);

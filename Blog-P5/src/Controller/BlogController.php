@@ -39,7 +39,7 @@ class BlogController
 
 		$posts = $this->postsManager->getPosts();
 
-		if (isset($_SESSION['successMessage'])) {
+		if (Session::get('successMessage') !== null) {
 			if ($_SESSION['successMessage'] == "postCreated") {
 				$successMessage = "Votre article à bien été Crée !";
 				Session::forget('successMessage');
@@ -105,7 +105,7 @@ class BlogController
 		if (@preg_match('#^([^0-9]+)([0-9]+)$#', $get_url, $post_id))
 			$idPost = $post_id[2];
 
-		if (isset($_SESSION['successMessage'])) {
+		if (Session::get('successMessage') !== null) {
 			if (Session::get('successMessage') == "commentError") {
 				$successMessage = 'Une erreur est survenu, veuillez réessayer.';
 				Session::forget('successMessage');
@@ -145,7 +145,7 @@ class BlogController
 		$loader = new FilesystemLoader('Public\Views');
 		$twig = new Environment($loader);
 
-		if (isset($_SESSION['successMessage'])) {
+		if (Session::get('successMessage') !== null) {
 			if (Session::get('successMessage') == "modifPostError") {
 				$successMessage = 'Une erreur est survenu, veuillez réessayer.';
 				Session::forget('successMessage');
@@ -164,10 +164,10 @@ class BlogController
 	 */
 	public function traitementModifPost($idPost)
 	{
-		$title = $_REQUEST['title'];
-		$chapo = $_REQUEST['chapo'];
-		$content = $_REQUEST['content'];
-		$date_create = $_REQUEST['dateCreate'];
+		$title = filter_input(INPUT_POST, 'title');
+		$chapo = filter_input(INPUT_POST, 'chapo');
+		$content = filter_input(INPUT_POST, 'content');
+		$date_create = filter_input(INPUT_POST, 'dateCreate');
 
 		date_default_timezone_set('Europe/Paris');
 		$date = date('Y-m-d H:i:s');
@@ -196,7 +196,7 @@ class BlogController
 
 		$userIsAdmin = $user['admin'];
 
-		$get_url = $_GET["url"];
+		$get_url = filter_input(INPUT_GET, 'url');
 		if (@preg_match('#^([^0-9]+)([0-9]+)$#', $get_url, $post_id))
 			$idPost = $post_id[2];
 
@@ -204,12 +204,7 @@ class BlogController
 
 		$comments = $this->postsManager->getComments($idPost);
 
-		// echo "</br>";
-		// var_dump($_SESSION);
-		// echo "</br>";
-		// die();
-
-		if (isset($_SESSION['successMessage'])) {
+		if (Session::get('successMessage') !== null) {
 			if (Session::get('successMessage') == "commentCreated") {
 				$successMessage = "Votre comentaire à bien été Crée !";
 				Session::forget('successMessage');
