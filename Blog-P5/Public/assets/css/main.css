@@ -425,7 +425,7 @@ div.rs li a:focus {
 
   .containerBlockContact {
     margin: 200px 10% 5% 10%;
-    align-items: center !important;
+    align-items: center;
     flex-direction: column;
   }
 

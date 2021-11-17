@@ -15,12 +15,18 @@ class TraitementController
 		$loader = new FilesystemLoader('Public\Views');
 		$twig = new Environment($loader);
 
-		if (isset($_POST['lastname']) || isset($_POST['firstname']) || isset($_POST['email']) || isset($_POST['numero'])) {
-			$nom = $_REQUEST['lastname'];
-			$prenom = $_REQUEST['firstname'];
-			$phone = $_REQUEST['numero'];
-			$mail = $_REQUEST['email'];
-			$content = "mail :" . $mail . "<br> Phone : " . $phone . "<br> Message : " . $_REQUEST['message'];
+		$name = filter_input(INPUT_POST, 'lastname');
+		$prenom = filter_input(INPUT_POST, 'firstname');
+		$phone = filter_input(INPUT_POST, 'numero');
+		$mail = filter_input(INPUT_POST, 'email');
+		$content = "mail :" . $mail . "<br> Phone : " . $phone . "<br> Message : " . filter_input(INPUT_POST, 'message');
+
+		if (isset($name) || isset($prenom) || isset($phone) || isset($mail)) {
+			$nom = $name;
+			$prenom = $prenom;
+			$phone = $phone;
+			$mail = $mail;
+			$content = $content;
 
 			$this->mailer = new Mailer();
 			$this->mailer->sendMail('killian.sieniski@gmail.com', 'killian.sieniski@gmail.com', $nom . " " . $prenom, $content, "Message de $nom" . " " . "$prenom");
