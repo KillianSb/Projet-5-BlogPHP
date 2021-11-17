@@ -19,7 +19,7 @@ h2 a {
 }
 
 h2 a:hover {
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   cursor: pointer;
 }
@@ -104,7 +104,7 @@ li a {
 .box_footer {
   display: flex;
   border: groove;
-  border-color: #fbebb6 #000000 #000000 #000000;
+  border-color: #fbebb6 #000 #000 #000;
 }
 
 .footer_center {
@@ -132,7 +132,7 @@ li a {
 }
 
 .admin {
-  background-color: #000000;
+  background-color: #000;
 }
 
 .links a {
@@ -184,7 +184,7 @@ li a {
   padding: 15px;
   font-family: cursive;
   font-size: 17px;
-  color: #ffffff;
+  color: #fff;
   text-align: center;
 }
 
@@ -219,7 +219,7 @@ li a {
   width: 100%;
   background-color: #adadad;
   border: groove;
-  border-color: #fbebb6 #fbebb6 #000000 #fbebb6;
+  border-color: #fbebb6 #fbebb6 #000 #fbebb6;
 }
 
 .containerTablePosts .content {
@@ -307,7 +307,7 @@ li a {
     width: auto;
     background-color: #adadad;
     border: groove;
-    border-color: #fbebb6 #fbebb6 #000000 #fbebb6;
+    border-color: #fbebb6 #fbebb6 #000 #fbebb6;
   }
 
   .containerTablePosts .containerPosts .post {
